@@ -16,4 +16,5 @@
   <url><loc>https://www.vultsight.com/solutions.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.vultsight.com/terms.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.vultsight.com/xdr-vs-siem-soar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.vultsight.com/zero-day.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

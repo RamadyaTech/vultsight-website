@@ -30,7 +30,8 @@ const HEADER_HTML = `
             <div class="mega__col">
               <p class="mega__head">Detect</p>
               <a href="platform.html#ingest"><strong>Data Ingestion</strong><span>Syslog, edge collectors, cloud API polling</span></a>
-              <a href="platform.html#detect"><strong>Detection Engine</strong><span>5 rule types · sub-second streaming</span></a>
+              <a href="platform.html#detect"><strong>Detection Engine</strong><span>Flexible rules · sub-second streaming</span></a>
+              <a href="zero-day.html"><strong>Zero-day Defence</strong><span>Behavioural detection &amp; frameworks</span></a>
               <a href="platform.html#intel"><strong>Threat Intelligence</strong><span>13 feeds · real-time IOC matching</span></a>
             </div>
             <div class="mega__col">
@@ -102,8 +103,8 @@ const FOOTER_HTML = `
       <a href="platform.html#ingest">Data ingestion</a>
       <a href="platform.html#detect">Detection engine</a>
       <a href="platform.html#correlate">XDR correlation</a>
+      <a href="zero-day.html">Zero-day defence</a>
       <a href="platform.html#soar">SOAR &amp; cases</a>
-      <a href="platform.html#ai">AI operations</a>
     </div>
     <div class="footer__col">
       <h5>NOC · Network ops</h5>

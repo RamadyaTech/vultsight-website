@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zero-Day Defence &amp; Security Frameworks — VultSight</title>
+<meta name="description" content="How VultSight defends against zero-day and emerging threats — behavioural detection, real-time threat intel (CISA KEV, Sigma), retroactive hunting and SOAR containment — and the frameworks it integrates: MITRE ATT&CK, Sigma, STIX/TAXII, NIST CSF, ISO 27001, PCI-DSS, CERT-In, GDPR." />
+<meta name="keywords" content="zero-day detection, XDR zero-day, MITRE ATT&CK, Sigma rules, CISA KEV, security frameworks, NIST CSF, ISO 27001, PCI-DSS" />
+<link rel="canonical" href="https://www.vultsight.com/zero-day.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="Zero-Day Defence &amp; Security Frameworks — VultSight" />
+<meta property="og:description" content="How VultSight catches zero-days by behaviour, intel and hunting — and the frameworks it integrates." />
+<meta property="og:url" content="https://www.vultsight.com/zero-day.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Zero-Day Defence &amp; Security Frameworks — VultSight" />
+<meta name="twitter:description" content="How VultSight catches zero-days by behaviour, intel and hunting — and the frameworks it integrates." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does VultSight patch zero-day vulnerabilities?", "acceptedAnswer": { "@type": "Answer", "text": "No. VultSight is not a patch-management tool. It detects and contains the exploitation of vulnerabilities — including zero-days — through behavioural detection, real-time threat intelligence, retroactive hunting and automated response, and it ingests vulnerability-scan data to prioritise exposed assets." } },
+    { "@type": "Question", "name": "How does VultSight detect a zero-day with no signature?", "acceptedAnswer": { "@type": "Answer", "text": "By behaviour. UEBA baselines and MITRE ATT&CK technique detection flag the actions an exploit takes — credential access, lateral movement, C2 beaconing — even when no indicator of compromise exists yet." } },
+    { "@type": "Question", "name": "How fast do new indicators take effect?", "acceptedAnswer": { "@type": "Answer", "text": "Threat-intel feeds such as CISA KEV, Sigma and OSINT sources sync continuously and new IOCs match in real time. Analysts can also submit an indicator manually for instant coverage the moment a CVE is disclosed." } },
+    { "@type": "Question", "name": "Which frameworks and standards does VultSight integrate?", "acceptedAnswer": { "@type": "Answer", "text": "Detection natively uses MITRE ATT&CK, Sigma, STIX/TAXII and CVE/CISA KEV; ingestion supports CEF, LEEF and Syslog. The compliance module maps controls to the frameworks you report against, such as NIST CSF, ISO 27001, PCI-DSS, CERT-In and GDPR." } },
+    { "@type": "Question", "name": "Is VultSight SOC 2 or ISO 27001 certified?", "acceptedAnswer": { "@type": "Answer", "text": "VultSight designs its controls to align with widely recognised best practices and provides capabilities to help customers meet their own obligations. Specific compliance documentation and certification status can be discussed under agreement." } }
+  ]
+}
+</script>
+<style>
+  .zhero{position:relative;overflow:hidden;padding:74px 0 84px}
+  .zhero .grid-tex{position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px);
+    background-size:46px 46px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000,transparent 75%)}
+  .zhero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .zhero h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,4.8vw,54px);line-height:1.06;letter-spacing:-.02em;color:#fff}
+  .zhero h1 .g{background:linear-gradient(110deg,#818cf8,#22d3ee 60%,#c4b5fd);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .zhero p{color:#aeb8d0;font-size:18px;margin:20px 0 30px;max-width:540px}
+  /* defence-in-depth stack visual */
+  .zstack{display:flex;flex-direction:column;gap:11px}
+  .zthreat{align-self:center;font-size:12px;font-weight:700;letter-spacing:.03em;color:#fda4b4;background:rgba(246,81,107,.14);border:1px solid rgba(246,81,107,.35);padding:7px 15px;border-radius:999px}
+  .zthreat span{opacity:.7;font-weight:600}
+  .zarrow{align-self:center;color:#6b7689;font-size:14px;margin:-2px 0}
+  .zlayer{display:flex;align-items:center;gap:14px;padding:15px 17px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid rgba(148,163,184,.16);backdrop-filter:blur(6px)}
+  .zlayer .zi{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:none;
+    background:linear-gradient(135deg,rgba(99,102,241,.32),rgba(6,182,212,.2));border:1px solid rgba(148,163,184,.22)}
+  .zlayer b{display:block;font-size:14.5px;color:#fff;font-weight:600}
+  .zlayer small{font-size:12px;color:#9aa6c2}
+  .zlayer .ck{margin-left:auto;color:#34d399;font-weight:800;font-size:15px}
+  /* framework groups */
+  .fwgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .fwcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .fwcard .fwic{font-size:22px;margin-bottom:12px}
+  .fwcard h3{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .fwcard .sub{font-size:12.5px;color:var(--faint);margin-bottom:14px}
+  .fwcard .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .fwcard .pill{font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft)}
+  .fwnote{text-align:center;font-size:13.5px;color:var(--muted);max-width:660px;margin:26px auto 0}
+  /* faq */
+  .faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .faqitem{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow)}
+  .faqitem h3{font-family:'Sora',sans-serif;font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:8px}
+  .faqitem p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  @media (max-width:960px){.zhero__inner{grid-template-columns:1fr;gap:44px}.fwgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+
+<!-- hero (dark) -->
+<section class="zhero band--dark">
+  <div class="grid-tex"></div>
+  <div class="container zhero__inner">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Zero-day &amp; emerging threats</span>
+      <h1>Catch what has <span class="g">no signature</span> yet</h1>
+      <p>A novel exploit rarely has a rule the day it drops. VultSight defends in layers — by behaviour, by intelligence, and by hunting — so a zero-day is caught by what it <em>does</em>, not just what it's called.</p>
+      <div class="hero__actions">
+        <a href="#layers" class="btn btn--primary btn--lg">How the defence works</a>
+        <a href="#frameworks" class="btn btn--outline btn--lg">Frameworks &amp; standards</a>
+      </div>
+    </div>
+    <div aria-hidden="true">
+      <div class="zstack">
+        <div class="zthreat">⚠ Unknown exploit · <span>no signature</span></div>
+        <div class="zarrow">↓</div>
+        <div class="zlayer"><span class="zi">🧠</span><div><b>Behavioural detection</b><small>UEBA + MITRE ATT&amp;CK technique matching</small></div><span class="ck">✓</span></div>
+        <div class="zlayer"><span class="zi">🌐</span><div><b>Real-time threat intel</b><small>CISA KEV · Sigma · OSINT · manual IOC</small></div><span class="ck">✓</span></div>
+        <div class="zlayer"><span class="zi">🔭</span><div><b>Retroactive hunting</b><small>sweep history for the new indicator</small></div><span class="ck">✓</span></div>
+        <div class="zlayer"><span class="zi">⚙️</span><div><b>Automated containment</b><small>SOAR isolates &amp; blocks in seconds</small></div><span class="ck">✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- why signatures are late -->
+<section class="section">
+  <div class="container split">
+    <div class="split__copy">
+      <span class="kicker">The problem</span>
+      <h2>Signatures always<br/>arrive late</h2>
+      <p>A zero-day is, by definition, something no one has written a rule for yet. Waiting for a vendor signature or a patch means waiting while the attacker is already inside. The only reliable early signal is <strong>behaviour</strong> — because even a brand-new exploit still has to dump credentials, move laterally and call home.</p>
+      <ul class="checklist">
+        <li><span class="ck">✓</span> <strong>Not a scanner or patcher</strong> — VultSight detects and contains <em>exploitation</em>, and complements your vulnerability-management tools</li>
+        <li><span class="ck">✓</span> <strong>Signature-independent</strong> — behavioural and statistical detection fire with zero prior knowledge of the exploit</li>
+        <li><span class="ck">✓</span> <strong>Intel-accelerated</strong> — the instant an indicator is public, it's matched in real time and hunted retroactively</li>
+      </ul>
+    </div>
+    <div class="split__panel">
+      <div class="vs">
+        <div class="vs__row vs__row--head"><span>Signature-only</span><span>VultSight</span></div>
+        <div class="vs__row"><span class="vs__old">Waits for a known IOC</span><span class="vs__new">Detects behaviour now</span></div>
+        <div class="vs__row"><span class="vs__old">Blind until a patch ships</span><span class="vs__new">Contains via SOAR</span></div>
+        <div class="vs__row"><span class="vs__old">No view of the past</span><span class="vs__new">Hunts history</span></div>
+        <div class="vs__row"><span class="vs__old">Alert only</span><span class="vs__new">Prioritised by exposure</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- defence in depth -->
+<section class="section section--alt" id="layers">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Defence in depth</span>
+      <h2>Four layers, no single point of failure</h2>
+      <p>If a zero-day slips past one layer, the next one catches it. Together they turn an unknown exploit into a contained, documented incident.</p>
+    </div>
+    <div class="caps">
+      <article class="cap"><div class="cap__ic">🧠</div><h3>1 · Behaviour, not signatures</h3><p>UEBA baselines and MITRE ATT&amp;CK technique detection flag the actions an exploit takes — credential dumping, lateral movement, C2 beaconing — even with no known indicator.</p></article>
+      <article class="cap"><div class="cap__ic">🌐</div><h3>2 · Intel the moment it lands</h3><p>CISA KEV, Sigma and OSINT feeds sync continuously and new IOCs match in real time. Analysts can submit an indicator manually for instant coverage the moment a CVE breaks.</p></article>
+      <article class="cap"><div class="cap__ic">🔭</div><h3>3 · Retroactive hunting</h3><p>When a new exploit or IOC surfaces, sweep historical events to answer "were we already hit?" — before it becomes an incident.</p></article>
+      <article class="cap"><div class="cap__ic">🎯</div><h3>4 · Prioritise &amp; contain</h3><p>Ingest Tenable and Qualys scan results to rank alerts by vulnerable, actively-exploited and business-critical assets — then contain automatically via SOAR.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- how it plays out -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Timeline</span>
+      <h2>How a zero-day plays out in VultSight</h2>
+      <p>From disclosure to containment — the same workflow whether the threat is known or brand new.</p>
+    </div>
+    <div class="caps">
+      <article class="cap"><div class="cap__ic">📢</div><h3>CVE disclosed</h3><p>A new vulnerability or exploit goes public — often before any vendor signature exists.</p></article>
+      <article class="cap"><div class="cap__ic">🔄</div><h3>Intel syncs</h3><p>CISA KEV, Sigma and OSINT feeds pull the new indicators; analysts can add IOCs manually for instant coverage.</p></article>
+      <article class="cap"><div class="cap__ic">⚡</div><h3>Detect in two ways</h3><p>Real-time IOC matching fires on the indicator; behavioural detection fires on the exploit's activity — whichever comes first.</p></article>
+      <article class="cap"><div class="cap__ic">🎯</div><h3>Prioritise</h3><p>Correlate with Tenable/Qualys scan data to focus on assets that are both exposed and business-critical.</p></article>
+      <article class="cap"><div class="cap__ic">⚙️</div><h3>Contain</h3><p>SOAR playbooks isolate endpoints, block C2 and revoke access in seconds, with approval gates where needed.</p></article>
+      <article class="cap"><div class="cap__ic">🔭</div><h3>Hunt the past</h3><p>Sweep historical events for the new indicator to confirm whether the exploit was already used — and close the loop.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- frameworks -->
+<section class="section section--alt" id="frameworks">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Frameworks &amp; standards</span>
+      <h2>Built on the standards your team already speaks</h2>
+      <p>Detection, data and compliance all map to recognised frameworks — so VultSight fits your reporting, not the other way around.</p>
+    </div>
+    <div class="fwgrid">
+      <div class="fwcard">
+        <div class="fwic">🎯</div>
+        <h3>Detection &amp; threat</h3>
+        <p class="sub">Natively integrated</p>
+        <div class="pills">
+          <span class="pill">MITRE ATT&amp;CK</span>
+          <span class="pill">Sigma</span>
+          <span class="pill">STIX / TAXII</span>
+          <span class="pill">CVE · CISA KEV</span>
+          <span class="pill">Kill chain</span>
+        </div>
+      </div>
+      <div class="fwcard">
+        <div class="fwic">📥</div>
+        <h3>Data &amp; logs</h3>
+        <p class="sub">Ingestion &amp; normalization</p>
+        <div class="pills">
+          <span class="pill">CEF</span>
+          <span class="pill">LEEF</span>
+          <span class="pill">Syslog RFC 5424</span>
+          <span class="pill">Syslog RFC 3164</span>
+          <span class="pill">Grok · JSON</span>
+        </div>
+      </div>
+      <div class="fwcard">
+        <div class="fwic">📋</div>
+        <h3>Compliance mapping</h3>
+        <p class="sub">Map controls to your framework</p>
+        <div class="pills">
+          <span class="pill">NIST CSF</span>
+          <span class="pill">ISO 27001</span>
+          <span class="pill">PCI-DSS</span>
+          <span class="pill">CERT-In</span>
+          <span class="pill">GDPR</span>
+        </div>
+      </div>
+    </div>
+    <p class="fwnote">Detection natively speaks MITRE ATT&amp;CK, Sigma, STIX/TAXII and CVE/KEV. The compliance module maps your controls to the frameworks you report against — with evidence drawn from the platform's tamper-evident audit trail. We don't claim certifications you don't have; specific documentation is shared under agreement.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">FAQ</span><h2>Questions security teams ask</h2></div>
+    <div class="faq">
+      <div class="faqitem"><h3>Does VultSight patch zero-day vulnerabilities?</h3><p>No — VultSight is not a patch-management tool. It detects and contains the <em>exploitation</em> of vulnerabilities, including zero-days, and ingests vulnerability-scan data to prioritise exposed assets. It complements, rather than replaces, your patching and vulnerability-management programme.</p></div>
+      <div class="faqitem"><h3>How does it detect a zero-day with no signature?</h3><p>By behaviour. UEBA baselines and MITRE ATT&amp;CK technique detection flag the actions an exploit takes — credential access, lateral movement, C2 beaconing — even when no indicator of compromise exists yet.</p></div>
+      <div class="faqitem"><h3>How fast do new indicators take effect?</h3><p>Threat-intel feeds (CISA KEV, Sigma, OSINT) sync continuously and new IOCs match in real time. Analysts can also submit an indicator manually for instant coverage the moment a CVE is disclosed.</p></div>
+      <div class="faqitem"><h3>Which vulnerability scanners integrate?</h3><p>Tenable and Qualys scan results are ingested so alerts can be prioritised by assets that are both exposed and business-critical.</p></div>
+      <div class="faqitem"><h3>Is VultSight SOC 2 or ISO 27001 certified?</h3><p>We design our controls to align with widely recognised best practices and provide capabilities to help you meet your own obligations. Specific compliance documentation and certification status can be discussed under agreement — see our <a href="security.html" class="link">Security overview</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>See zero-day defence on your environment</h2>
+    <p>We'll show behavioural detection, real-time intel and automated containment on your own use cases.</p>
+    <div class="cta__actions">
+      <a href="contact.html" class="btn btn--primary btn--lg">Talk to us</a>
+      <a href="platform.html" class="btn btn--outline btn--lg">Explore the platform</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>
