@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resources — VultSight XDR</title>
+<meta name="description" content="Guides, datasheets and blog posts on SIEM, SOAR, XDR, UEBA, threat intelligence and modern security operations." />
+<link rel="canonical" href="https://www.vultsight.com/resources.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="Resources — VultSight" />
+<meta property="og:description" content="Guides, datasheets and blog posts on SIEM, SOAR, XDR, UEBA, threat intelligence and modern security operations." />
+<meta property="og:url" content="https://www.vultsight.com/resources.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Resources — VultSight" />
+<meta name="twitter:description" content="Guides, datasheets and blog posts on SIEM, SOAR, XDR, UEBA and modern security operations." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="kicker">Resource hub</span>
+    <h1>Guides, datasheets &amp; field notes<br/>for security &amp; network operations</h1>
+    <p>Practical writing on detection engineering, XDR correlation, UEBA, network monitoring and running a unified SOC and NOC.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="rfilters" id="rfilters">
+      <button class="rfilter active" data-filter="all">All</button>
+      <button class="rfilter" data-filter="guide">Guides</button>
+      <button class="rfilter" data-filter="datasheet">Datasheets</button>
+      <button class="rfilter" data-filter="blog">Blog</button>
+    </div>
+
+    <div class="rgrid" id="rgrid">
+      <article class="rcard" data-type="guide">
+        <div class="rcard__thumb"><span class="rcard__type">Guide</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">10 min read · Fundamentals</p>
+          <h3>XDR vs SIEM vs SOAR: what's the difference?</h3>
+          <p>What each one does, how they differ, and why modern platforms unify them into a single SOC.</p>
+          <a href="xdr-vs-siem-soar.html" class="link">Read the guide →</a>
+        </div>
+      </article>
+      <article class="rcard" data-type="guide">
+        <div class="rcard__thumb rcard__thumb--3"><span class="rcard__type">Guide</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">12 min read · Detection</p>
+          <h3>SIEM vs XDR: what actually changes in the SOC</h3>
+          <p>Why correlation — not collection — is the real dividing line, and how cross-domain incidents reshape triage.</p>
+          <a href="resource.html" class="link">Read the guide →</a>
+        </div>
+      </article>
+
+      <article class="rcard" data-type="datasheet">
+        <div class="rcard__thumb rcard__thumb--2"><span class="rcard__type">Datasheet</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">2 pages · Platform</p>
+          <h3>VultSight XDR platform datasheet</h3>
+          <p>The capabilities, specs and deployment models at a glance — built for sharing with stakeholders.</p>
+          <a href="resource.html" class="link">View datasheet →</a>
+        </div>
+      </article>
+
+      <article class="rcard" data-type="blog">
+        <div class="rcard__thumb rcard__thumb--3"><span class="rcard__type">Blog</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">6 min read · AI</p>
+          <h3>Autonomous alert triage without losing the analyst</h3>
+          <p>How AI first-pass triage closes false positives at scale while keeping a human feedback loop.</p>
+          <a href="resource.html" class="link">Read the post →</a>
+        </div>
+      </article>
+
+      <article class="rcard" data-type="guide">
+        <div class="rcard__thumb rcard__thumb--4"><span class="rcard__type">Guide</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">9 min read · UEBA</p>
+          <h3>Building behavioral baselines that actually catch threats</h3>
+          <p>Sigma thresholds, peer-group comparison and turning risk scores into action.</p>
+          <a href="resource.html" class="link">Read the guide →</a>
+        </div>
+      </article>
+
+      <article class="rcard" data-type="blog">
+        <div class="rcard__thumb rcard__thumb--5"><span class="rcard__type">Blog</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">7 min read · SOAR</p>
+          <h3>Designing playbooks your team will trust to run</h3>
+          <p>Risk tiers, approval gates and the post-action intelligence that keeps incident state honest.</p>
+          <a href="resource.html" class="link">Read the post →</a>
+        </div>
+      </article>
+
+      <article class="rcard" data-type="datasheet">
+        <div class="rcard__thumb rcard__thumb--6"><span class="rcard__type">Datasheet</span></div>
+        <div class="rcard__body">
+          <p class="rcard__meta">1 page · MSSP</p>
+          <h3>VultSight for MSSPs: multi-tenancy &amp; metering</h3>
+          <p>How content propagation, isolation and per-tenant billing work for managed providers.</p>
+          <a href="resource.html" class="link">View datasheet →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- newsletter / CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>Get new resources in your inbox</h2>
+    <p>Detection engineering and SOC field notes — no spam, unsubscribe anytime.</p>
+    <div class="cta__actions">
+      <a href="contact.html" class="btn btn--primary btn--lg">Subscribe</a>
+      <a href="platform.html" class="btn btn--outline btn--lg">Explore the platform</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+<script>
+  // resource filtering
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.rfilter');
+    if (!btn) return;
+    document.querySelectorAll('.rfilter').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('#rgrid .rcard').forEach((c) => {
+      c.style.display = f === 'all' || c.dataset.type === f ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>

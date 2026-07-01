@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>XDR vs SIEM vs SOAR: What's the Difference? | VultSight</title>
+<meta name="description" content="XDR, SIEM and SOAR explained: what each one does, how they differ, and why modern security platforms unify them into a single SOC. A clear, vendor-neutral guide." />
+<meta name="keywords" content="XDR vs SIEM, SIEM vs SOAR, what is XDR, XDR SIEM SOAR difference, unified SOC platform, extended detection and response" />
+<link rel="canonical" href="https://www.vultsight.com/xdr-vs-siem-soar.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="XDR vs SIEM vs SOAR: What's the Difference?" />
+<meta property="og:description" content="What each one does, how they differ, and why modern platforms unify them into a single SOC. A clear, vendor-neutral guide." />
+<meta property="og:url" content="https://www.vultsight.com/xdr-vs-siem-soar.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="XDR vs SIEM vs SOAR: What's the Difference?" />
+<meta name="twitter:description" content="What each does, how they differ, and why modern platforms unify them into one SOC." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "XDR vs SIEM vs SOAR: What's the Difference?",
+  "description": "XDR, SIEM and SOAR explained: what each one does, how they differ, and why modern security platforms unify them into a single SOC.",
+  "image": "https://www.vultsight.com/assets/vultsight-lockup.png",
+  "author": { "@type": "Organization", "name": "VultSight" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VultSight",
+    "logo": { "@type": "ImageObject", "url": "https://www.vultsight.com/assets/vultsight-lockup.png" }
+  },
+  "datePublished": "2026-06-17",
+  "dateModified": "2026-06-17",
+  "mainEntityOfPage": "https://www.vultsight.com/xdr-vs-siem-soar.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is XDR the same as SIEM?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. A SIEM collects, normalizes and searches log data and runs detection rules. XDR adds a correlation layer that groups related alerts across endpoint, network, identity and cloud into unified incidents. Many modern platforms now deliver both in one product." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between SIEM and SOAR?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SIEM is the detection and analytics layer — it tells you something happened. SOAR is the response and automation layer — it acts on what was detected using playbooks, case management and automated response actions." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need SIEM, SOAR and XDR separately?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Increasingly, no. The industry is converging these capabilities into a single SOC platform. Buying them as separate products means integration work and data silos; a unified platform delivers detection, correlation and response on one data model." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does XDR stand for?",
+      "acceptedAnswer": { "@type": "Answer", "text": "XDR stands for Extended Detection and Response. It extends detection and response beyond a single domain (like endpoint) to correlate signals across endpoint, network, identity and cloud." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+<article class="article">
+  <div class="article__hd">
+    <p class="crumb"><a href="index.html">Home</a> / <a href="resources.html">Resources</a> / Guide</p>
+    <span class="article__tag">Guide · Fundamentals</span>
+    <h1>XDR vs SIEM vs SOAR: what's the difference?</h1>
+    <div class="article__meta">
+      <span>10 min read</span><span>·</span><span>Updated June 2026</span><span>·</span><span>VultSight Team</span>
+    </div>
+  </div>
+
+  <div class="article__hero-img" aria-hidden="true"></div>
+
+  <div class="article__body">
+    <p>SIEM, SOAR and XDR are three of the most-used acronyms in security operations — and three of the most-confused. Are they competing products? Layers of the same thing? Do you need all three? This guide explains what each one actually does, how they differ, and why the industry is collapsing them into a single platform.</p>
+
+    <p>The short version: <strong>they are distinct functions, but they are no longer distinct purchases.</strong> Think of them as roles on the same team rather than separate tools you buy and bolt together.</p>
+
+    <h2>The one-line definitions</h2>
+    <ul>
+      <li><strong>SIEM (Security Information and Event Management)</strong> — collects, normalizes, searches and detects across all your log data. The <em>see</em> layer.</li>
+      <li><strong>SOAR (Security Orchestration, Automation and Response)</strong> — automates response with playbooks, case management and response actions. The <em>act</em> layer.</li>
+      <li><strong>XDR (Extended Detection and Response)</strong> — correlates signals across endpoint, network, identity and cloud into unified incidents. The <em>connect</em> layer.</li>
+    </ul>
+
+    <h2>How they compare</h2>
+    <p>Each addresses a different stage of the detection-to-response lifecycle:</p>
+
+    <div class="article__table">
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>SIEM</th><th>SOAR</th><th>XDR</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Primary job</strong></td><td>Collect &amp; detect</td><td>Automate &amp; respond</td><td>Correlate across domains</td></tr>
+          <tr><td><strong>Works on</strong></td><td>All log sources</td><td>Alerts &amp; cases</td><td>Endpoint, network, identity, cloud</td></tr>
+          <tr><td><strong>Output</strong></td><td>Alerts, searches, reports</td><td>Executed playbooks</td><td>Unified incidents</td></tr>
+          <tr><td><strong>Strength</strong></td><td>Visibility &amp; compliance</td><td>Speed &amp; consistency</td><td>Fewer, richer incidents</td></tr>
+          <tr><td><strong>Without the others</strong></td><td>Dashboards, no action</td><td>Nothing to automate</td><td>Half a product</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>That last row is the key insight. A SIEM with no response is just dashboards. SOAR with no detections has nothing to automate. XDR without collection and automation is half a product. They are <strong>complementary</strong> — which is exactly why they are converging.</p>
+
+    <h2>Why the categories are merging</h2>
+    <p>For years, organizations bought a SIEM from one vendor, a SOAR from another, and an XDR or EDR from a third — then spent months integrating them. That model is fading for three reasons:</p>
+    <ul>
+      <li><strong>Data gravity.</strong> Correlation works best when detection, response and telemetry share one data model. Separate tools mean separate copies of the truth.</li>
+      <li><strong>Analyst fatigue.</strong> Swivel-chairing between consoles is slow and error-prone. A single pane of glass turns dozens of alerts into a handful of incidents.</li>
+      <li><strong>Cost &amp; complexity.</strong> Every additional tool is another license, another integration and another thing to maintain.</li>
+    </ul>
+    <p>Industry analysts now talk about <strong>SIEM convergence</strong> and <strong>TDIR</strong> (threat detection, investigation and response) — the standalone SOAR category has effectively been folded into modern SIEM and SOC platforms.</p>
+
+    <blockquote>The question is shifting from "which SIEM, SOAR and XDR should I buy?" to "which SOC platform unifies all of it?"</blockquote>
+
+    <h2>Two ways vendors get there</h2>
+    <p>There are two camps in how platforms reach this unified state:</p>
+    <h3>Native XDR (EDR-led)</h3>
+    <p>Endpoint-detection vendors extend outward, adding network, identity and cloud telemetry — and later, SIEM and SOAR modules. Strong on endpoint; tied to that vendor's agent.</p>
+    <h3>Open XDR / Unified SecOps (platform-led)</h3>
+    <p>Vendor-agnostic platforms ingest from your existing EDR, identity, cloud and network tools, normalize everything to a canonical schema, and deliver SIEM + SOAR + UEBA + XDR as one product — without rip-and-replace.</p>
+
+    <h2>Where VultSight fits</h2>
+    <p>VultSight is built in the <strong>unified SecOps</strong> camp. Rather than selling SIEM, SOAR and XDR as separate boxes, it delivers them as capabilities of one platform on a single data model:</p>
+    <ul>
+      <li><strong>SIEM</strong> — multi-source ingestion, a broad parser library, canonical normalization and high-performance detection.</li>
+      <li><strong>SOAR</strong> — visual playbooks, tiered response actions and native case management.</li>
+      <li><strong>XDR</strong> — cross-domain correlation that groups alerts into unified incidents with an entity graph and attack story.</li>
+      <li><strong>UEBA &amp; threat intel</strong> — behavioral baselines and real-time IOC matching, built in.</li>
+    </ul>
+    <p>And because the platform can be run by your team or operated for you as a <a href="services.html">managed service</a>, you choose how much of the SOC you want to own. <a href="platform.html">Explore the platform →</a></p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>Is XDR the same as SIEM?</h3>
+    <p>No. A SIEM collects, normalizes and searches log data and runs detection rules. XDR adds a correlation layer that groups related alerts across domains into unified incidents. Modern platforms often deliver both.</p>
+    <h3>What is the difference between SIEM and SOAR?</h3>
+    <p>SIEM is detection and analytics — it tells you something happened. SOAR is response and automation — it acts on what was detected.</p>
+    <h3>Do I need SIEM, SOAR and XDR separately?</h3>
+    <p>Increasingly, no. A unified SOC platform delivers detection, correlation and response on one data model, removing the integration work of separate tools.</p>
+    <h3>What does XDR stand for?</h3>
+    <p>Extended Detection and Response — it extends detection and response beyond a single domain to correlate across endpoint, network, identity and cloud.</p>
+
+    <div class="article__share">
+      <span>Share:</span>
+      <a href="#" class="link">LinkedIn</a><a href="#" class="link">X</a><a href="#" class="link">Copy link</a>
+    </div>
+  </div>
+</article>
+
+<!-- CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>See SIEM, SOAR and XDR as one platform</h2>
+    <p>Explore how VultSight unifies detection, correlation and response on a single data model.</p>
+    <div class="cta__actions">
+      <a href="platform.html" class="btn btn--primary btn--lg">Explore the platform</a>
+      <a href="resources.html" class="btn btn--outline btn--lg">More resources</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

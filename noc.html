@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NOC — VultSight Network Operations Center</title>
+<meta name="description" content="Real-time monitoring of every device and service via SNMP, ICMP and HTTP — live topology, SLA tracking, auto-discovery and a NOC wallboard, beside your SOC." />
+<link rel="canonical" href="https://www.vultsight.com/noc.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="NOC — VultSight Network Operations Center" />
+<meta property="og:description" content="Real-time monitoring of every device and service via SNMP, ICMP and HTTP — live topology, SLA tracking, auto-discovery and a command-center wallboard, alongside your SOC." />
+<meta property="og:url" content="https://www.vultsight.com/noc.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NOC — VultSight Network Operations Center" />
+<meta name="twitter:description" content="Device &amp; service monitoring, live topology, SLA tracking and a command-center wallboard, alongside your SOC." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"SoftwareApplication","name":"VultSight NOC","applicationCategory":"SecurityApplication","operatingSystem":"Cloud, On-premises, Hybrid","description":"Network operations monitoring: device and service health via SNMP, ICMP and HTTP, live topology, SLA tracking and a command-center wallboard.","offers":{"@type":"Offer","availability":"https://schema.org/InStock"} }
+</script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+
+<!-- page hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="kicker">VultSight NOC</span>
+    <h1>Network operations,<br/>in the same console as security</h1>
+    <p>Monitor every device and service in real time — availability, performance and SLAs — with live topology, auto-discovery and a command-center wallboard. One on-call team, one pane of glass.</p>
+  </div>
+</section>
+
+<!-- monitoring pipeline (dark) -->
+<section class="section band--dark">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">How it works</span>
+      <h2>From discovery to resolution</h2>
+      <p>Discover → Poll → Evaluate → Alert → Resolve. A continuous monitoring loop with auto-discovery and threshold-driven alerting.</p>
+    </div>
+    <div class="caps" id="monitor">
+      <article class="cap"><div class="cap__ic">🧭</div><h3>1 · Discover</h3><p>Auto-discovery rules sweep your network and surface new devices for approval — nothing monitored without intent.</p></article>
+      <article class="cap"><div class="cap__ic">📶</div><h3>2 · Poll</h3><p>Scheduled SNMP, ICMP/ping and TCP/HTTP checks collect availability and performance from every device and service.</p></article>
+      <article class="cap"><div class="cap__ic">📊</div><h3>3 · Evaluate</h3><p>Metrics are measured against thresholds and SLA targets — CPU, memory, latency, packet loss, interface and bandwidth.</p></article>
+      <article class="cap"><div class="cap__ic">🚨</div><h3>4 · Alert</h3><p>The NOC health worker raises alerts on breaches and outages, with maintenance windows suppressing planned work.</p></article>
+      <article class="cap"><div class="cap__ic">✅</div><h3>5 · Resolve</h3><p>Alerts roll up into NOC incidents with MTTR tracking, then close out into uptime and SLA-compliance reporting.</p></article>
+      <article class="cap"><div class="cap__ic">🖥️</div><h3>Wallboard</h3><p>Every signal streams to the NOC Command Center wall view — built for command-center displays.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- device & service monitoring -->
+<section class="section" id="devices">
+  <div class="container split">
+    <div class="split__copy">
+      <span class="kicker">Device &amp; service monitoring</span>
+      <h2>Know the health of<br/>everything you run</h2>
+      <p>A live status grid across all monitored infrastructure — routers, switches, firewalls, servers and the services that run on them.</p>
+      <ul class="checklist">
+        <li><span class="ck">✓</span> <strong>Availability</strong> — up/down state via ICMP, SNMP and TCP/HTTP checks</li>
+        <li><span class="ck">✓</span> <strong>Performance</strong> — CPU, memory, interface, bandwidth, latency and packet loss</li>
+        <li><span class="ck">✓</span> <strong>Service health</strong> — grouped service status with disruption detection</li>
+        <li><span class="ck">✓</span> <strong>Device detail</strong> — per-device timeline, interfaces and metric history</li>
+      </ul>
+    </div>
+    <div class="split__panel">
+      <div class="vs">
+        <div class="vs__row vs__row--head"><span>Signal</span><span>Collected via</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Reachability</span><span>ICMP / ping</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Device metrics</span><span>SNMP polling</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Service checks</span><span>TCP / HTTP</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Interfaces</span><span>SNMP counters</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">SLA state</span><span>Computed rollup</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- capabilities grid -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Capabilities</span><h2>A full network operations center</h2></div>
+    <div class="caps">
+      <article class="cap" id="topology"><div class="cap__ic">🕸️</div><h3>Network topology</h3><p>A live, interactive map of nodes, edges and interfaces — see how infrastructure connects and where a fault propagates.</p></article>
+      <article class="cap" id="discovery"><div class="cap__ic">🔍</div><h3>Auto-discovery</h3><p>Discovery rules find new devices automatically; an approval queue keeps your monitored estate intentional and clean.</p></article>
+      <article class="cap" id="telemetry"><div class="cap__ic">📥</div><h3>Telemetry sources</h3><p>Monitor every incoming data source feeding the NOC, with health and freshness visibility per source.</p></article>
+      <article class="cap" id="sla"><div class="cap__ic">🎯</div><h3>SLA &amp; thresholds</h3><p>SLA tiers, targets and compliance dashboards, plus configurable thresholds that drive alerting before users notice.</p></article>
+      <article class="cap" id="reports"><div class="cap__ic">📈</div><h3>Uptime &amp; performance</h3><p>Uptime reports and performance metrics with MTTR tracking — the numbers leadership and customers ask for.</p></article>
+      <article class="cap" id="maintenance"><div class="cap__ic">🔧</div><h3>Maintenance windows</h3><p>Schedule planned work to suppress alerts and keep SLA math honest during change windows.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- wall view (dark) -->
+<section class="section band--dark" id="wall">
+  <div class="container split split--rev">
+    <div class="split__copy">
+      <span class="kicker">NOC Command Center</span>
+      <h2>Built for the wallboard</h2>
+      <p>The NOC wall view turns live device, service and SLA state into a big-screen command-center display — designed to run 24/7 on the operations-center wall.</p>
+      <div class="ai-cards">
+        <div class="ai-card"><strong>Device status grid</strong><span>Up / down / degraded at a glance.</span></div>
+        <div class="ai-card"><strong>Service health</strong><span>Grouped services with live disruptions.</span></div>
+        <div class="ai-card"><strong>SLA compliance</strong><span>Targets vs. actuals, color-coded.</span></div>
+        <div class="ai-card"><strong>Active incidents</strong><span>Open NOC incidents with MTTR.</span></div>
+      </div>
+    </div>
+    <div class="split__panel">
+      <div class="console">
+        <div class="console__bar">
+          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
+          <span class="console__title">NOC Command Center · Wall View</span>
+          <span class="console__live"><span class="pulse"></span>Live</span>
+        </div>
+        <div class="console__kpis">
+          <div class="kpi"><span class="kpi__n" data-count="342">0</span><span class="kpi__l">Devices Up</span></div>
+          <div class="kpi kpi--high"><span class="kpi__n" data-count="6">0</span><span class="kpi__l">Degraded</span></div>
+          <div class="kpi kpi--crit"><span class="kpi__n" data-count="2">0</span><span class="kpi__l">Down</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="99">0</span><span class="kpi__l">% Uptime</span></div>
+        </div>
+        <div class="console__chart">
+          <div class="bars">
+            <i style="--h:88%"></i><i style="--h:92%"></i><i style="--h:79%"></i><i style="--h:95%"></i>
+            <i style="--h:84%"></i><i style="--h:90%"></i><i style="--h:73%"></i><i style="--h:96%"></i>
+            <i style="--h:81%"></i><i style="--h:94%"></i><i style="--h:60%"></i><i style="--h:89%"></i>
+            <i style="--h:85%"></i><i style="--h:91%"></i><i style="--h:77%"></i><i style="--h:93%"></i>
+          </div>
+        </div>
+        <div class="console__feed">
+          <div class="feed"><span class="sev sev--crit"></span>core-rtr-02 unreachable · ICMP timeout<span class="feed__t">8s</span></div>
+          <div class="feed"><span class="sev sev--high"></span>edge-sw-11 · CPU 94% over threshold<span class="feed__t">40s</span></div>
+          <div class="feed"><span class="sev sev--med"></span>api-gw service · latency SLA at 90%<span class="feed__t">2m</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- incidents -->
+<section class="section" id="incidents">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Alerts &amp; incidents</span><h2>From signal to resolution</h2><p>Threshold breaches and outages become tracked NOC incidents — with the same case workflow your SOC already uses.</p></div>
+    <div class="caps">
+      <article class="cap"><div class="cap__ic">🔔</div><h3>NOC alerts</h3><p>Generated by the NOC health worker on availability and threshold breaches, deduplicated and severity-scored.</p></article>
+      <article class="cap"><div class="cap__ic">🗃️</div><h3>NOC incidents</h3><p>Group related alerts into incidents with status lifecycle, assignment and MTTR tracking.</p></article>
+      <article class="cap"><div class="cap__ic">🔗</div><h3>Shared with the SOC</h3><p>One on-call team, one console — correlate a network fault with a security event instead of swivel-chairing tools.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>One console for SOC and NOC</h2>
+    <p>Monitor your infrastructure and defend it from the same pane of glass — owned by you, or run by our team.</p>
+    <div class="cta__actions">
+      <a href="services.html" class="btn btn--primary btn--lg">Managed NOC</a>
+      <a href="platform.html" class="btn btn--outline btn--lg">Explore XDR</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

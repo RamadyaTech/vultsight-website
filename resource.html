@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SIEM vs XDR: what actually changes in the SOC — VultSight</title>
+<meta name="description" content="Why correlation, not collection, is the real dividing line between SIEM and XDR — and how cross-domain incidents reshape SOC triage." />
+<link rel="canonical" href="https://www.vultsight.com/resource.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="SIEM vs XDR: what actually changes in the SOC" />
+<meta property="og:description" content="Why correlation, not collection, is the real dividing line between SIEM and XDR — and how cross-domain incidents reshape SOC triage." />
+<meta property="og:url" content="https://www.vultsight.com/resource.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SIEM vs XDR: what actually changes in the SOC" />
+<meta name="twitter:description" content="Why correlation, not collection, is the real dividing line between SIEM and XDR." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SIEM vs XDR: what actually changes in the SOC",
+  "description": "Why correlation, not collection, is the real dividing line between SIEM and XDR — and how cross-domain incidents reshape SOC triage.",
+  "image": "https://www.vultsight.com/assets/vultsight-lockup.png",
+  "author": { "@type": "Organization", "name": "VultSight" },
+  "publisher": { "@type": "Organization", "name": "VultSight", "logo": { "@type": "ImageObject", "url": "https://www.vultsight.com/assets/vultsight-lockup.png" } },
+  "datePublished": "2026-06-17",
+  "dateModified": "2026-06-17",
+  "mainEntityOfPage": "https://www.vultsight.com/resource.html"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+<article class="article">
+  <div class="article__hd">
+    <p class="crumb"><a href="index.html">Home</a> / <a href="resources.html">Resources</a> / Guide</p>
+    <span class="article__tag">Guide · Detection</span>
+    <h1>SIEM vs XDR: what actually changes in the SOC</h1>
+    <div class="article__meta">
+      <span>12 min read</span><span>·</span><span>Updated June 2026</span><span>·</span><span>VultSight Team</span>
+    </div>
+  </div>
+
+  <div class="article__hero-img" aria-hidden="true"></div>
+
+  <div class="article__body">
+    <p>"SIEM versus XDR" is usually framed as a product-category turf war. In practice, the difference that matters to an analyst is much narrower — and much more useful. It comes down to one question: <strong>does your platform correlate, or does it just collect?</strong></p>
+
+    <h2>SIEM is about collection and search</h2>
+    <p>A SIEM's core job is to centralize logs, normalize them into a common schema and make them searchable. That's genuinely valuable — without ingestion, parsing and a fast index you have nothing to investigate. VultSight's pipeline (collect → parse → normalize → enrich → index → detect) is exactly this foundation, with a broad library of parsers mapping vendor fields to a canonical schema.</p>
+    <p>But a SIEM stops at the alert. Each detection rule fires independently. The analyst is left to mentally stitch a "suspicious PowerShell" alert on one host to a "C2 beaconing" alert from an IP — assuming they even notice they're related.</p>
+
+    <blockquote>The bottleneck in most SOCs isn't detection volume. It's the human effort of connecting separate alerts into a single story.</blockquote>
+
+    <h2>XDR is about correlation</h2>
+    <p>XDR's defining move is to automatically group related alerts into a single incident. VultSight does this three ways:</p>
+    <ul>
+      <li><strong>Entity overlap</strong> — alerts sharing two or more entities (IPs, users, hosts) within a window join the same incident.</li>
+      <li><strong>Temporal clustering</strong> — a burst of otherwise-uncorrelated alerts in a short window signals an active attack.</li>
+      <li><strong>Kill-chain progression</strong> — alerts mapping to sequential MITRE ATT&amp;CK tactics link into one narrative.</li>
+    </ul>
+    <p>The result is an <strong>incident</strong>, not a pile of alerts: a unified timeline, an entity graph you can traverse, and an auto-generated attack story from initial access through impact.</p>
+
+    <h2>What changes for the analyst</h2>
+    <p>Three things change on day one:</p>
+    <h3>1. Triage starts at the incident, not the alert</h3>
+    <p>Instead of working a queue of 200 alerts, the analyst works a handful of incidents — each already enriched with the related signals, affected assets and a severity that reflects cross-domain confidence.</p>
+    <h3>2. Severity gets smarter</h3>
+    <p>An endpoint alert alone might be medium. The same alert correlated with an identity anomaly and a network beacon is almost certainly an active intrusion. Cross-domain signals elevate severity automatically.</p>
+    <h3>3. The investigation has context built in</h3>
+    <p>With UEBA risk scores, an entity graph and an AI assistant that already knows the incident's timeline, the analyst spends time deciding <em>what to do</em> rather than reconstructing <em>what happened</em>.</p>
+
+    <h2>You don't have to choose</h2>
+    <p>The honest answer is that XDR doesn't replace SIEM capabilities — it builds on them. You still need ingestion, normalization, search and flexible detection rules. XDR adds the correlation layer on top. That's why VultSight ships them as one platform on a single data model: SIEM, SOAR, threat intelligence, UEBA and XDR, rather than five tools you have to wire together yourself.</p>
+    <p>If your team spends more time connecting alerts than responding to them, the correlation layer is where the leverage is.</p>
+
+    <div class="article__share">
+      <span>Share:</span>
+      <a href="#" class="link">LinkedIn</a><a href="#" class="link">X</a><a href="#" class="link">Copy link</a>
+    </div>
+  </div>
+</article>
+
+<!-- CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>See correlation in action</h2>
+    <p>Watch VultSight group endpoint, network and identity alerts into a single incident.</p>
+    <div class="cta__actions">
+      <a href="platform.html#correlate" class="btn btn--primary btn--lg">How correlation works</a>
+      <a href="resources.html" class="btn btn--outline btn--lg">More resources</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+name: SEO Audit
+
+# Audits every page on push/PR (fails on SEO errors) and refreshes sitemap.xml
+# weekly. After deploy, submit sitemap.xml in Google Search Console + Bing.
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Audit + regenerate sitemap
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://www.vultsight.com' }}
+        run: node scripts/seo.mjs --fix
+
+      - name: Commit refreshed sitemap
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          if [[ -n "$(git status --porcelain sitemap.xml)" ]]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add sitemap.xml
+            git commit -m "chore: refresh sitemap.xml [skip ci]"
+            git push
+          else
+            echo "sitemap.xml already up to date."
+          fi

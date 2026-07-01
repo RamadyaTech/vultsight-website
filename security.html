@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security Overview — VultSight</title>
+<meta name="description" content="An overview of how VultSight approaches security: data protection, tenant isolation, access control, auditing and responsible disclosure." />
+<link rel="canonical" href="https://www.vultsight.com/security.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="Security Overview — VultSight" />
+<meta property="og:description" content="How VultSight approaches security: data protection, tenant isolation, access control, auditing and responsible disclosure." />
+<meta property="og:url" content="https://www.vultsight.com/security.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Security Overview — VultSight" />
+<meta name="twitter:description" content="Data protection, tenant isolation, access control, auditing and responsible disclosure." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+<article class="article">
+  <div class="article__hd">
+    <p class="crumb"><a href="index.html">Home</a> / Security</p>
+    <span class="article__tag">Trust</span>
+    <h1>Security overview</h1>
+    <div class="article__meta"><span>Last updated: 17 June 2026</span></div>
+  </div>
+
+  <div class="article__body">
+    <p>Security is foundational to a platform built for security operations. This page summarises our approach at a high level. Customers under agreement can request further detail through their account contact.</p>
+
+    <h2>Data protection</h2>
+    <p>Data is encrypted in transit using industry-standard TLS, and we apply encryption for data at rest on supported storage. We follow the principle of collecting and retaining only what is needed.</p>
+
+    <h2>Tenant isolation</h2>
+    <p>VultSight is multi-tenant by design. Customer data is logically isolated, with row-level controls and per-tenant separation across search and storage, so one tenant's data is not accessible to another.</p>
+
+    <h2>Access control</h2>
+    <p>Access to systems and data follows least-privilege principles. The platform supports enterprise single sign-on (SAML and OIDC), granular role-based access control, and time-limited emergency ("break-glass") access with full audit.</p>
+
+    <h2>Auditing and integrity</h2>
+    <p>Significant actions are recorded in a tamper-evident audit trail, helping customers demonstrate accountability and detect unauthorised changes.</p>
+
+    <h2>Infrastructure</h2>
+    <p>The platform runs on reputable cloud infrastructure with availability and redundancy appropriate to the deployment model. On-premises and hybrid options are available for organisations with data-sovereignty requirements.</p>
+
+    <h2>Compliance posture</h2>
+    <p>We design our controls to align with widely recognised security and privacy best practices, and we provide capabilities — such as data-residency controls and configurable retention — to help customers meet their own regulatory obligations, including GDPR and CERT-In considerations. Specific compliance documentation can be discussed under agreement.</p>
+
+    <h2>Responsible disclosure</h2>
+    <p>We welcome reports from the security community. If you believe you have found a vulnerability, please email <a href="mailto:security@vultsight.com" class="link">security@vultsight.com</a> with enough detail to reproduce the issue. We ask that you give us a reasonable opportunity to investigate and remediate before any public disclosure, and that testing avoids privacy violations, data destruction or service disruption. We will acknowledge legitimate reports and work with you in good faith.</p>
+
+    <h2>Contact</h2>
+    <p>For security questions, contact <a href="mailto:security@vultsight.com" class="link">security@vultsight.com</a>.</p>
+  </div>
+</article>
+
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>Want to go deeper on security?</h2>
+    <p>Talk to us about your requirements and we'll share what's relevant under agreement.</p>
+    <div class="cta__actions">
+      <a href="contact.html" class="btn btn--primary btn--lg">Contact us</a>
+      <a href="privacy.html" class="btn btn--outline btn--lg">Privacy Policy</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

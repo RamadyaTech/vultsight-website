@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SOC Console Tour — VultSight</title>
+<meta name="description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<link rel="canonical" href="https://www.vultsight.com/product-tour-soc.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="SOC Console Tour — VultSight" />
+<meta property="og:description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<meta property="og:url" content="https://www.vultsight.com/product-tour-soc.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SOC Console Tour — VultSight" />
+<meta name="twitter:description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b16; --bg2:#0b1224;
+    --primary:#6366f1; --primary-l:#818cf8; --accent:#06b6d4; --violet:#a78bfa; --gold:#e3c373;
+    --surface:rgba(17,25,45,.72); --surface2:rgba(28,38,66,.6);
+    --border:rgba(148,163,184,.12); --border2:rgba(148,163,184,.2);
+    --ink:#eef2fb; --muted:#9aa6bd; --faint:#6b7689;
+    --crit:#f6516b; --high:#fbbf24; --med:#facc15; --low:#34d399; --info:#38bdf8; --ok:#34d399;
+    --font:'Inter',system-ui,sans-serif; --display:'Sora','Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{margin:0}
+  body{font-family:var(--font);color:var(--ink);background:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:1280px 800px;margin:0}
+
+  .screen{position:relative;width:1280px;height:800px;overflow:hidden;background:
+    radial-gradient(900px 480px at 78% -8%, rgba(99,102,241,.22), transparent 60%),
+    radial-gradient(760px 520px at 6% 4%, rgba(6,182,212,.14), transparent 60%),
+    radial-gradient(700px 700px at 95% 92%, rgba(168,85,247,.10), transparent 60%),
+    var(--bg);
+    break-after:page;page-break-after:always;display:flex}
+  .screen:last-child{break-after:auto;page-break-after:auto}
+  .grid-tex{position:absolute;inset:0;opacity:.4;pointer-events:none;
+    background-image:linear-gradient(rgba(148,163,184,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.05) 1px,transparent 1px);
+    background-size:42px 42px}
+
+  /* ── app chrome ── */
+  .sidebar{width:218px;flex:none;background:linear-gradient(180deg,rgba(10,15,30,.92),rgba(8,12,24,.96));
+    border-right:1px solid var(--border);padding:18px 14px;display:flex;flex-direction:column;gap:3px;position:relative;z-index:2}
+  .brand{display:flex;align-items:center;gap:9px;padding:4px 8px 16px}
+  .brand img{width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(227,195,115,.45))}
+  .brand b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .brand b i{color:var(--gold);font-style:normal}
+  .nav-sec{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);font-weight:700;margin:12px 8px 5px}
+  .nav{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:9px;font-size:12.5px;font-weight:500;color:var(--muted)}
+  .nav .ic{width:15px;text-align:center;font-size:13px;opacity:.85}
+  .nav.on{background:linear-gradient(90deg,rgba(99,102,241,.22),rgba(99,102,241,.05));color:#fff;font-weight:600;
+    box-shadow:inset 0 0 0 1px rgba(99,102,241,.25)}
+  .nav .pill{margin-left:auto;font-size:9.5px;font-weight:700;background:var(--crit);color:#fff;border-radius:20px;padding:1px 6px}
+  .side-foot{margin-top:auto;display:flex;align-items:center;gap:9px;padding:9px 8px;border-top:1px solid var(--border)}
+  .av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
+  .side-foot .nm{font-size:11.5px;font-weight:600}.side-foot .rl{font-size:10px;color:var(--faint)}
+
+  .main{flex:1;display:flex;flex-direction:column;position:relative;z-index:1;min-width:0}
+  .topbar{height:56px;flex:none;display:flex;align-items:center;gap:14px;padding:0 22px;border-bottom:1px solid var(--border);
+    background:rgba(8,12,24,.5)}
+  .topbar h1{font-family:var(--display);font-size:16px;font-weight:700}
+  .topbar .sub{font-size:11px;color:var(--faint);margin-top:1px}
+  .search{margin-left:auto;width:200px;height:32px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.03);
+    display:flex;align-items:center;padding:0 11px;font-size:11.5px;color:var(--faint);gap:7px}
+  .live{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--ok)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  .content{flex:1;padding:16px 20px;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+
+  /* ── primitives ── */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px}
+  .ct{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .ct .more{margin-left:auto;font-size:10px;color:var(--faint);font-weight:500;text-transform:none;letter-spacing:0}
+  .row{display:flex;gap:12px}
+  .b{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.03em}
+  .b.crit{background:rgba(246,81,107,.16);color:#fda4b4;border:1px solid rgba(246,81,107,.3)}
+  .b.high{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
+  .b.med{background:rgba(250,204,21,.13);color:#fde68a;border:1px solid rgba(250,204,21,.25)}
+  .b.low{background:rgba(52,211,153,.14);color:#6ee7b7;border:1px solid rgba(52,211,153,.3)}
+  .b.info{background:rgba(56,189,248,.14);color:#7dd3fc;border:1px solid rgba(56,189,248,.3)}
+  .b.ghost{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border)}
+  .sevdot{width:8px;height:8px;border-radius:50%;flex:none}
+  .sd-crit{background:var(--crit);box-shadow:0 0 7px var(--crit)} .sd-high{background:var(--high)} .sd-med{background:var(--med)} .sd-low{background:var(--low)} .sd-info{background:var(--info)}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 13px;position:relative;overflow:hidden}
+  .kpi .lab{font-size:10.5px;color:var(--muted);font-weight:600}
+  .kpi .n{font-family:var(--display);font-size:27px;font-weight:800;line-height:1.1;margin-top:3px}
+  .kpi .tr{font-size:10px;font-weight:700;margin-top:2px}
+  .up{color:#fda4b4}.dn{color:#6ee7b7}
+  .kpi.crit .n{color:#fda4b4}.kpi.high .n{color:#fcd34d}
+  .kpi .spark{position:absolute;right:10px;bottom:8px;display:flex;gap:2px;align-items:flex-end;height:20px;opacity:.5}
+  .kpi .spark i{width:3px;background:var(--primary-l);border-radius:2px}
+
+  /* bars */
+  .bars{display:flex;align-items:flex-end;gap:4px;height:100%}
+  .bars .col{flex:1;display:flex;flex-direction:column-reverse;gap:2px;height:100%;justify-content:flex-start}
+  .bars .col span{display:block;border-radius:2px 2px 0 0}
+  .hbar{height:8px;border-radius:5px;background:rgba(148,163,184,.12);overflow:hidden}
+  .hbar i{display:block;height:100%;border-radius:5px}
+
+  /* donut */
+  .donut{width:128px;height:128px;border-radius:50%;flex:none;
+    background:conic-gradient(var(--crit) 0 24%, var(--high) 24% 50%, var(--med) 50% 68%, var(--low) 68% 86%, var(--info) 86% 100%);
+    -webkit-mask:radial-gradient(circle 40px at center,transparent 39px,#000 40px);mask:radial-gradient(circle 40px at center,transparent 39px,#000 40px);position:relative}
+  .donut-wrap{position:relative;display:grid;place-items:center}
+  .donut-c{position:absolute;text-align:center}
+  .donut-c b{font-family:var(--display);font-size:24px;font-weight:800;display:block;line-height:1}
+  .donut-c span{font-size:9.5px;color:var(--muted)}
+
+  /* heatmap */
+  .heat{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .heat .c{aspect-ratio:1.5;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,.7);font-weight:600;text-align:center;line-height:1.1;padding:2px}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:11.5px}
+  th{text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);font-weight:700;padding:6px 8px;border-bottom:1px solid var(--border)}
+  td{padding:8px 8px;border-bottom:1px solid rgba(148,163,184,.07);color:var(--muted)}
+  td.s{color:var(--ink);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .mono{font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:10.5px}
+
+  /* feed */
+  .feed{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;background:rgba(255,255,255,.025);border:1px solid var(--border);font-size:11px;color:var(--muted)}
+  .feed .t{margin-left:auto;font-size:9.5px;color:var(--faint)}
+
+  /* cover */
+  .cover{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0}
+  .cover .mk{width:74px;height:74px;filter:drop-shadow(0 0 22px rgba(227,195,115,.5));margin-bottom:22px}
+  .cover .wm{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.01em;margin-bottom:30px}
+  .cover .wm i{color:var(--gold);font-style:normal}
+  .cover h1{font-family:var(--display);font-weight:800;font-size:62px;line-height:1.02;letter-spacing:-.025em;
+    background:linear-gradient(120deg,#fff 30%,var(--primary-l) 70%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .cover .tag{font-size:18px;color:var(--muted);margin-top:18px;max-width:640px}
+  .cover .chips{display:flex;gap:9px;margin-top:30px;flex-wrap:wrap;justify-content:center}
+  .cover .chip{font-size:12px;font-weight:600;color:var(--muted);padding:7px 14px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,.03)}
+  .cover .foot{position:absolute;bottom:40px;left:0;right:0;display:flex;justify-content:space-between;padding:0 56px;font-size:12px;color:var(--faint)}
+  .cover .foot b{color:var(--muted);font-weight:600}
+
+  /* closing */
+  .closing{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+  .closing h1{font-family:var(--display);font-weight:800;font-size:46px;letter-spacing:-.02em;line-height:1.08}
+  .closing h1 i{font-style:normal;background:linear-gradient(120deg,var(--primary-l),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .closing p{font-size:17px;color:var(--muted);margin-top:18px;max-width:560px}
+  .closing .three{display:flex;gap:14px;margin-top:34px}
+  .closing .three .c{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:18px 20px;width:230px;text-align:left}
+  .closing .three .c .ic{font-size:20px;margin-bottom:8px}
+  .closing .three .c b{font-family:var(--display);font-size:14px;display:block;margin-bottom:4px}
+  .closing .three .c span{font-size:12px;color:var(--muted)}
+  .closing .cta{margin-top:36px;font-size:14px;color:var(--muted)}
+  .closing .cta b{color:#fff}
+  .pg{position:absolute;bottom:18px;right:24px;font-size:10px;color:var(--faint)}
+  .wmark{position:absolute;bottom:18px;left:24px;display:flex;align-items:center;gap:6px;font-size:10px;color:var(--faint)}
+  .wmark img{width:14px;height:14px;opacity:.6}
+
+  .kchain{display:flex;gap:4px}
+  .kchain .k{flex:1;text-align:center;font-size:8.5px;padding:5px 2px;border-radius:5px;background:rgba(148,163,184,.08);color:var(--faint);border:1px solid var(--border)}
+  .kchain .k.on{background:linear-gradient(180deg,rgba(99,102,241,.3),rgba(99,102,241,.1));color:#c7d2fe;border-color:rgba(99,102,241,.4)}
+  .kchain .k.hot{background:linear-gradient(180deg,rgba(246,81,107,.3),rgba(246,81,107,.1));color:#fda4b4;border-color:rgba(246,81,107,.4)}
+
+  /* ── web tour gallery (added) ── */
+  body{background:radial-gradient(900px 600px at 80% -5%, rgba(99,102,241,.16), transparent 60%),radial-gradient(700px 500px at 5% 0%, rgba(6,182,212,.10), transparent 60%),var(--bg)}
+  .scrh1{font-family:var(--display);font-size:16px;font-weight:700;color:#fff}
+  .topnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:24px;padding:0 30px;height:62px;
+    background:rgba(8,12,24,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .topnav .lg{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:18px;color:#fff;text-decoration:none}
+  .topnav .lg img{width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(227,195,115,.45))}
+  .topnav .lg i{color:var(--gold);font-style:normal}
+  .topnav .lk{display:flex;gap:18px;margin-left:14px}
+  .topnav a.n{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500}
+  .topnav a.n:hover{color:#fff}
+  .topnav a.n.sib{color:var(--gold)}
+  .topnav .cta{margin-left:auto;display:flex;gap:10px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 16px;text-decoration:none;border:1px solid transparent}
+  .btn.p{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
+  .btn.o{border-color:var(--border2);color:#fff}
+  .tour-hero{text-align:center;padding:60px 24px 22px;max-width:760px;margin:0 auto}
+  .tour-hero .eb{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .tour-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1.05;
+    background:linear-gradient(120deg,#fff 30%,var(--primary-l) 70%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .tour-hero p{color:var(--muted);font-size:17px;margin-top:16px}
+  .tour-switch{display:flex;gap:8px;justify-content:center;margin-top:22px}
+  .tour-switch a{font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;border:1px solid var(--border2)}
+  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff;border-color:transparent}
+  .tour-switch a.off{color:var(--muted)}
+  .tour-about{max-width:860px;margin:0 auto;padding:6px 24px 8px}
+  .tour-about .box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
+  .tour-about h2{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .tour-about h2 img{width:18px;height:18px}
+  .tour-about p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .tour-about p b{color:var(--ink);font-weight:600}
+  .tour-list{max-width:1200px;margin:0 auto;padding:18px 24px 40px;display:flex;flex-direction:column;gap:0}
+  .tour-item{padding-top:54px;margin-top:54px;border-top:3px solid rgba(255,255,255,.92);box-shadow:0 -1px 0 rgba(255,255,255,.92)}
+  .tour-item:first-child{border-top:none;margin-top:0;padding-top:14px;box-shadow:none}
+  .tour-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .tour-tag{font-size:11.5px;font-weight:600;color:var(--muted);padding:5px 11px;border-radius:7px;border:1px solid var(--border2);background:rgba(255,255,255,.03)}
+  .tour-cap{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;max-width:780px}
+  .tour-num{font-family:var(--display);font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--primary),var(--accent));
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none}
+  .tour-cap h2{font-family:var(--display);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.01em}
+  .tour-cap p{color:var(--muted);font-size:14.5px;margin-top:4px}
+  .tour-frame{border-radius:15px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 40px 80px rgba(0,0,0,.55);background:#0b1224}
+  .tour-bar{height:36px;display:flex;align-items:center;gap:7px;padding:0 14px;background:rgba(0,0,0,.4);border-bottom:1px solid var(--border)}
+  .tour-bar i{width:11px;height:11px;border-radius:50%;background:#3a4358}
+  .tour-bar i:nth-child(1){background:#ff5f57}.tour-bar i:nth-child(2){background:#febc2e}.tour-bar i:nth-child(3){background:#28c840}
+  .tour-bar span{margin-left:8px;font-size:11.5px;color:var(--faint);font-weight:600}
+  .tour-canvas{position:relative;width:100%;overflow:hidden}
+  .tour-canvas .screen{transform-origin:top left}
+  .tourfoot{text-align:center;padding:58px 24px 80px;border-top:1px solid var(--border);margin-top:30px;background:rgba(8,12,24,.4)}
+  .tourfoot h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,40px);color:#fff;letter-spacing:-.02em}
+  .tourfoot p{color:var(--muted);font-size:16px;margin:14px auto 26px;max-width:520px}
+  .tourfoot .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  @media (max-width:760px){.topnav .lk{display:none}.tour-list{gap:40px}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html" class="lg"><img src="assets/vultsight-mark.svg" alt="" />Vult<i>Sight</i></a>
+  <span class="lk">
+    <a href="platform.html" class="n">Platform</a>
+    <a href="noc.html" class="n">NOC</a>
+    <a href="services.html" class="n">Services</a>
+    <a href="product-tour-noc.html" class="n sib">NOC console tour →</a>
+  </span>
+  <span class="cta"><a href="index.html" class="btn o">← Back to site</a><a href="contact.html" class="btn p">Talk to us</a></span>
+</nav>
+
+<header class="tour-hero">
+  <span class="eb">Product Tour · Security Operations</span>
+  <h1>See the SOC console</h1>
+  <p>How security operations come together in one pane of glass — from the Command Center to automated response.</p>
+  <div class="tour-switch">
+    <a class="on" href="product-tour-soc.html">SOC console</a>
+    <a class="off" href="product-tour-noc.html">NOC console</a>
+  </div>
+</header>
+
+<section class="tour-about">
+  <div class="box">
+    <h2><img src="assets/vultsight-mark.svg" alt="" /> About this tour</h2>
+    <p>VultSight unifies <b>SIEM, SOAR, threat intel, UEBA and XDR</b> for the SOC. The five screens below follow a real workflow: <b>see, investigate, triage, understand, respond.</b></p>
+  </div>
+</section>
+
+<main class="tour-list">
+      <div class="tour-item">
+        <div class="tour-cap">
+          <span class="tour-num">01</span>
+          <div><h2>SOC Command Center</h2><p>The whole security estate in real time.</p><div class="tour-tags"><span class="tour-tag">Live KPIs</span><span class="tour-tag">MITRE heatmap</span><span class="tour-tag">Threat feed</span></div></div>
+        </div>
+        <div class="tour-frame">
+          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
+          <div class="tour-canvas"><section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav on"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">SOC Command Center</div><div class="sub">Real-time operational view · all sources</div></div>
+      <div class="search">⌕ Search events, entities…</div>
+      <div class="live"><span class="dot"></span>Operational · 4,820 EPS</div>
+    </div>
+    <div class="content">
+      <div class="kpis">
+        <div class="kpi crit"><div class="lab">Critical Alerts</div><div class="n">14</div><div class="tr up">▲ 12% · 24h</div><div class="spark"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:80%"></i></div></div>
+        <div class="kpi high"><div class="lab">High Alerts</div><div class="n">63</div><div class="tr up">▲ 6%</div></div>
+        <div class="kpi"><div class="lab">Total Alerts</div><div class="n">412</div><div class="tr dn">▼ 4%</div></div>
+        <div class="kpi"><div class="lab">Active Cases</div><div class="n">18</div><div class="tr up">▲ 2</div></div>
+        <div class="kpi"><div class="lab">XDR Incidents</div><div class="n">9</div><div class="tr">2 critical</div></div>
+        <div class="kpi"><div class="lab">MTTR</div><div class="n">11m</div><div class="tr dn">▼ 3m</div></div>
+      </div>
+      <div class="row" style="flex:1;min-height:0">
+        <div class="card" style="flex:1.5;display:flex;flex-direction:column">
+          <div class="ct">Threat Activity · 24h <span class="more">by severity</span></div>
+          <div style="flex:1;min-height:0">
+            <div class="bars">
+              <!-- generate columns -->
+              <div class="col"><span style="height:18px;background:var(--crit)"></span><span style="height:30px;background:var(--high)"></span><span style="height:40px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:8px;background:var(--crit)"></span><span style="height:44px;background:var(--high)"></span><span style="height:60px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:14px;background:var(--crit)"></span><span style="height:26px;background:var(--high)"></span><span style="height:48px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:22px;background:var(--crit)"></span><span style="height:50px;background:var(--high)"></span><span style="height:70px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:10px;background:var(--crit)"></span><span style="height:34px;background:var(--high)"></span><span style="height:55px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:28px;background:var(--crit)"></span><span style="height:62px;background:var(--high)"></span><span style="height:84px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:16px;background:var(--crit)"></span><span style="height:40px;background:var(--high)"></span><span style="height:50px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:12px;background:var(--crit)"></span><span style="height:30px;background:var(--high)"></span><span style="height:66px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:24px;background:var(--crit)"></span><span style="height:54px;background:var(--high)"></span><span style="height:74px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:9px;background:var(--crit)"></span><span style="height:38px;background:var(--high)"></span><span style="height:58px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:30px;background:var(--crit)"></span><span style="height:66px;background:var(--high)"></span><span style="height:90px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:14px;background:var(--crit)"></span><span style="height:28px;background:var(--high)"></span><span style="height:46px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:20px;background:var(--crit)"></span><span style="height:48px;background:var(--high)"></span><span style="height:64px;background:var(--info)"></span></div>
+              <div class="col"><span style="height:11px;background:var(--crit)"></span><span style="height:36px;background:var(--high)"></span><span style="height:52px;background:var(--info)"></span></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;margin-top:8px;font-size:10px;color:var(--muted)">
+            <span><span class="sevdot sd-crit" style="display:inline-block;margin-right:4px"></span>Critical</span>
+            <span><span class="sevdot sd-high" style="display:inline-block;margin-right:4px"></span>High</span>
+            <span><span class="sevdot sd-info" style="display:inline-block;margin-right:4px"></span>Med/Low</span>
+          </div>
+        </div>
+        <div class="card" style="flex:1">
+          <div class="ct">MITRE ATT&amp;CK Coverage</div>
+          <div class="heat">
+            <div class="c" style="background:rgba(99,102,241,.5)">Recon</div>
+            <div class="c" style="background:rgba(99,102,241,.25)">Res.Dev</div>
+            <div class="c" style="background:rgba(246,81,107,.6)">Init.Access</div>
+            <div class="c" style="background:rgba(99,102,241,.7)">Execution</div>
+            <div class="c" style="background:rgba(99,102,241,.4)">Persist</div>
+            <div class="c" style="background:rgba(251,191,36,.5)">Priv.Esc</div>
+            <div class="c" style="background:rgba(99,102,241,.3)">Def.Evas</div>
+            <div class="c" style="background:rgba(246,81,107,.7)">Cred.Acc</div>
+            <div class="c" style="background:rgba(99,102,241,.45)">Discovery</div>
+            <div class="c" style="background:rgba(251,191,36,.6)">Lat.Move</div>
+            <div class="c" style="background:rgba(99,102,241,.35)">Collect</div>
+            <div class="c" style="background:rgba(246,81,107,.5)">C2</div>
+            <div class="c" style="background:rgba(99,102,241,.25)">Exfil</div>
+            <div class="c" style="background:rgba(251,191,36,.4)">Impact</div>
+          </div>
+          <div class="ct" style="margin-top:14px">Detection Sources</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div><div style="display:flex;justify-content:space-between;font-size:10.5px;margin-bottom:3px"><span>Endpoint</span><span style="color:var(--ink)">38%</span></div><div class="hbar"><i style="width:38%;background:linear-gradient(90deg,var(--primary),var(--primary-l))"></i></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10.5px;margin-bottom:3px"><span>Network</span><span style="color:var(--ink)">29%</span></div><div class="hbar"><i style="width:29%;background:linear-gradient(90deg,var(--accent),#22d3ee)"></i></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10.5px;margin-bottom:3px"><span>Identity</span><span style="color:var(--ink)">21%</span></div><div class="hbar"><i style="width:21%;background:linear-gradient(90deg,var(--violet),#c4b5fd)"></i></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10.5px;margin-bottom:3px"><span>Cloud</span><span style="color:var(--ink)">12%</span></div><div class="hbar"><i style="width:12%;background:linear-gradient(90deg,#0ea5e9,#7dd3fc)"></i></div></div>
+          </div>
+        </div>
+        <div class="card" style="flex:1;display:flex;flex-direction:column">
+          <div class="ct">Live Threat Feed</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex:1;min-height:0">
+            <div class="feed"><span class="sevdot sd-crit"></span>C2 Beaconing · 10.0.1.42<span class="t">12s</span></div>
+            <div class="feed"><span class="sevdot sd-high"></span>Impossible Travel · j.okafor<span class="t">1m</span></div>
+            <div class="feed"><span class="sevdot sd-crit"></span>LSASS access · WS-042<span class="t">3m</span></div>
+            <div class="feed"><span class="sevdot sd-med"></span>Port scan · 10.0.4.9<span class="t">6m</span></div>
+            <div class="feed"><span class="sevdot sd-high"></span>Password spray · VPN<span class="t">9m</span></div>
+            <div class="feed"><span class="sevdot sd-info"></span>New IAM policy · aws-prod<span class="t">12m</span></div>
+            <div class="feed"><span class="sevdot sd-low"></span>S3 policy change · logs<span class="t">15m</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">01 · SOC Command Center</div>
+</section></div>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-cap">
+          <span class="tour-num">02</span>
+          <div><h2>Investigation Workbench</h2><p>Related signals correlated into one incident, with an AI-written attack story.</p><div class="tour-tags"><span class="tour-tag">Entity graph</span><span class="tour-tag">Kill chain</span><span class="tour-tag">AI assistant</span></div></div>
+        </div>
+        <div class="tour-frame">
+          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
+          <div class="tour-canvas"><section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav on"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">INC-20260617-0007 · Multi-stage intrusion</div><div class="sub">Investigation Workbench · 6 correlated alerts</div></div>
+      <span class="b crit" style="margin-left:auto">Critical</span><span class="b ghost">Containing</span>
+    </div>
+    <div class="content">
+      <div class="card" style="padding:10px 14px">
+        <div class="kchain">
+          <div class="k hot">Initial Access</div><div class="k hot">Execution</div><div class="k on">Persistence</div><div class="k on">Priv. Esc</div>
+          <div class="k hot">Cred. Access</div><div class="k">Discovery</div><div class="k on">Lateral Move</div><div class="k">Collection</div><div class="k hot">C2</div><div class="k">Exfiltration</div>
+        </div>
+      </div>
+      <div class="row" style="flex:1;min-height:0">
+        <!-- left: alerts + timeline -->
+        <div class="card" style="flex:1;display:flex;flex-direction:column">
+          <div class="ct">Correlated Alerts &amp; Timeline</div>
+          <div style="display:flex;flex-direction:column;gap:7px;overflow:hidden">
+            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-crit" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Suspicious PowerShell</div><div style="font-size:10px">WS-042 · T1059.001</div></div><span class="t">09:41</span></div>
+            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-high" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Credential dumping</div><div style="font-size:10px">LSASS access · T1003</div></div><span class="t">09:43</span></div>
+            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-crit" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">C2 Beaconing</div><div style="font-size:10px">10.0.1.42 → 185.x · T1071</div></div><span class="t">09:48</span></div>
+            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-high" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">SMB lateral movement</div><div style="font-size:10px">→ 3 hosts · T1021.002</div></div><span class="t">09:55</span></div>
+            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-med" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Impossible travel</div><div style="font-size:10px">j.okafor · IN→NL</div></div><span class="t">10:02</span></div>
+          </div>
+        </div>
+        <!-- center: entity graph -->
+        <div class="card" style="flex:1.3;display:flex;flex-direction:column">
+          <div class="ct">Entity Graph <span class="more">3-hop · 7 entities</span></div>
+          <svg viewBox="0 0 360 250" style="flex:1;width:100%">
+            <line x1="180" y1="40" x2="90" y2="120" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
+            <line x1="180" y1="40" x2="270" y2="120" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
+            <line x1="90" y1="120" x2="60" y2="205" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
+            <line x1="90" y1="120" x2="160" y2="205" stroke="rgba(246,81,107,.6)" stroke-width="2"/>
+            <line x1="270" y1="120" x2="230" y2="205" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
+            <line x1="270" y1="120" x2="310" y2="200" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
+            <g font-family="Inter" font-size="9" fill="#cbd5e8" text-anchor="middle">
+              <circle cx="180" cy="40" r="20" fill="rgba(246,81,107,.25)" stroke="var(--crit)" stroke-width="2"/><text x="180" y="43">WS-042</text>
+              <circle cx="90" cy="120" r="17" fill="rgba(99,102,241,.25)" stroke="var(--primary-l)" stroke-width="1.5"/><text x="90" y="123">j.okafor</text>
+              <circle cx="270" cy="120" r="17" fill="rgba(6,182,212,.22)" stroke="var(--accent)" stroke-width="1.5"/><text x="270" y="123">10.0.1.42</text>
+              <circle cx="60" cy="205" r="14" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="60" y="208">DC-01</text>
+              <circle cx="160" cy="205" r="15" fill="rgba(246,81,107,.2)" stroke="var(--crit)" stroke-width="1.5"/><text x="160" y="208">185.x C2</text>
+              <circle cx="230" cy="205" r="13" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="230" y="208">SRV-09</text>
+              <circle cx="310" cy="200" r="13" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="310" y="203">mimi.exe</text>
+            </g>
+          </svg>
+          <div style="font-size:9.5px;color:var(--faint)">●&nbsp;host&nbsp;&nbsp;●&nbsp;user&nbsp;&nbsp;●&nbsp;ip&nbsp;&nbsp;<span style="color:#fda4b4">●&nbsp;malicious</span></div>
+        </div>
+        <!-- right: AI assistant -->
+        <div class="card" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(99,102,241,.1),var(--surface))">
+          <div class="ct">✨ AI Investigation Assistant</div>
+          <div style="font-size:10.5px;color:var(--muted);line-height:1.5;flex:1">
+            <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:9px;padding:9px;margin-bottom:8px"><b style="color:var(--ink)">Attack story.</b> An attacker gained execution on <b style="color:var(--ink)">WS-042</b> via malicious PowerShell, dumped credentials (LSASS), then used <b style="color:var(--ink)">j.okafor</b>'s creds to move laterally over SMB to 3 hosts while beaconing to <b style="color:var(--ink)">185.x</b>.</div>
+            <div style="background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:9px;padding:9px"><b style="color:#6ee7b7">Recommended.</b> Isolate WS-042, revoke j.okafor tokens, block 185.x at the firewall.</div>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:6px"><span class="b low">▶ Run playbook</span><span class="b ghost">Ask follow-up…</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">02 · Investigation Workbench</div>
+</section></div>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-cap">
+          <span class="tour-num">03</span>
+          <div><h2>Alert Queue + AI Triage</h2><p>Every alert auto-triaged — false positives close themselves.</p><div class="tour-tags"><span class="tour-tag">TP / FP verdicts</span><span class="tour-tag">MITRE mapping</span><span class="tour-tag">Auto-close</span></div></div>
+        </div>
+        <div class="tour-frame">
+          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
+          <div class="tour-canvas"><section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav on"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">Alert Queue</div><div class="sub">412 alerts · last 24h</div></div>
+      <span class="b crit" style="margin-left:auto">14 Critical</span><span class="b high">63 High</span><span class="b med">118 Med</span><span class="search" style="width:160px">⌕ Filter…</span>
+    </div>
+    <div class="content">
+      <div class="card" style="flex:1;display:flex;flex-direction:column">
+        <table>
+          <thead><tr><th style="width:90px">Severity</th><th>Alert</th><th>Source</th><th>Entity</th><th>Rule · MITRE</th><th>Time</th><th>Status</th><th>AI Triage</th></tr></thead>
+          <tbody>
+            <tr><td><span class="b crit">Critical</span></td><td class="s">Credential dumping (LSASS)</td><td>Endpoint</td><td class="mono">WS-042</td><td>T1003.001</td><td>09:43</td><td><span class="b ghost">New</span></td><td><span class="b crit">TP · 0.96</span></td></tr>
+            <tr><td><span class="b crit">Critical</span></td><td class="s">C2 Beaconing detected</td><td>Network</td><td class="mono">10.0.1.42</td><td>T1071.001</td><td>09:48</td><td><span class="b ghost">Triaging</span></td><td><span class="b crit">TP · 0.93</span></td></tr>
+            <tr><td><span class="b high">High</span></td><td class="s">Impossible travel sign-in</td><td>Identity</td><td class="mono">j.okafor</td><td>T1078</td><td>10:02</td><td><span class="b ghost">New</span></td><td><span class="b high">TP · 0.81</span></td></tr>
+            <tr><td><span class="b high">High</span></td><td class="s">SMB lateral movement</td><td>Network</td><td class="mono">WS-042</td><td>T1021.002</td><td>09:55</td><td><span class="b ghost">New</span></td><td><span class="b high">TP · 0.79</span></td></tr>
+            <tr><td><span class="b high">High</span></td><td class="s">Password spray on VPN</td><td>Identity</td><td class="mono">vpn-gw</td><td>T1110.003</td><td>08:30</td><td><span class="b ghost">Assigned</span></td><td><span class="b med">Review</span></td></tr>
+            <tr><td><span class="b med">Medium</span></td><td class="s">Port scan from internal host</td><td>Network</td><td class="mono">10.0.4.9</td><td>T1046</td><td>08:12</td><td><span class="b ghost">New</span></td><td><span class="b med">Review</span></td></tr>
+            <tr><td><span class="b med">Medium</span></td><td class="s">New IAM policy attached</td><td>Cloud</td><td class="mono">aws-prod</td><td>T1098</td><td>07:54</td><td><span class="b ghost">New</span></td><td><span class="b low">FP · 0.88</span></td></tr>
+            <tr><td><span class="b med">Medium</span></td><td class="s">DNS tunneling suspected</td><td>Network</td><td class="mono">10.0.2.7</td><td>T1071.004</td><td>07:20</td><td><span class="b ghost">New</span></td><td><span class="b high">TP · 0.74</span></td></tr>
+            <tr><td><span class="b low">Low</span></td><td class="s">S3 bucket policy modified</td><td>Cloud</td><td class="mono">logs-bkt</td><td>T1525</td><td>06:48</td><td><span class="b ghost">Closed</span></td><td><span class="b low">FP · 0.91</span></td></tr>
+            <tr><td><span class="b low">Low</span></td><td class="s">Service account anomaly</td><td>Identity</td><td class="mono">svc-backup</td><td>T1078.004</td><td>06:10</td><td><span class="b ghost">Closed</span></td><td><span class="b low">FP · 0.85</span></td></tr>
+            <tr><td><span class="b info">Info</span></td><td class="s">Sysmon process create burst</td><td>Endpoint</td><td class="mono">SRV-09</td><td>—</td><td>05:33</td><td><span class="b ghost">Suppressed</span></td><td><span class="b ghost">—</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:auto;display:flex;align-items:center;gap:10px;font-size:10.5px;color:var(--faint);padding-top:8px">
+          <span class="b low">✨ AI auto-closed 37 false positives today</span>
+          <span style="margin-left:auto">Showing 11 of 412 · Page 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">03 · Alert Queue + AI Triage</div>
+</section></div>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-cap">
+          <span class="tour-num">04</span>
+          <div><h2>UEBA & Risk Scoring</h2><p>Behavioural baselines and a 0–100 risk score that catch what rules miss.</p><div class="tour-tags"><span class="tour-tag">Entity risk</span><span class="tour-tag">Baselines</span><span class="tour-tag">Anomalies</span></div></div>
+        </div>
+        <div class="tour-frame">
+          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
+          <div class="tour-canvas"><section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav on"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">User &amp; Entity Behavior Analytics</div><div class="sub">Behavioral baselines · anomaly detection</div></div>
+      <div class="live" style="margin-left:auto;color:var(--muted)"><span class="dot" style="background:var(--primary-l);box-shadow:0 0 8px var(--primary-l)"></span>Baselines updated 4m ago</div>
+    </div>
+    <div class="content">
+      <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+        <div class="kpi"><div class="lab">Entities Monitored</div><div class="n">1,284</div><div class="tr">users · hosts · ip · svc</div></div>
+        <div class="kpi crit"><div class="lab">Critical Risk (≥80)</div><div class="n">7</div><div class="tr up">▲ 2 · 24h</div></div>
+        <div class="kpi high"><div class="lab">High Risk (≥60)</div><div class="n">23</div><div class="tr up">▲ 5</div></div>
+        <div class="kpi"><div class="lab">Anomalies · 24h</div><div class="n">48</div><div class="tr dn">▼ 9</div></div>
+      </div>
+      <div class="row" style="flex:1;min-height:0">
+        <div class="card" style="flex:1.4;display:flex;flex-direction:column">
+          <div class="ct">Top Risk Entities <span class="more">composite risk · 0–100</span></div>
+          <table>
+            <thead><tr><th>Entity</th><th>Type</th><th style="width:150px">Risk</th><th>Trend</th><th>Top driver</th></tr></thead>
+            <tbody>
+              <tr><td class="s mono">WS-042</td><td>Host</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:94%;background:var(--crit)"></i></div><b style="color:#fda4b4">94</b></div></td><td class="up">▲</td><td>Cred. dumping</td></tr>
+              <tr><td class="s mono">j.okafor</td><td>User</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:88%;background:var(--crit)"></i></div><b style="color:#fda4b4">88</b></div></td><td class="up">▲</td><td>Impossible travel</td></tr>
+              <tr><td class="s mono">10.0.1.42</td><td>IP</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:82%;background:var(--high)"></i></div><b style="color:#fcd34d">82</b></div></td><td class="up">▲</td><td>C2 traffic</td></tr>
+              <tr><td class="s mono">svc-backup</td><td>Service</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:67%;background:var(--high)"></i></div><b style="color:#fcd34d">67</b></div></td><td>▬</td><td>Off-hours access</td></tr>
+              <tr><td class="s mono">a.mensah</td><td>User</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:58%;background:var(--med)"></i></div><b style="color:#fde68a">58</b></div></td><td class="dn">▼</td><td>Data volume</td></tr>
+              <tr><td class="s mono">SRV-09</td><td>Host</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:44%;background:var(--low)"></i></div><b style="color:#6ee7b7">44</b></div></td><td>▬</td><td>New process</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="flex:.8;display:flex;flex-direction:column;align-items:center">
+          <div class="ct" style="align-self:flex-start">Risk Distribution</div>
+          <div class="donut-wrap" style="margin:6px 0 10px"><div class="donut"></div><div class="donut-c"><b>1,284</b><span>entities</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:5px;width:100%;font-size:10.5px">
+            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-crit"></span>Critical<span style="margin-left:auto;color:var(--ink)">7</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-high"></span>High<span style="margin-left:auto;color:var(--ink)">23</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-med"></span>Medium<span style="margin-left:auto;color:var(--ink)">156</span></div>
+            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-low"></span>Low<span style="margin-left:auto;color:var(--ink)">1,098</span></div>
+          </div>
+        </div>
+        <div class="card" style="flex:1;display:flex;flex-direction:column">
+          <div class="ct">Anomaly Trend · 7d</div>
+          <div style="flex:1;min-height:0"><div class="bars">
+            <div class="col"><span style="height:40px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
+            <div class="col"><span style="height:56px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
+            <div class="col"><span style="height:34px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
+            <div class="col"><span style="height:72px;background:linear-gradient(180deg,var(--high),rgba(251,191,36,.2))"></span></div>
+            <div class="col"><span style="height:50px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
+            <div class="col"><span style="height:90px;background:linear-gradient(180deg,var(--crit),rgba(246,81,107,.2))"></span></div>
+            <div class="col"><span style="height:62px;background:linear-gradient(180deg,var(--high),rgba(251,191,36,.2))"></span></div>
+          </div></div>
+          <div style="font-size:9.5px;color:var(--faint);margin-top:6px">Peer-group baselines · sigma deviation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">04 · UEBA &amp; Risk Scoring</div>
+</section></div>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-cap">
+          <span class="tour-num">05</span>
+          <div><h2>SOAR Playbooks</h2><p>Drag-and-drop response orchestration with approval gates.</p><div class="tour-tags"><span class="tour-tag">Visual flows</span><span class="tour-tag">Approval gates</span><span class="tour-tag">Execution log</span></div></div>
+        </div>
+        <div class="tour-frame">
+          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
+          <div class="tour-canvas"><section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav on"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">Playbook · Malware Containment</div><div class="sub">Trigger: Alert severity ≥ High · malware</div></div>
+      <span class="b low" style="margin-left:auto">● Enabled</span><span class="b ghost">Last run 09:49 · success</span>
+    </div>
+    <div class="content row" style="gap:14px">
+      <!-- canvas -->
+      <div class="card" style="flex:1.8;display:flex;flex-direction:column">
+        <div class="ct">Visual Playbook <span class="more">drag-and-drop orchestration</span></div>
+        <svg viewBox="0 0 720 430" style="flex:1;width:100%">
+          <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b7689"/></marker></defs>
+          <g stroke="#3a4256" stroke-width="1.6" fill="none" marker-end="url(#ar)">
+            <path d="M120,60 L120,108"/><path d="M120,165 L120,210"/>
+            <path d="M120,267 L120,312"/><path d="M210,338 L300,338"/>
+            <path d="M390,338 L470,338"/><path d="M560,310 L560,250"/><path d="M560,195 L560,135"/>
+          </g>
+          <!-- nodes -->
+          <g font-family="Inter" text-anchor="middle">
+            <rect x="40" y="22" width="160" height="40" rx="10" fill="rgba(99,102,241,.22)" stroke="var(--primary-l)" stroke-width="1.5"/>
+            <text x="120" y="40" font-size="11" font-weight="700" fill="#fff">⚡ Trigger</text><text x="120" y="54" font-size="9" fill="#aab4cc">Malware alert</text>
+
+            <rect x="40" y="110" width="160" height="50" rx="10" fill="rgba(251,191,36,.16)" stroke="var(--high)" stroke-width="1.5"/>
+            <text x="120" y="130" font-size="11" font-weight="700" fill="#fff">◇ Condition</text><text x="120" y="145" font-size="9" fill="#aab4cc">risk_score ≥ 70 ?</text>
+
+            <rect x="40" y="212" width="160" height="52" rx="10" fill="rgba(246,81,107,.16)" stroke="var(--crit)" stroke-width="1.5"/>
+            <text x="120" y="232" font-size="11" font-weight="700" fill="#fff">⊘ Isolate endpoint</text><text x="120" y="247" font-size="9" fill="#aab4cc">EDR · WS-042</text>
+
+            <rect x="40" y="314" width="170" height="48" rx="10" fill="rgba(246,81,107,.16)" stroke="var(--crit)" stroke-width="1.5"/>
+            <text x="125" y="334" font-size="11" font-weight="700" fill="#fff">⛔ Block C2 IP</text><text x="125" y="349" font-size="9" fill="#aab4cc">Firewall · 185.x</text>
+
+            <rect x="300" y="314" width="90" height="48" rx="10" fill="rgba(99,102,241,.18)" stroke="var(--primary-l)" stroke-width="1.5"/>
+            <text x="345" y="335" font-size="10" font-weight="700" fill="#fff">⏸ Approval</text><text x="345" y="349" font-size="8.5" fill="#aab4cc">L2 sign-off</text>
+
+            <rect x="470" y="314" width="170" height="48" rx="10" fill="rgba(99,102,241,.18)" stroke="var(--primary-l)" stroke-width="1.5"/>
+            <text x="555" y="334" font-size="10" font-weight="700" fill="#fff">▣ Create case</text><text x="555" y="349" font-size="8.5" fill="#aab4cc">+ evidence</text>
+
+            <rect x="475" y="200" width="170" height="48" rx="10" fill="rgba(6,182,212,.16)" stroke="var(--accent)" stroke-width="1.5"/>
+            <text x="560" y="220" font-size="10" font-weight="700" fill="#fff">✉ Notify team</text><text x="560" y="234" font-size="8.5" fill="#aab4cc">Slack · PagerDuty</text>
+
+            <rect x="475" y="88" width="170" height="48" rx="10" fill="rgba(52,211,153,.14)" stroke="var(--low)" stroke-width="1.5"/>
+            <text x="560" y="108" font-size="10" font-weight="700" fill="#fff">✓ Update incident</text><text x="560" y="122" font-size="8.5" fill="#aab4cc">→ Contained</text>
+          </g>
+        </svg>
+      </div>
+      <!-- execution -->
+      <div class="card" style="flex:1;display:flex;flex-direction:column">
+        <div class="ct">Last Execution</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:11px">
+          <div class="feed"><span class="sevdot sd-low"></span>Trigger matched<span class="t">✓ 0.1s</span></div>
+          <div class="feed"><span class="sevdot sd-low"></span>Condition: risk 94 ≥ 70<span class="t">✓</span></div>
+          <div class="feed"><span class="sevdot sd-low"></span>Endpoint isolated · WS-042<span class="t">✓ 2.4s</span></div>
+          <div class="feed"><span class="sevdot sd-low"></span>C2 IP blocked · 185.x<span class="t">✓ 1.1s</span></div>
+          <div class="feed"><span class="sevdot sd-high"></span>Approval · awaiting L2<span class="t">⏸</span></div>
+          <div class="feed" style="opacity:.5"><span class="sevdot sd-info"></span>Create case<span class="t">queued</span></div>
+          <div class="feed" style="opacity:.5"><span class="sevdot sd-info"></span>Notify team<span class="t">queued</span></div>
+        </div>
+        <div style="margin-top:auto;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:9px;padding:10px;font-size:10.5px;color:#6ee7b7">
+          <b>Post-action:</b> linked alert → <b>Contained</b>, incident → <b>Containing</b>. Mean containment time: <b>3.6s</b>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">05 · SOAR Playbook Orchestration</div>
+</section></div>
+        </div>
+      </div>
+</main>
+
+<footer class="tourfoot">
+  <h2>See it live on your environment</h2>
+  <p>We'll connect your sources and show detection, investigation and response on your own data — or run it for you.</p>
+  <div class="row">
+    <a href="contact.html" class="btn p">Talk to us</a>
+    <a href="product-tour-noc.html" class="btn o">NOC console tour →</a>
+  </div>
+</footer>
+
+<script>
+  function fitTour(){
+    document.querySelectorAll('.tour-canvas').forEach(function(c){
+      var s = Math.min(c.clientWidth / 1280, 1);
+      c.style.height = (800 * s) + 'px';
+      var sc = c.querySelector('.screen');
+      if (sc) sc.style.transform = 'scale(' + s + ')';
+    });
+  }
+  window.addEventListener('resize', fitTour);
+  window.addEventListener('load', fitTour);
+  fitTour();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTour);
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block nothing — this is a public marketing site.
+# Update the host below to your production domain.
+Sitemap: https://www.vultsight.com/sitemap.xml

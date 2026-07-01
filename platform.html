@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Platform — VultSight XDR</title>
+<meta name="description" content="Explore the VultSight XDR platform: ingestion, detection engine, XDR correlation, UEBA, threat intelligence, AI operations, SOAR and compliance." />
+<link rel="canonical" href="https://www.vultsight.com/platform.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VultSight" />
+<meta property="og:title" content="Platform — VultSight XDR" />
+<meta property="og:description" content="Explore the VultSight XDR platform: ingestion, detection engine, XDR correlation, UEBA, threat intelligence, AI operations, SOAR and compliance." />
+<meta property="og:url" content="https://www.vultsight.com/platform.html" />
+<meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Platform — VultSight XDR" />
+<meta name="twitter:description" content="Ingestion, detection engine, XDR correlation, UEBA, threat intel, AI operations, SOAR and compliance." />
+<meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"SoftwareApplication","name":"VultSight XDR","applicationCategory":"SecurityApplication","operatingSystem":"Cloud, On-premises, Hybrid","description":"Unified SIEM, SOAR, threat intelligence, UEBA and XDR with AI-powered investigation and automated response.","offers":{"@type":"Offer","availability":"https://schema.org/InStock"} }
+</script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div data-include="header"></div>
+
+<main>
+
+<!-- page hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="kicker">The platform</span>
+    <h1>SIEM, SOAR, XDR, UEBA and threat intel —<br/>one event-driven platform</h1>
+    <p>From a security event hitting the wire to an automated, audited response — every stage runs on a single data model with sub-second real-time processing.</p>
+  </div>
+</section>
+
+<!-- pipeline band (dark) -->
+<section class="section band--dark">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">How it works</span>
+      <h2>An end-to-end ingestion pipeline</h2>
+      <p>Collect → Parse → Normalize → Enrich → Index → Detect. A decoupled streaming queue for reliable, near-real-time processing.</p>
+    </div>
+    <div class="caps" id="ingest">
+      <article class="cap"><div class="cap__ic">📡</div><h3>1 · Collect</h3><p>Syslog (UDP/TCP), edge-collector HTTPS forwarding and cloud API polling converge into one reliable queue.</p></article>
+      <article class="cap"><div class="cap__ic">🔤</div><h3>2 · Parse</h3><p>Hierarchical parser lookup across JSON, Regex, Grok and CEF — a broad built-in parser library plus a custom-parser framework.</p></article>
+      <article class="cap"><div class="cap__ic">🧭</div><h3>3 · Normalize</h3><p>Vendor fields mapped to a 30+ field canonical schema, enabling true cross-vendor correlation.</p></article>
+      <article class="cap"><div class="cap__ic">✨</div><h3>4 · Enrich</h3><p>Real-time IOC matching and asset enrichment tag every event with threat and criticality context.</p></article>
+      <article class="cap"><div class="cap__ic">🗂️</div><h3>5 · Index</h3><p>Bulk-indexed into a high-performance search store with per-tenant isolation and dedup.</p></article>
+      <article class="cap"><div class="cap__ic">🚨</div><h3>6 · Detect</h3><p>Enriched events stream to real-time detection; IOC hits raise alerts instantly, bypassing rule evaluation.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- detection -->
+<section class="section" id="detect">
+  <div class="container split">
+    <div class="split__copy">
+      <span class="kicker">Detection engine</span>
+      <h2>Flexible rule types,<br/>real-time &amp; scheduled</h2>
+      <p>Real-time stream processing for known threats and scheduled deep analytics for advanced ones — both running simultaneously, every rule mapped to MITRE ATT&amp;CK.</p>
+      <ul class="checklist">
+        <li><span class="ck">✓</span> <strong>Match</strong> — known-bad patterns with boolean logic and wildcards</li>
+        <li><span class="ck">✓</span> <strong>Threshold</strong> — count/cardinality limits with per-entity group-by</li>
+        <li><span class="ck">✓</span> <strong>Sequence</strong> — ordered multi-step chains within a time window</li>
+        <li><span class="ck">✓</span> <strong>Correlation</strong> — cross-source entity co-occurrence</li>
+        <li><span class="ck">✓</span> <strong>Statistical</strong> — sigma deviation from UEBA baselines</li>
+      </ul>
+    </div>
+    <div class="split__panel">
+      <div class="vs">
+        <div class="vs__row vs__row--head"><span>Safeguard</span><span>Mechanism</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Suppression windows</span><span>Per-entity, real-time</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Rule exceptions</span><span>Conditional + expiring</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Deduplication</span><span>1-hour TTL window</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">MITRE mapping</span><span>Tactics + techniques</span></div>
+        <div class="vs__row"><span class="vs__new" style="color:var(--body);font-weight:600">Real-time latency</span><span>Sub-second (in-memory)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- correlation + ueba + intel + ai cards -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Investigate</span><h2>From alert noise to attack story</h2></div>
+    <div class="caps">
+      <article class="cap" id="correlate"><div class="cap__ic">🕸️</div><h3>XDR correlation</h3><p>Entity-overlap, temporal clustering and kill-chain progression group related alerts into unified <code>INC-YYYYMMDD-XXXX</code> incidents with an interactive entity graph and auto-generated attack story.</p></article>
+      <article class="cap" id="ueba"><div class="cap__ic">📊</div><h3>UEBA</h3><p>Statistical baselines for every user, host, IP and service. Sigma-based anomaly detection, peer-group comparison and a 0–100 composite risk score driving dynamic thresholds.</p></article>
+      <article class="cap" id="intel"><div class="cap__ic">🌐</div><h3>Threat intelligence</h3><p>Curated threat-intel feeds with real-time IOC matching, confidence decay, Sigma rules and full MITRE ATT&amp;CK coverage analysis and heatmap.</p></article>
+      <article class="cap"><div class="cap__ic">🔭</div><h3>Threat hunting</h3><p>Retroactive IOC sweeps across historical data, hypothesis-driven hunts and recurring scheduled sweeps for continuous hunting.</p></article>
+      <article class="cap"><div class="cap__ic">🔬</div><h3>Investigation workbench</h3><p>Three-panel deep-dive: evidence timeline, interactive entity graph and an AI assistant answering natural-language questions about the incident.</p></article>
+      <article class="cap"><div class="cap__ic">🗺️</div><h3>MITRE kill chain</h3><p>13-stage ATT&amp;CK overlay showing observed tactics with color-coded progression and technique-to-rule gap analysis.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- AI band (dark) -->
+<section class="section band--dark" id="ai">
+  <div class="container split split--rev">
+    <div class="split__copy">
+      <span class="kicker">AI-native SOC</span>
+      <h2>AI in every workflow,<br/>not bolted on</h2>
+      <p>Provider-agnostic across Anthropic Claude and OpenAI, with governed token budgets, validated queries and a full audit trail of every AI call.</p>
+      <div class="ai-cards">
+        <div class="ai-card"><strong>NL search</strong><span>Plain English → a safe, tenant-scoped query.</span></div>
+        <div class="ai-card"><strong>Autonomous triage</strong><span>TP/FP + auto-closure of false positives.</span></div>
+        <div class="ai-card"><strong>Investigation assistant</strong><span>Context-aware incident Q&amp;A.</span></div>
+        <div class="ai-card"><strong>Rule generation</strong><span>Describe a threat, get a rule.</span></div>
+      </div>
+    </div>
+    <div class="split__panel">
+      <div class="ai-demo">
+        <div class="ai-demo__q">"Alert when a user logs in from two countries within 2 hours"</div>
+        <div class="ai-demo__arrow">↓ generates</div>
+        <pre class="ai-demo__code"><span class="k">type</span>: sequence
+<span class="k">group_by</span>: <span class="v">username</span>
+<span class="k">window</span>: 2h
+<span class="k">condition</span>: <span class="v">distinct(country) &gt;= 2</span>
+<span class="c">// MITRE T1078 · Valid Accounts</span></pre>
+        <div class="ai-demo__badge"><span class="pulse"></span>Rule validated &amp; saved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOAR -->
+<section class="section" id="soar">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Respond</span><h2>SOAR, cases and native ITSM</h2><p>Visual playbooks orchestrate tiered response — from auto-executed notifications to approval-gated endpoint isolation.</p></div>
+    <div class="caps">
+      <article class="cap"><div class="cap__ic">⚙️</div><h3>Playbook engine</h3><p>Multiple step types — action, approval, notification, condition and delay — with a rich condition engine referencing alert, entity and execution context.</p></article>
+      <article class="cap"><div class="cap__ic">🛡️</div><h3>Tiered response actions</h3><p>Across multiple risk tiers — from tagging and enrichment to endpoint isolation, token revocation and network isolation via connectors.</p></article>
+      <article class="cap"><div class="cap__ic">✅</div><h3>Approval workflows</h3><p>High-risk actions pause for human approval with justification, expiry and a dedicated approval inbox.</p></article>
+      <article class="cap"><div class="cap__ic">🗃️</div><h3>Case management</h3><p>Full lifecycle with tasks, comments, evidence, alert linking and SLA-tracked closure for audit.</p></article>
+      <article class="cap"><div class="cap__ic">🎫</div><h3>Native ITSM</h3><p>VultSight is the ticketing system — auto-ticket rules, 60-second SLA monitoring and L1→L2→L3 auto-escalation.</p></article>
+      <article class="cap"><div class="cap__ic">📑</div><h3>Built-in playbooks</h3><p>Malware containment, phishing response, data-exfil, impossible-travel and brute-force mitigation, ready to deploy.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- compliance -->
+<section class="section section--alt" id="compliance">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Trust &amp; compliance</span><h2>Forensic-grade by default</h2></div>
+    <div class="trust-grid">
+      <div class="tg"><div class="tg__ic">🔗</div><h4>Tamper-evident audit</h4><p>SHA-256 hash chain — any change to historical entries breaks the chain.</p></div>
+      <div class="tg"><div class="tg__ic">🏢</div><h4>Row-Level Security</h4><p>RLS on every tenant-scoped table; complete data isolation.</p></div>
+      <div class="tg"><div class="tg__ic">🔐</div><h4>Enterprise SSO</h4><p>SAML 2.0 + OIDC with auto-provisioning and granular RBAC roles.</p></div>
+      <div class="tg"><div class="tg__ic">📍</div><h4>Data residency</h4><p>Per-tenant region controls with CERT-In and GDPR-EU presets.</p></div>
+      <div class="tg"><div class="tg__ic">🚨</div><h4>Break-glass access</h4><p>Time-limited emergency elevation with full audit trail.</p></div>
+      <div class="tg"><div class="tg__ic">📋</div><h4>Automated assessment</h4><p>Multi-framework compliance scoring against live audit evidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- integrations -->
+<section class="section" id="integrations">
+  <div class="container">
+    <div class="sec-head"><span class="kicker">Integrations</span><h2>Works with your existing stack</h2><p>Pre-built connectors with bidirectional response actions.</p></div>
+    <div class="logos">
+      <span class="logo-pill">CrowdStrike Falcon</span><span class="logo-pill">SentinelOne</span><span class="logo-pill">Microsoft Defender</span>
+      <span class="logo-pill">Okta</span><span class="logo-pill">Azure AD</span><span class="logo-pill">CyberArk</span>
+      <span class="logo-pill">AWS CloudTrail</span><span class="logo-pill">GCP Audit</span><span class="logo-pill">Palo Alto Networks</span>
+      <span class="logo-pill">Fortinet</span><span class="logo-pill">Zeek</span><span class="logo-pill">Suricata</span>
+      <span class="logo-pill">Proofpoint</span><span class="logo-pill">Microsoft 365</span><span class="logo-pill">Tenable</span>
+      <span class="logo-pill">Qualys</span><span class="logo-pill">osquery</span><span class="logo-pill">Wazuh</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta band--dark">
+  <div class="container cta__inner">
+    <h2>One platform for the whole SOC</h2>
+    <p>Detection, investigation and automated response on a single data model — owned by you, or run by our team.</p>
+    <div class="cta__actions">
+      <a href="services.html" class="btn btn--primary btn--lg">Managed SOC</a>
+      <a href="noc.html" class="btn btn--outline btn--lg">Explore NOC</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

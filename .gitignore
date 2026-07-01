@@ -1,0 +1,3 @@
+# Generated, confidential sales asset — rebuild locally with _pdf/build.sh
+_pdf/*.pdf
+.DS_Store
