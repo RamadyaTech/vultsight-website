@@ -63,6 +63,7 @@ const HEADER_HTML = `
           </div>
         </div>
       </div>
+      <a href="zero-day.html" class="nav__link" data-nav="zero-day.html">Zero-Day</a>
       <a href="services.html" class="nav__link" data-nav="services.html">Services</a>
       <a href="solutions.html" class="nav__link" data-nav="solutions.html">Solutions</a>
       <a href="resources.html" class="nav__link" data-nav="resources.html">Resources</a>
@@ -81,6 +82,7 @@ const HEADER_HTML = `
 <div class="mobile" id="mobile">
   <a href="platform.html">Platform · XDR</a>
   <a href="noc.html">Platform · NOC</a>
+  <a href="zero-day.html">Zero-Day Defence</a>
   <a href="services.html">Managed Services</a>
   <a href="solutions.html">Solutions</a>
   <a href="resources.html">Resources</a>
@@ -166,9 +168,11 @@ function initChrome() {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  const page = location.pathname.split('/').pop() || 'index.html';
+  // normalize so it works with both /x.html and clean-URL /x hosts
+  const norm = (s) => (s || '').split('/').pop().replace(/\.html$/, '') || 'index';
+  const page = norm(location.pathname);
   document.querySelectorAll('[data-nav]').forEach((a) => {
-    if (a.dataset.nav === page) a.classList.add('active');
+    if (norm(a.dataset.nav) === page) a.classList.add('active');
   });
 
   const burger = document.getElementById('hamburger');
