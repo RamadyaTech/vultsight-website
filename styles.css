@@ -164,6 +164,9 @@ img{display:block;max-width:100%}
 }
 .mega__feature strong{margin:10px 0 6px}
 .mega__feature:hover{border-color:var(--primary)}
+.mega__feature .chip{display:inline-flex;width:auto}
+.mega__feature.compact{padding:13px 15px!important}
+.mega__feature.compact strong{margin:8px 0 3px;font-size:14px}
 
 /* hamburger / mobile */
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}

@@ -32,7 +32,7 @@ const HEADER_HTML = `
               <a href="platform.html#ingest"><strong>Data Ingestion</strong><span>Syslog, edge collectors, cloud API polling</span></a>
               <a href="platform.html#detect"><strong>Detection Engine</strong><span>Flexible rules · sub-second streaming</span></a>
               <a href="zero-day.html"><strong>Zero-day Defence</strong><span>Behavioural detection &amp; frameworks</span></a>
-              <a href="platform.html#intel"><strong>Threat Intelligence</strong><span>13 feeds · real-time IOC matching</span></a>
+              <a href="platform.html#intel"><strong>Threat Intelligence</strong><span>Curated feeds · real-time IOC matching</span></a>
             </div>
             <div class="mega__col">
               <p class="mega__head">Investigate</p>
@@ -48,17 +48,17 @@ const HEADER_HTML = `
             </div>
             <div class="mega__col mega__col--feature">
               <p class="mega__head">Products</p>
-              <a href="soc.html" class="mega__feature" style="margin-bottom:10px">
+              <a href="soc.html" class="mega__feature compact" style="margin-bottom:10px">
                 <span class="chip">SOC</span>
                 <strong>VultSight SOC</strong>
                 <span>Entry security — detect, ticket &amp; respond.</span>
               </a>
-              <a href="platform.html" class="mega__feature" style="margin-bottom:10px">
+              <a href="platform.html" class="mega__feature compact" style="margin-bottom:10px">
                 <span class="chip chip--gold">XDR</span>
                 <strong>VultSight XDR</strong>
                 <span>Premium security — correlate, investigate &amp; hunt.</span>
               </a>
-              <a href="noc.html" class="mega__feature">
+              <a href="noc.html" class="mega__feature compact">
                 <span class="chip">NOC</span>
                 <strong>VultSight NOC</strong>
                 <span>Network operations — monitor &amp; maintain.</span>
