@@ -24,7 +24,7 @@ const HEADER_HTML = `
 
     <nav class="nav" aria-label="Primary">
       <div class="nav__item has-mega">
-        <a class="nav__link" href="platform.html" data-nav="platform.html">Platform <svg class="caret" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a class="nav__link" href="index.html#products" data-nav="products">Products <svg class="caret" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         <div class="mega">
           <div class="mega__inner container">
             <p class="mega__head">Products</p>
@@ -66,7 +66,6 @@ const HEADER_HTML = `
           </div>
         </div>
       </div>
-      <a href="zero-day.html" class="nav__link" data-nav="zero-day.html">Zero-Day</a>
       <a href="services.html" class="nav__link" data-nav="services.html">Services</a>
       <a href="solutions.html" class="nav__link" data-nav="solutions.html">Solutions</a>
       <a href="resources.html" class="nav__link" data-nav="resources.html">Resources</a>
@@ -83,8 +82,9 @@ const HEADER_HTML = `
 </header>
 
 <div class="mobile" id="mobile">
-  <a href="platform.html">Platform · XDR</a>
-  <a href="noc.html">Platform · NOC</a>
+  <a href="soc.html">VultSight SOC</a>
+  <a href="platform.html">VultSight XDR</a>
+  <a href="noc.html">VultSight NOC</a>
   <a href="zero-day.html">Zero-Day Defence</a>
   <a href="services.html">Managed Services</a>
   <a href="solutions.html">Solutions</a>
