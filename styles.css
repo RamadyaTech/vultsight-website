@@ -311,6 +311,8 @@ img{display:block;max-width:100%}
 .pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}
 .pillar__ic,.cap__ic,.tg__ic{width:50px;height:50px;display:grid;place-items:center;font-size:24px;border-radius:13px;
   background:linear-gradient(135deg,var(--bg-tint),#e0f2fe);border:1px solid var(--border);margin-bottom:18px}
+.pillar__ic svg,.cap__ic svg,.tg__ic svg{width:26px;height:26px;color:var(--primary)}
+.fc__icon svg{width:20px;height:20px;color:var(--primary)}
 .pillar h3{font-family:var(--display);font-size:21px;font-weight:700;margin-bottom:10px;color:var(--ink)}
 .pillar p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
 .pillar--feature{background:linear-gradient(160deg,var(--bg-tint),#fff);border-color:var(--border-h)}
@@ -498,7 +500,9 @@ img{display:block;max-width:100%}
 .ucard{border-radius:var(--r);padding:28px 24px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);scroll-margin-top:90px;
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 .ucard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}
-.ucard__ic{font-size:26px;margin-bottom:14px}
+.ucard__ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:var(--primary);margin-bottom:14px;
+  background:linear-gradient(135deg,var(--bg-tint),#e0f2fe);border:1px solid var(--border)}
+.ucard__ic svg{width:24px;height:24px}
 .ucard h3{font-family:var(--display);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px}
 .ucard p{font-size:14px;color:var(--muted);margin-bottom:14px}
 .ucard ul{list-style:none;display:flex;flex-direction:column;gap:8px}
@@ -569,6 +573,7 @@ img{display:block;max-width:100%}
 .contact-list li{display:flex;gap:14px}
 .contact-list .ci{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:18px;
   background:var(--bg-tint);border:1px solid var(--border)}
+.contact-list .ci svg{width:20px;height:20px;color:var(--primary)}
 .contact-list strong{display:block;color:var(--ink);font-size:15px}
 .contact-list span{font-size:14px;color:var(--muted)}
 
