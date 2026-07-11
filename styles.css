@@ -469,8 +469,24 @@ img{display:block;max-width:100%}
 
 /* ─── Solutions: use-case / role cards ─── */
 .ucards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 @media (max-width:720px){.svc-grid{grid-template-columns:1fr}}
+.svc-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.svc{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-radius:18px;
+  padding:28px 28px 24px;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}
+.svc__top{position:absolute;top:0;left:0;right:0;height:4px}
+.svc.a .svc__top{background:linear-gradient(90deg,#4f46e5,#818cf8)}
+.svc.b .svc__top{background:linear-gradient(90deg,#0284c7,#22d3ee)}
+.svc.c .svc__top{background:linear-gradient(90deg,#7c3aed,#c4b5fd)}
+.svc.d .svc__top{background:linear-gradient(90deg,#0891b2,#38bdf8)}
+.svc__ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:26px;margin-bottom:16px;
+  background:linear-gradient(135deg,var(--bg-tint),#e0f2fe);border:1px solid var(--border)}
+.svc h3{font-family:var(--display);font-size:21px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.svc p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
+.svc__list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.svc__list li{display:flex;gap:10px;font-size:14px;color:var(--body)}
+.svc__list li::before{content:"✓";color:var(--ok);font-weight:800;flex:none}
 .ucard{border-radius:var(--r);padding:28px 24px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);scroll-margin-top:90px;
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 .ucard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}
