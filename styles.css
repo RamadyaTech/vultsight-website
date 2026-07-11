@@ -150,8 +150,29 @@ img{display:block;max-width:100%}
   transition:opacity .22s ease, transform .22s ease, visibility .22s;
 }
 .has-mega:hover .mega{opacity:1;visibility:visible;transform:translateY(0)}
-.mega__inner{display:grid;grid-template-columns:repeat(3,1fr) 1.2fr;gap:34px;padding:28px 28px 32px}
+.mega__inner{display:block;padding:24px 28px 22px}
 .mega__head{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700;margin-bottom:12px}
+
+/* product-first mega */
+.mega-products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mprod{position:relative;overflow:hidden;display:block;padding:18px 20px 16px;border-radius:14px;
+  background:var(--card);border:1px solid var(--border);transition:transform .2s ease,box-shadow .2s ease,border-color .2s}
+.mprod:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}
+.mprod__top{position:absolute;top:0;left:0;right:0;height:3px}
+.mprod.soc .mprod__top{background:linear-gradient(90deg,#6366f1,#818cf8)}
+.mprod.xdr .mprod__top{background:linear-gradient(90deg,#4f46e5,#7c3aed)}
+.mprod.noc .mprod__top{background:linear-gradient(90deg,#0284c7,#06b6d4)}
+.mprod__row{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.mprod .chip{display:inline-flex;width:auto}
+.mprod__badge{font-size:11px;font-weight:600;color:var(--faint)}
+.mprod strong{display:block;font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:5px}
+.mprod p{font-size:12.5px;line-height:1.5;color:var(--muted);margin-bottom:12px}
+.mprod__link{font-size:12.5px;font-weight:700;color:var(--primary)}
+.mprod.noc .mprod__link{color:var(--accent-d)}
+.mega-links{display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.mega-links__label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700}
+.mega-links a{font-size:13px;font-weight:500;color:var(--muted);padding:0}
+.mega-links a:hover{color:var(--primary)}
 .mega__col a{display:block;padding:8px 0;border-radius:8px}
 .mega__col strong{display:block;font-size:14.5px;font-weight:600;color:var(--ink);transition:color .2s}
 .mega__col span{display:block;font-size:12.5px;color:var(--faint)}

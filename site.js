@@ -27,42 +27,41 @@ const HEADER_HTML = `
         <a class="nav__link" href="platform.html" data-nav="platform.html">Platform <svg class="caret" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         <div class="mega">
           <div class="mega__inner container">
-            <div class="mega__col">
-              <p class="mega__head">Detect</p>
-              <a href="platform.html#ingest"><strong>Data Ingestion</strong><span>Syslog, edge collectors, cloud API polling</span></a>
-              <a href="platform.html#detect"><strong>Detection Engine</strong><span>Flexible rules · sub-second streaming</span></a>
-              <a href="zero-day.html"><strong>Zero-day Defence</strong><span>Behavioural detection &amp; frameworks</span></a>
-              <a href="platform.html#intel"><strong>Threat Intelligence</strong><span>Curated feeds · real-time IOC matching</span></a>
-            </div>
-            <div class="mega__col">
-              <p class="mega__head">Investigate</p>
-              <a href="platform.html#correlate"><strong>XDR Correlation</strong><span>Cross-domain incident grouping</span></a>
-              <a href="platform.html#ueba"><strong>UEBA</strong><span>Behavioral baselines &amp; risk scoring</span></a>
-              <a href="platform.html#ai"><strong>AI Investigation</strong><span>Natural-language hunting &amp; triage</span></a>
-            </div>
-            <div class="mega__col">
-              <p class="mega__head">Respond</p>
-              <a href="platform.html#soar"><strong>SOAR Playbooks</strong><span>Tiered response actions</span></a>
-              <a href="platform.html#soar"><strong>Case &amp; ITSM</strong><span>Native ticketing &amp; SLA tracking</span></a>
-              <a href="platform.html#compliance"><strong>Compliance &amp; Audit</strong><span>Hash-chain audit trail</span></a>
-            </div>
-            <div class="mega__col mega__col--feature">
-              <p class="mega__head">Products</p>
-              <a href="soc.html" class="mega__feature compact" style="margin-bottom:10px">
-                <span class="chip">SOC</span>
+            <p class="mega__head">Products</p>
+            <div class="mega-products">
+              <a href="soc.html" class="mprod soc">
+                <span class="mprod__top"></span>
+                <div class="mprod__row"><span class="chip">SOC</span><span class="mprod__badge">Entry security</span></div>
                 <strong>VultSight SOC</strong>
-                <span>Entry security — detect, ticket &amp; respond.</span>
+                <p>SIEM detection, alerts, cases &amp; native ITSM, SOAR and threat intel.</p>
+                <span class="mprod__link">Explore SOC →</span>
               </a>
-              <a href="platform.html" class="mega__feature compact" style="margin-bottom:10px">
-                <span class="chip chip--gold">XDR</span>
+              <a href="platform.html" class="mprod xdr">
+                <span class="mprod__top"></span>
+                <div class="mprod__row"><span class="chip chip--gold">XDR</span><span class="mprod__badge">Premium · includes SOC</span></div>
                 <strong>VultSight XDR</strong>
-                <span>Premium security — correlate, investigate &amp; hunt.</span>
+                <p>Everything in SOC, plus correlation, UEBA, entity graph and hunting.</p>
+                <span class="mprod__link">Explore XDR →</span>
               </a>
-              <a href="noc.html" class="mega__feature compact">
-                <span class="chip">NOC</span>
+              <a href="noc.html" class="mprod noc">
+                <span class="mprod__top"></span>
+                <div class="mprod__row"><span class="chip">NOC</span><span class="mprod__badge">Network ops</span></div>
                 <strong>VultSight NOC</strong>
-                <span>Network operations — monitor &amp; maintain.</span>
+                <p>Monitor every device and service — topology, SLA and a live wallboard.</p>
+                <span class="mprod__link">Explore NOC →</span>
               </a>
+            </div>
+            <div class="mega-links">
+              <span class="mega-links__label">Explore</span>
+              <a href="platform.html#ingest">Data ingestion</a>
+              <a href="platform.html#detect">Detection engine</a>
+              <a href="zero-day.html">Zero-day defence</a>
+              <a href="platform.html#correlate">XDR correlation</a>
+              <a href="platform.html#ueba">UEBA</a>
+              <a href="platform.html#soar">SOAR &amp; ITSM</a>
+              <a href="platform.html#intel">Threat intel</a>
+              <a href="platform.html#compliance">Compliance</a>
+              <a href="platform.html#integrations">Integrations</a>
             </div>
           </div>
         </div>
