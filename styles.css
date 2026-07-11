@@ -469,6 +469,8 @@ img{display:block;max-width:100%}
 
 /* ─── Solutions: use-case / role cards ─── */
 .ucards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:720px){.svc-grid{grid-template-columns:1fr}}
 .ucard{border-radius:var(--r);padding:28px 24px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);scroll-margin-top:90px;
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 .ucard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-h)}

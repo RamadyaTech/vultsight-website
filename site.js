@@ -123,8 +123,8 @@ const FOOTER_HTML = `
       <h5>Managed services</h5>
       <a href="services.html#soc">Managed SOC</a>
       <a href="services.html#noc">Managed NOC</a>
-      <a href="services.html#command">Command Center</a>
-      <a href="services.html#mdr">MDR &amp; hunting</a>
+      <a href="services.html#vuln">Vulnerability Assessment</a>
+      <a href="services.html#darkweb">Dark Web Monitoring</a>
       <a href="services.html">All services</a>
     </div>
     <div class="footer__col">
