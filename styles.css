@@ -480,8 +480,16 @@ img{display:block;max-width:100%}
 .svc.b .svc__top{background:linear-gradient(90deg,#0284c7,#22d3ee)}
 .svc.c .svc__top{background:linear-gradient(90deg,#7c3aed,#c4b5fd)}
 .svc.d .svc__top{background:linear-gradient(90deg,#0891b2,#38bdf8)}
-.svc__ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:26px;margin-bottom:16px;
+.svc__ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;margin-bottom:16px;
   background:linear-gradient(135deg,var(--bg-tint),#e0f2fe);border:1px solid var(--border)}
+.svc__ic svg{width:26px;height:26px}
+.svc.a .svc__ic{color:#4f46e5}
+.svc.b .svc__ic{color:#0284c7}
+.svc.c .svc__ic{color:#7c3aed}
+.svc.d .svc__ic{color:#0891b2}
+#models .ucard__ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:var(--primary);
+  background:linear-gradient(135deg,var(--bg-tint),#e0f2fe);border:1px solid var(--border)}
+#models .ucard__ic svg{width:24px;height:24px}
 .svc h3{font-family:var(--display);font-size:21px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
 .svc p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
 .svc__list{list-style:none;display:flex;flex-direction:column;gap:9px}
