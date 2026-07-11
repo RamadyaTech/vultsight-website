@@ -42,23 +42,27 @@ const HEADER_HTML = `
             </div>
             <div class="mega__col">
               <p class="mega__head">Respond</p>
-              <a href="platform.html#soar"><strong>SOAR Playbooks</strong><span>14 actions · 4 risk tiers</span></a>
+              <a href="platform.html#soar"><strong>SOAR Playbooks</strong><span>Tiered response actions</span></a>
               <a href="platform.html#soar"><strong>Case &amp; ITSM</strong><span>Native ticketing &amp; SLA tracking</span></a>
               <a href="platform.html#compliance"><strong>Compliance &amp; Audit</strong><span>Hash-chain audit trail</span></a>
             </div>
             <div class="mega__col mega__col--feature">
-              <p class="mega__head">Two platforms</p>
-              <a href="platform.html" class="mega__feature" style="margin-bottom:12px">
-                <span class="chip chip--gold">SOC</span>
-                <strong>VultSight XDR</strong>
-                <span>Security operations — detect, investigate &amp; respond.</span>
+              <p class="mega__head">Products</p>
+              <a href="soc.html" class="mega__feature" style="margin-bottom:10px">
+                <span class="chip">SOC</span>
+                <strong>VultSight SOC</strong>
+                <span>Entry security — detect, ticket &amp; respond.</span>
               </a>
-              <a href="noc.html" class="mega__feature" style="margin-bottom:12px">
+              <a href="platform.html" class="mega__feature" style="margin-bottom:10px">
+                <span class="chip chip--gold">XDR</span>
+                <strong>VultSight XDR</strong>
+                <span>Premium security — correlate, investigate &amp; hunt.</span>
+              </a>
+              <a href="noc.html" class="mega__feature">
                 <span class="chip">NOC</span>
                 <strong>VultSight NOC</strong>
-                <span>Network operations — monitor, measure &amp; maintain.</span>
+                <span>Network operations — monitor &amp; maintain.</span>
               </a>
-              <a href="services.html" class="nav__link" style="padding-left:0;color:var(--primary);font-weight:600">Managed services →</a>
             </div>
           </div>
         </div>
@@ -101,15 +105,15 @@ const FOOTER_HTML = `
       <p>Unified security operations for the modern threat landscape. Detect, investigate and respond — all from a single pane of glass.</p>
     </div>
     <div class="footer__col">
-      <h5>XDR · Security ops</h5>
-      <a href="platform.html#ingest">Data ingestion</a>
-      <a href="platform.html#detect">Detection engine</a>
-      <a href="platform.html#correlate">XDR correlation</a>
+      <h5>Security</h5>
+      <a href="soc.html">VultSight SOC</a>
+      <a href="platform.html">VultSight XDR</a>
       <a href="zero-day.html">Zero-day defence</a>
+      <a href="platform.html#detect">Detection engine</a>
       <a href="platform.html#soar">SOAR &amp; cases</a>
     </div>
     <div class="footer__col">
-      <h5>NOC · Network ops</h5>
+      <h5>Network · NOC</h5>
       <a href="noc.html#monitor">Monitoring</a>
       <a href="noc.html#topology">Network topology</a>
       <a href="noc.html#sla">SLA &amp; thresholds</a>
