@@ -573,6 +573,138 @@
   <div class="pg">05 · SOAR Playbook Orchestration</div>
 </section>
 
+<!-- ══════════ SOC · CASES & ITSM ══════════ -->
+<section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="../assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav on"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">Cases &amp; ITSM</div><div class="sub">Native ticketing · SLA tracking · auto-escalation</div></div>
+      <span class="b crit" style="margin-left:auto">2 SLA breach</span><span class="b high">5 due soon</span>
+      <div class="search" style="width:150px">⌕ Filter cases…</div>
+    </div>
+    <div class="content row">
+      <div class="card" style="flex:1.4;display:flex;flex-direction:column">
+        <div class="ct">Open Cases &amp; Tickets <span class="more">SLA-tracked</span></div>
+        <table>
+          <thead><tr><th>ID</th><th>Title</th><th>Sev</th><th>Status</th><th>Owner</th><th>SLA</th></tr></thead>
+          <tbody>
+            <tr><td class="s mono">CASE-…014</td><td class="s">Multi-stage intrusion · WS-042</td><td><span class="b crit">Crit</span></td><td>Investigating</td><td>J.Okafor</td><td style="color:#fda4b4">−12m</td></tr>
+            <tr><td class="s mono">CASE-…013</td><td class="s">Phishing wave · finance</td><td><span class="b high">High</span></td><td>Containing</td><td>A.Mensah</td><td style="color:#fcd34d">38m</td></tr>
+            <tr><td class="s mono">CASE-…011</td><td class="s">Impossible travel · j.okafor</td><td><span class="b high">High</span></td><td>Triaging</td><td>Unassigned</td><td style="color:#fda4b4">−4m</td></tr>
+            <tr><td class="s mono">CASE-…009</td><td class="s">Brute force · VPN gateway</td><td><span class="b med">Med</span></td><td>Open</td><td>R.Silva</td><td>2h</td></tr>
+            <tr><td class="s mono">CASE-…007</td><td class="s">S3 policy change · logs</td><td><span class="b low">Low</span></td><td>Verified</td><td>A.Mensah</td><td style="color:#6ee7b7">Met</td></tr>
+            <tr><td class="s mono">CASE-…006</td><td class="s">DNS tunneling · 10.0.2.7</td><td><span class="b med">Med</span></td><td>Investigating</td><td>J.Okafor</td><td>1h 20m</td></tr>
+            <tr><td class="s mono">CASE-…004</td><td class="s">Service account anomaly</td><td><span class="b low">Low</span></td><td>Resolved</td><td>R.Silva</td><td style="color:#6ee7b7">Met</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:auto;display:flex;gap:10px;font-size:10px;color:var(--faint);padding-top:8px"><span class="b ghost">18 open</span><span class="b crit">2 breached</span><span style="margin-left:auto">Auto-escalation L1 → L2 → L3</span></div>
+      </div>
+      <div class="card" style="flex:1;display:flex;flex-direction:column">
+        <div class="ct">CASE-20260617-014 <span class="more">Critical</span></div>
+        <div style="display:flex;gap:7px;margin-bottom:12px"><span class="b crit">● Investigating</span><span class="b ghost">L3 · J. Okafor</span></div>
+        <div class="ct">SLA · resolution</div>
+        <div class="hbar" style="margin-bottom:4px"><i style="width:100%;background:var(--crit)"></i></div>
+        <div style="font-size:10.5px;color:#fda4b4;margin-bottom:12px">Breached by 12m · escalated to L3</div>
+        <div class="ct">Tasks</div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-size:11.5px">
+          <div class="feed"><span class="ck" style="color:#34d399;font-weight:800">✓</span>Isolate WS-042<span class="t">done</span></div>
+          <div class="feed"><span class="ck" style="color:#34d399;font-weight:800">✓</span>Block C2 · 185.x<span class="t">done</span></div>
+          <div class="feed"><span class="sevdot sd-high"></span>Revoke j.okafor tokens<span class="t">in progress</span></div>
+          <div class="feed" style="opacity:.6"><span class="sevdot sd-info"></span>Forensic image<span class="t">queued</span></div>
+        </div>
+        <div class="ct">Timeline</div>
+        <div class="feed" style="margin-top:auto"><span class="sevdot sd-crit"></span>Linked from INC-…0007<span class="t">31m</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">Cases &amp; ITSM</div>
+</section>
+
+<!-- ══════════ XDR · THREAT HUNTING ══════════ -->
+<section class="screen">
+  <div class="grid-tex"></div>
+  <aside class="sidebar">
+    <div class="brand"><img src="../assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
+    <div class="nav-sec">Operate</div>
+    <div class="nav"><span class="ic">▦</span> Command Center</div>
+    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
+    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
+    <div class="nav"><span class="ic">⌕</span> Investigation</div>
+    <div class="nav on"><span class="ic">⊹</span> Threat Hunting</div>
+    <div class="nav-sec">Analyze</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
+    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
+    <div class="nav-sec">Respond</div>
+    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
+    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><div class="scrh1">Threat Hunting</div><div class="sub">Hypothesis-driven · retroactive IOC sweeps</div></div>
+      <span class="b low" style="margin-left:auto">3 running</span>
+      <div class="search" style="width:160px">⌕ Hunt query…</div>
+    </div>
+    <div class="content row">
+      <div class="card" style="flex:1;display:flex;flex-direction:column">
+        <div class="ct">Hunts</div>
+        <table>
+          <thead><tr><th>Hunt</th><th>Type</th><th>Status</th><th>Hits</th></tr></thead>
+          <tbody>
+            <tr><td class="s">LOLBin execution</td><td>TTP</td><td><span class="b low">Running</span></td><td class="s">7</td></tr>
+            <tr><td class="s">CISA KEV · CVE-2026-… </td><td>IOC</td><td><span class="b low">Running</span></td><td class="s">2</td></tr>
+            <tr><td class="s">DNS tunneling entropy</td><td>Stat</td><td><span class="b low">Running</span></td><td class="s">0</td></tr>
+            <tr><td class="s">Impossible travel · 90d</td><td>Rule</td><td><span class="b ghost">Done</span></td><td class="s">4</td></tr>
+            <tr><td class="s">C2 beacon periodicity</td><td>TTP</td><td><span class="b ghost">Scheduled</span></td><td class="s">—</td></tr>
+            <tr><td class="s">Sigma · new persistence</td><td>Sigma</td><td><span class="b ghost">Done</span></td><td class="s">1</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:auto;font-size:10px;color:var(--faint);padding-top:8px">Retroactive sweep across 90 days of events</div>
+      </div>
+      <div class="card" style="flex:1.4;display:flex;flex-direction:column">
+        <div class="ct">Active hunt · LOLBin execution <span class="more">MITRE T1218</span></div>
+        <div style="background:rgba(99,102,241,.1);border:1px solid var(--dark-bd);border-radius:9px;padding:10px;font-size:11px;color:#cdd6ea;margin-bottom:12px">
+          <b style="color:#fff">Hypothesis.</b> Adversary is living off the land — abusing signed Windows binaries (rundll32, mshta, regsvr32) to execute payloads and evade signatures.
+        </div>
+        <div class="ct">IOCs / patterns swept</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+          <span class="b ghost mono">rundll32.exe</span><span class="b ghost mono">mshta.exe</span><span class="b ghost mono">regsvr32 /s /u</span><span class="b ghost mono">certutil -urlcache</span>
+        </div>
+        <div class="ct">Matches · 7</div>
+        <div style="flex:1;min-height:0">
+          <table>
+            <thead><tr><th>Time</th><th>Host</th><th>Signal</th><th>User</th></tr></thead>
+            <tbody>
+              <tr><td>09:41</td><td class="s mono">WS-042</td><td>rundll32 → payload.dll</td><td>j.okafor</td></tr>
+              <tr><td>10:12</td><td class="s mono">WS-118</td><td>mshta http://185.x</td><td>a.mensah</td></tr>
+              <tr><td>10:26</td><td class="s mono">SRV-09</td><td>regsvr32 /s /u scrobj</td><td>svc-app</td></tr>
+              <tr><td>11:03</td><td class="s mono">WS-051</td><td>certutil -urlcache</td><td>r.silva</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:auto;display:flex;gap:6px;padding-top:8px"><span class="b low">▶ Promote to detection rule</span><span class="b ghost">Open in Investigation</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">Threat Hunting</div>
+</section>
+
 <!-- ══════════ 6 · NOC WALLBOARD ══════════ -->
 <section class="screen">
   <div class="grid-tex"></div>

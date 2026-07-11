@@ -3,7 +3,10 @@
  * Generate the public web product tours from the same source as the PDF
  * (product-tour.html). One source of truth for the console screens.
  *
- *   node _pdf/build-web.mjs   ->  ../product-tour-soc.html, ../product-tour-noc.html
+ *   node _pdf/build-web.mjs
+ *     -> ../product-tour-soc.html  (SOC product)
+ *     -> ../product-tour-xdr.html  (XDR product)
+ *     -> ../product-tour-noc.html  (NOC product)
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -14,21 +17,32 @@ const src = readFileSync(join(dir, 'product-tour.html'), 'utf8');
 
 const consoleCss = src.match(/<style>([\s\S]*?)<\/style>/)[1];
 const allScreens = [...src.matchAll(/<section class="screen[^"]*">[\s\S]*?<\/section>/g)].map((m) => m[0]);
-// allScreens[0] = cover, last = closing → keep the console screens between them.
-const consoleScreens = allScreens.slice(1, -1).map((s) =>
+// allScreens[0] = cover, last = closing. Console screens (0-indexed after cover):
+//  0 SOC Command Center · 1 Investigation · 2 Alerts · 3 UEBA · 4 SOAR
+//  5 Cases & ITSM · 6 Threat Hunting · 7 NOC Wallboard · 8 Device · 9 Topology · 10 SLA
+const screens = allScreens.slice(1, -1).map((s) =>
   s.replace(/\.\.\/assets\//g, 'assets/')
    .replace(/<h1>/g, '<div class="scrh1">')
    .replace(/<\/h1>/g, '</div>')
 );
-const socScreens = consoleScreens.slice(0, 5);
-const nocScreens = consoleScreens.slice(5);
+const pick = (idx) => idx.map((i) => screens[i]);
+
+const TOURS = [
+  { file: 'product-tour-soc.html', domain: 'SOC', label: 'SOC' },
+  { file: 'product-tour-xdr.html', domain: 'XDR', label: 'XDR' },
+  { file: 'product-tour-noc.html', domain: 'NOC', label: 'NOC' },
+];
 
 const socCaps = [
   ['01', 'SOC Command Center', 'The whole security estate in real time.', ['Live KPIs', 'MITRE heatmap', 'Threat feed']],
-  ['02', 'Investigation Workbench', 'Related signals correlated into one incident, with an AI-written attack story.', ['Entity graph', 'Kill chain', 'AI assistant']],
-  ['03', 'Alert Queue + AI Triage', 'Every alert auto-triaged — false positives close themselves.', ['TP / FP verdicts', 'MITRE mapping', 'Auto-close']],
-  ['04', 'UEBA & Risk Scoring', 'Behavioural baselines and a 0–100 risk score that catch what rules miss.', ['Entity risk', 'Baselines', 'Anomalies']],
-  ['05', 'SOAR Playbooks', 'Drag-and-drop response orchestration with approval gates.', ['Visual flows', 'Approval gates', 'Execution log']],
+  ['02', 'Alert Queue + AI Triage', 'Every alert auto-triaged — false positives close themselves.', ['TP / FP verdicts', 'MITRE mapping', 'Auto-close']],
+  ['03', 'Cases & ITSM', 'Native ticketing with SLA tracking and auto-escalation.', ['Case lifecycle', 'SLA tracking', 'Auto-escalation']],
+  ['04', 'SOAR Playbooks', 'Drag-and-drop response orchestration with approval gates.', ['Visual flows', 'Approval gates', 'Execution log']],
+];
+const xdrCaps = [
+  ['01', 'Investigation Workbench', 'Related signals correlated into one incident, with an AI-written attack story.', ['Entity graph', 'Kill chain', 'AI assistant']],
+  ['02', 'UEBA & Risk Scoring', 'Behavioural baselines and a 0–100 risk score that catch what rules miss.', ['Entity risk', 'Baselines', 'Anomalies']],
+  ['03', 'Threat Hunting', 'Hypothesis-driven, retroactive IOC sweeps across history.', ['IOC sweeps', 'TTP hunts', 'Promote to rule']],
 ];
 const nocCaps = [
   ['01', 'NOC Command Center', 'Device and service health, SLA tracking and a live wallboard.', ['Device grid', 'SLA tracking', 'NOC alerts']],
@@ -49,7 +63,6 @@ const galleryCss = `
   .topnav .lk{display:flex;gap:18px;margin-left:14px}
   .topnav a.n{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500}
   .topnav a.n:hover{color:#fff}
-  .topnav a.n.sib{color:var(--gold)}
   .topnav .cta{margin-left:auto;display:flex;gap:10px}
   .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 16px;text-decoration:none;border:1px solid transparent}
   .btn.p{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
@@ -59,10 +72,11 @@ const galleryCss = `
   .tour-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1.05;
     background:linear-gradient(120deg,#fff 30%,var(--primary-l) 70%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .tour-hero p{color:var(--muted);font-size:17px;margin-top:16px}
-  .tour-switch{display:flex;gap:8px;justify-content:center;margin-top:22px}
-  .tour-switch a{font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;border:1px solid var(--border2)}
-  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff;border-color:transparent}
+  .tour-switch{display:inline-flex;gap:6px;margin-top:22px;padding:5px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+  .tour-switch a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px}
+  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
   .tour-switch a.off{color:var(--muted)}
+  .tour-switch a.off:hover{color:#fff}
   .tour-about{max-width:860px;margin:0 auto;padding:6px 24px 8px}
   .tour-about .box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
   .tour-about h2{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:9px}
@@ -93,8 +107,8 @@ const galleryCss = `
   @media (max-width:760px){.topnav .lk{display:none}.tour-list{gap:40px}}
 `;
 
-function buildPage({ file, domain, otherFile, otherLabel, title, desc, eyebrow, h1, sub, about, screens, caps, footH2, footP }) {
-  const items = screens.map((s, i) => {
+function buildPage({ file, domain, title, desc, eyebrow, h1, sub, about, screens: scr, caps, footH2, footP }) {
+  const items = scr.map((s, i) => {
     const [n, t, d, tags] = caps[i];
     const tagHtml = tags.map((x) => `<span class="tour-tag">${x}</span>`).join('');
     return `      <div class="tour-item">
@@ -108,6 +122,10 @@ function buildPage({ file, domain, otherFile, otherLabel, title, desc, eyebrow, 
         </div>
       </div>`;
   }).join('\n');
+
+  const switchHtml = TOURS.map((tt) =>
+    `<a class="${tt.file === file ? 'on' : 'off'}" href="${tt.file}">${tt.label}</a>`).join('');
+  const productHref = domain === 'SOC' ? 'soc.html' : domain === 'XDR' ? 'platform.html' : 'noc.html';
 
   const out = `<!DOCTYPE html>
 <html lang="en">
@@ -139,10 +157,10 @@ function buildPage({ file, domain, otherFile, otherLabel, title, desc, eyebrow, 
 <nav class="topnav">
   <a href="index.html" class="lg"><img src="assets/vultsight-mark.svg" alt="" />Vult<i>Sight</i></a>
   <span class="lk">
-    <a href="platform.html" class="n">Platform</a>
+    <a href="soc.html" class="n">SOC</a>
+    <a href="platform.html" class="n">XDR</a>
     <a href="noc.html" class="n">NOC</a>
     <a href="services.html" class="n">Services</a>
-    <a href="${otherFile}" class="n sib">${otherLabel} →</a>
   </span>
   <span class="cta"><a href="index.html" class="btn o">← Back to site</a><a href="contact.html" class="btn p">Talk to us</a></span>
 </nav>
@@ -151,10 +169,7 @@ function buildPage({ file, domain, otherFile, otherLabel, title, desc, eyebrow, 
   <span class="eb">${eyebrow}</span>
   <h1>${h1}</h1>
   <p>${sub}</p>
-  <div class="tour-switch">
-    <a class="on" href="${file}">${domain} console</a>
-    <a class="off" href="${otherFile}">${otherLabel.replace(' console tour', '')} console</a>
-  </div>
+  <div class="tour-switch">${switchHtml}</div>
 </header>
 
 <section class="tour-about">
@@ -173,7 +188,7 @@ ${items}
   <p>${footP}</p>
   <div class="row">
     <a href="contact.html" class="btn p">Talk to us</a>
-    <a href="${otherFile}" class="btn o">${otherLabel} →</a>
+    <a href="${productHref}" class="btn o">Explore VultSight ${domain}</a>
   </div>
 </footer>
 
@@ -198,29 +213,42 @@ ${items}
 }
 
 buildPage({
-  file: 'product-tour-soc.html', domain: 'SOC', otherFile: 'product-tour-noc.html', otherLabel: 'NOC console tour',
+  file: 'product-tour-soc.html', domain: 'SOC',
   title: 'SOC Console Tour — VultSight',
-  desc: 'A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks.',
-  eyebrow: 'Product Tour · Security Operations',
+  desc: 'A guided, in-browser tour of the VultSight SOC console: command center, alert triage, cases & ITSM and SOAR playbooks.',
+  eyebrow: 'Product Tour · SOC',
   h1: 'See the SOC console',
-  sub: 'How security operations come together in one pane of glass — from the Command Center to automated response.',
-  about: 'VultSight unifies <b>SIEM, SOAR, threat intel, UEBA and XDR</b> for the SOC. The five screens below follow a real workflow: <b>see, investigate, triage, understand, respond.</b>',
-  screens: socScreens, caps: socCaps,
-  footH2: 'See it live on your environment',
-  footP: "We'll connect your sources and show detection, investigation and response on your own data — or run it for you.",
+  sub: 'Entry-level security operations — detect, triage, ticket and respond, all in one console.',
+  about: 'VultSight SOC is entry security — <b>SIEM detection, alerting, cases with native ITSM, SOAR and threat intel</b>. The four screens below follow the workflow: <b>see, triage, manage, respond.</b>',
+  screens: pick([0, 2, 5, 4]), caps: socCaps,
+  footH2: 'Stand up your SOC on one platform',
+  footP: "Detection, alerting, cases and response — owned by you, or run by our team.",
 });
 
 buildPage({
-  file: 'product-tour-noc.html', domain: 'NOC', otherFile: 'product-tour-soc.html', otherLabel: 'SOC console tour',
-  title: 'NOC Console Tour — VultSight',
-  desc: 'A guided, in-browser tour of the VultSight NOC console: command center, device monitoring, network topology and SLA tracking.',
-  eyebrow: 'Product Tour · Network Operations',
-  h1: 'See the NOC console',
-  sub: 'How network operations run beside your SOC — monitoring every device and service from the same console.',
-  about: 'VultSight runs network operations in the same console — monitoring every device and service via <b>SNMP, ICMP and HTTP</b>. The four screens below: <b>command, monitor, map, measure.</b>',
-  screens: nocScreens, caps: nocCaps,
-  footH2: 'Run SOC and NOC from one console',
-  footP: "See VultSight monitor your infrastructure and defend it from the same pane of glass — owned by you, or run by our team.",
+  file: 'product-tour-xdr.html', domain: 'XDR',
+  title: 'XDR Console Tour — VultSight',
+  desc: 'A guided, in-browser tour of the VultSight XDR console: investigation workbench, UEBA and threat hunting.',
+  eyebrow: 'Product Tour · XDR',
+  h1: 'See the XDR console',
+  sub: 'Premium security — everything in SOC, plus correlation, behaviour analytics and hunting.',
+  about: 'VultSight XDR <b>includes everything in SOC</b> and adds the analyst-grade layer: <b>cross-domain incident correlation, UEBA and threat hunting</b>. The three screens below show that layer.',
+  screens: pick([1, 3, 6]), caps: xdrCaps,
+  footH2: 'Go beyond alerts with XDR',
+  footP: "Correlate signals into incidents, score behaviour and hunt what rules miss.",
 });
 
-console.log('✓ Generated product-tour-soc.html (' + socScreens.length + ') and product-tour-noc.html (' + nocScreens.length + ')');
+buildPage({
+  file: 'product-tour-noc.html', domain: 'NOC',
+  title: 'NOC Console Tour — VultSight',
+  desc: 'A guided, in-browser tour of the VultSight NOC console: command center, device monitoring, network topology and SLA tracking.',
+  eyebrow: 'Product Tour · NOC',
+  h1: 'See the NOC console',
+  sub: 'Network operations — monitor every device and service beside your SOC.',
+  about: 'VultSight runs network operations in the same console — monitoring every device and service via <b>SNMP, ICMP and HTTP</b>. The four screens below: <b>command, monitor, map, measure.</b>',
+  screens: pick([7, 8, 9, 10]), caps: nocCaps,
+  footH2: 'Run SOC and NOC from one console',
+  footP: "Monitor your infrastructure and defend it from the same pane of glass — owned by you, or run by our team.",
+});
+
+console.log('✓ Generated SOC (4), XDR (3), NOC (4) tours');

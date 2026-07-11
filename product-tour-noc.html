@@ -180,7 +180,6 @@
   .topnav .lk{display:flex;gap:18px;margin-left:14px}
   .topnav a.n{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500}
   .topnav a.n:hover{color:#fff}
-  .topnav a.n.sib{color:var(--gold)}
   .topnav .cta{margin-left:auto;display:flex;gap:10px}
   .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 16px;text-decoration:none;border:1px solid transparent}
   .btn.p{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
@@ -190,10 +189,11 @@
   .tour-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1.05;
     background:linear-gradient(120deg,#fff 30%,var(--primary-l) 70%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .tour-hero p{color:var(--muted);font-size:17px;margin-top:16px}
-  .tour-switch{display:flex;gap:8px;justify-content:center;margin-top:22px}
-  .tour-switch a{font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;border:1px solid var(--border2)}
-  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff;border-color:transparent}
+  .tour-switch{display:inline-flex;gap:6px;margin-top:22px;padding:5px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+  .tour-switch a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px}
+  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
   .tour-switch a.off{color:var(--muted)}
+  .tour-switch a.off:hover{color:#fff}
   .tour-about{max-width:860px;margin:0 auto;padding:6px 24px 8px}
   .tour-about .box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
   .tour-about h2{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:9px}
@@ -228,22 +228,19 @@
 <nav class="topnav">
   <a href="index.html" class="lg"><img src="assets/vultsight-mark.svg" alt="" />Vult<i>Sight</i></a>
   <span class="lk">
-    <a href="platform.html" class="n">Platform</a>
+    <a href="soc.html" class="n">SOC</a>
+    <a href="platform.html" class="n">XDR</a>
     <a href="noc.html" class="n">NOC</a>
     <a href="services.html" class="n">Services</a>
-    <a href="product-tour-soc.html" class="n sib">SOC console tour →</a>
   </span>
   <span class="cta"><a href="index.html" class="btn o">← Back to site</a><a href="contact.html" class="btn p">Talk to us</a></span>
 </nav>
 
 <header class="tour-hero">
-  <span class="eb">Product Tour · Network Operations</span>
+  <span class="eb">Product Tour · NOC</span>
   <h1>See the NOC console</h1>
-  <p>How network operations run beside your SOC — monitoring every device and service from the same console.</p>
-  <div class="tour-switch">
-    <a class="on" href="product-tour-noc.html">NOC console</a>
-    <a class="off" href="product-tour-soc.html">SOC console</a>
-  </div>
+  <p>Network operations — monitor every device and service beside your SOC.</p>
+  <div class="tour-switch"><a class="off" href="product-tour-soc.html">SOC</a><a class="off" href="product-tour-xdr.html">XDR</a><a class="on" href="product-tour-noc.html">NOC</a></div>
 </header>
 
 <section class="tour-about">
@@ -576,10 +573,10 @@
 
 <footer class="tourfoot">
   <h2>Run SOC and NOC from one console</h2>
-  <p>See VultSight monitor your infrastructure and defend it from the same pane of glass — owned by you, or run by our team.</p>
+  <p>Monitor your infrastructure and defend it from the same pane of glass — owned by you, or run by our team.</p>
   <div class="row">
     <a href="contact.html" class="btn p">Talk to us</a>
-    <a href="product-tour-soc.html" class="btn o">SOC console tour →</a>
+    <a href="noc.html" class="btn o">Explore VultSight NOC</a>
   </div>
 </footer>
 

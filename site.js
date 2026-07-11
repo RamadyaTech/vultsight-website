@@ -132,8 +132,8 @@ const FOOTER_HTML = `
       <h5>Resources</h5>
       <a href="resources.html">Resource hub</a>
       <a href="product-tour-soc.html">SOC console tour</a>
+      <a href="product-tour-xdr.html">XDR console tour</a>
       <a href="product-tour-noc.html">NOC console tour</a>
-      <a href="resource.html">SIEM vs XDR guide</a>
     </div>
     <div class="footer__col">
       <h5>Company</h5>

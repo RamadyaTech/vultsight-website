@@ -4,19 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SOC Console Tour — VultSight</title>
-<meta name="description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<meta name="description" content="A guided, in-browser tour of the VultSight SOC console: command center, alert triage, cases & ITSM and SOAR playbooks." />
 <link rel="canonical" href="https://www.vultsight.com/product-tour-soc.html" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#0b1020" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="VultSight" />
 <meta property="og:title" content="SOC Console Tour — VultSight" />
-<meta property="og:description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<meta property="og:description" content="A guided, in-browser tour of the VultSight SOC console: command center, alert triage, cases & ITSM and SOAR playbooks." />
 <meta property="og:url" content="https://www.vultsight.com/product-tour-soc.html" />
 <meta property="og:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SOC Console Tour — VultSight" />
-<meta name="twitter:description" content="A guided, in-browser tour of the VultSight SOC console: Command Center, investigation, AI triage, UEBA and SOAR playbooks." />
+<meta name="twitter:description" content="A guided, in-browser tour of the VultSight SOC console: command center, alert triage, cases & ITSM and SOAR playbooks." />
 <meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -180,7 +180,6 @@
   .topnav .lk{display:flex;gap:18px;margin-left:14px}
   .topnav a.n{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500}
   .topnav a.n:hover{color:#fff}
-  .topnav a.n.sib{color:var(--gold)}
   .topnav .cta{margin-left:auto;display:flex;gap:10px}
   .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13.5px;border-radius:9px;padding:9px 16px;text-decoration:none;border:1px solid transparent}
   .btn.p{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
@@ -190,10 +189,11 @@
   .tour-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1.05;
     background:linear-gradient(120deg,#fff 30%,var(--primary-l) 70%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .tour-hero p{color:var(--muted);font-size:17px;margin-top:16px}
-  .tour-switch{display:flex;gap:8px;justify-content:center;margin-top:22px}
-  .tour-switch a{font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;border:1px solid var(--border2)}
-  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff;border-color:transparent}
+  .tour-switch{display:inline-flex;gap:6px;margin-top:22px;padding:5px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+  .tour-switch a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 18px;border-radius:999px}
+  .tour-switch a.on{background:linear-gradient(120deg,var(--primary),var(--accent));color:#fff}
   .tour-switch a.off{color:var(--muted)}
+  .tour-switch a.off:hover{color:#fff}
   .tour-about{max-width:860px;margin:0 auto;padding:6px 24px 8px}
   .tour-about .box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px}
   .tour-about h2{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:9px}
@@ -228,28 +228,25 @@
 <nav class="topnav">
   <a href="index.html" class="lg"><img src="assets/vultsight-mark.svg" alt="" />Vult<i>Sight</i></a>
   <span class="lk">
-    <a href="platform.html" class="n">Platform</a>
+    <a href="soc.html" class="n">SOC</a>
+    <a href="platform.html" class="n">XDR</a>
     <a href="noc.html" class="n">NOC</a>
     <a href="services.html" class="n">Services</a>
-    <a href="product-tour-noc.html" class="n sib">NOC console tour →</a>
   </span>
   <span class="cta"><a href="index.html" class="btn o">← Back to site</a><a href="contact.html" class="btn p">Talk to us</a></span>
 </nav>
 
 <header class="tour-hero">
-  <span class="eb">Product Tour · Security Operations</span>
+  <span class="eb">Product Tour · SOC</span>
   <h1>See the SOC console</h1>
-  <p>How security operations come together in one pane of glass — from the Command Center to automated response.</p>
-  <div class="tour-switch">
-    <a class="on" href="product-tour-soc.html">SOC console</a>
-    <a class="off" href="product-tour-noc.html">NOC console</a>
-  </div>
+  <p>Entry-level security operations — detect, triage, ticket and respond, all in one console.</p>
+  <div class="tour-switch"><a class="on" href="product-tour-soc.html">SOC</a><a class="off" href="product-tour-xdr.html">XDR</a><a class="off" href="product-tour-noc.html">NOC</a></div>
 </header>
 
 <section class="tour-about">
   <div class="box">
     <h2><img src="assets/vultsight-mark.svg" alt="" /> About this tour</h2>
-    <p>VultSight unifies <b>SIEM, SOAR, threat intel, UEBA and XDR</b> for the SOC. The five screens below follow a real workflow: <b>see, investigate, triage, understand, respond.</b></p>
+    <p>VultSight SOC is entry security — <b>SIEM detection, alerting, cases with native ITSM, SOAR and threat intel</b>. The four screens below follow the workflow: <b>see, triage, manage, respond.</b></p>
   </div>
 </section>
 
@@ -370,93 +367,6 @@
       <div class="tour-item">
         <div class="tour-cap">
           <span class="tour-num">02</span>
-          <div><h2>Investigation Workbench</h2><p>Related signals correlated into one incident, with an AI-written attack story.</p><div class="tour-tags"><span class="tour-tag">Entity graph</span><span class="tour-tag">Kill chain</span><span class="tour-tag">AI assistant</span></div></div>
-        </div>
-        <div class="tour-frame">
-          <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
-          <div class="tour-canvas"><section class="screen">
-  <div class="grid-tex"></div>
-  <aside class="sidebar">
-    <div class="brand"><img src="assets/vultsight-mark.svg" alt=""/><b>Vult<i>Sight</i></b></div>
-    <div class="nav-sec">Operate</div>
-    <div class="nav"><span class="ic">▦</span> Command Center</div>
-    <div class="nav"><span class="ic">◈</span> Alerts <span class="pill">14</span></div>
-    <div class="nav"><span class="ic">⬡</span> Incidents <span class="pill">9</span></div>
-    <div class="nav on"><span class="ic">⌕</span> Investigation</div>
-    <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
-    <div class="nav-sec">Analyze</div>
-    <div class="nav"><span class="ic">▤</span> UEBA</div>
-    <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
-    <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
-    <div class="nav-sec">Respond</div>
-    <div class="nav"><span class="ic">⚙</span> Playbooks</div>
-    <div class="nav"><span class="ic">▣</span> Cases</div>
-    <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
-  </aside>
-  <div class="main">
-    <div class="topbar"><div><div class="scrh1">INC-20260617-0007 · Multi-stage intrusion</div><div class="sub">Investigation Workbench · 6 correlated alerts</div></div>
-      <span class="b crit" style="margin-left:auto">Critical</span><span class="b ghost">Containing</span>
-    </div>
-    <div class="content">
-      <div class="card" style="padding:10px 14px">
-        <div class="kchain">
-          <div class="k hot">Initial Access</div><div class="k hot">Execution</div><div class="k on">Persistence</div><div class="k on">Priv. Esc</div>
-          <div class="k hot">Cred. Access</div><div class="k">Discovery</div><div class="k on">Lateral Move</div><div class="k">Collection</div><div class="k hot">C2</div><div class="k">Exfiltration</div>
-        </div>
-      </div>
-      <div class="row" style="flex:1;min-height:0">
-        <!-- left: alerts + timeline -->
-        <div class="card" style="flex:1;display:flex;flex-direction:column">
-          <div class="ct">Correlated Alerts &amp; Timeline</div>
-          <div style="display:flex;flex-direction:column;gap:7px;overflow:hidden">
-            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-crit" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Suspicious PowerShell</div><div style="font-size:10px">WS-042 · T1059.001</div></div><span class="t">09:41</span></div>
-            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-high" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Credential dumping</div><div style="font-size:10px">LSASS access · T1003</div></div><span class="t">09:43</span></div>
-            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-crit" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">C2 Beaconing</div><div style="font-size:10px">10.0.1.42 → 185.x · T1071</div></div><span class="t">09:48</span></div>
-            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-high" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">SMB lateral movement</div><div style="font-size:10px">→ 3 hosts · T1021.002</div></div><span class="t">09:55</span></div>
-            <div class="feed" style="align-items:flex-start"><span class="sevdot sd-med" style="margin-top:3px"></span><div><div style="color:var(--ink);font-weight:600;font-size:11px">Impossible travel</div><div style="font-size:10px">j.okafor · IN→NL</div></div><span class="t">10:02</span></div>
-          </div>
-        </div>
-        <!-- center: entity graph -->
-        <div class="card" style="flex:1.3;display:flex;flex-direction:column">
-          <div class="ct">Entity Graph <span class="more">3-hop · 7 entities</span></div>
-          <svg viewBox="0 0 360 250" style="flex:1;width:100%">
-            <line x1="180" y1="40" x2="90" y2="120" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
-            <line x1="180" y1="40" x2="270" y2="120" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
-            <line x1="90" y1="120" x2="60" y2="205" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
-            <line x1="90" y1="120" x2="160" y2="205" stroke="rgba(246,81,107,.6)" stroke-width="2"/>
-            <line x1="270" y1="120" x2="230" y2="205" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
-            <line x1="270" y1="120" x2="310" y2="200" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/>
-            <g font-family="Inter" font-size="9" fill="#cbd5e8" text-anchor="middle">
-              <circle cx="180" cy="40" r="20" fill="rgba(246,81,107,.25)" stroke="var(--crit)" stroke-width="2"/><text x="180" y="43">WS-042</text>
-              <circle cx="90" cy="120" r="17" fill="rgba(99,102,241,.25)" stroke="var(--primary-l)" stroke-width="1.5"/><text x="90" y="123">j.okafor</text>
-              <circle cx="270" cy="120" r="17" fill="rgba(6,182,212,.22)" stroke="var(--accent)" stroke-width="1.5"/><text x="270" y="123">10.0.1.42</text>
-              <circle cx="60" cy="205" r="14" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="60" y="208">DC-01</text>
-              <circle cx="160" cy="205" r="15" fill="rgba(246,81,107,.2)" stroke="var(--crit)" stroke-width="1.5"/><text x="160" y="208">185.x C2</text>
-              <circle cx="230" cy="205" r="13" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="230" y="208">SRV-09</text>
-              <circle cx="310" cy="200" r="13" fill="rgba(99,102,241,.18)" stroke="var(--border2)" stroke-width="1.5"/><text x="310" y="203">mimi.exe</text>
-            </g>
-          </svg>
-          <div style="font-size:9.5px;color:var(--faint)">●&nbsp;host&nbsp;&nbsp;●&nbsp;user&nbsp;&nbsp;●&nbsp;ip&nbsp;&nbsp;<span style="color:#fda4b4">●&nbsp;malicious</span></div>
-        </div>
-        <!-- right: AI assistant -->
-        <div class="card" style="flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(99,102,241,.1),var(--surface))">
-          <div class="ct">✨ AI Investigation Assistant</div>
-          <div style="font-size:10.5px;color:var(--muted);line-height:1.5;flex:1">
-            <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:9px;padding:9px;margin-bottom:8px"><b style="color:var(--ink)">Attack story.</b> An attacker gained execution on <b style="color:var(--ink)">WS-042</b> via malicious PowerShell, dumped credentials (LSASS), then used <b style="color:var(--ink)">j.okafor</b>'s creds to move laterally over SMB to 3 hosts while beaconing to <b style="color:var(--ink)">185.x</b>.</div>
-            <div style="background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:9px;padding:9px"><b style="color:#6ee7b7">Recommended.</b> Isolate WS-042, revoke j.okafor tokens, block 185.x at the firewall.</div>
-          </div>
-          <div style="margin-top:8px;display:flex;gap:6px"><span class="b low">▶ Run playbook</span><span class="b ghost">Ask follow-up…</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="pg">02 · Investigation Workbench</div>
-</section></div>
-        </div>
-      </div>
-      <div class="tour-item">
-        <div class="tour-cap">
-          <span class="tour-num">03</span>
           <div><h2>Alert Queue + AI Triage</h2><p>Every alert auto-triaged — false positives close themselves.</p><div class="tour-tags"><span class="tour-tag">TP / FP verdicts</span><span class="tour-tag">MITRE mapping</span><span class="tour-tag">Auto-close</span></div></div>
         </div>
         <div class="tour-frame">
@@ -515,8 +425,8 @@
       </div>
       <div class="tour-item">
         <div class="tour-cap">
-          <span class="tour-num">04</span>
-          <div><h2>UEBA & Risk Scoring</h2><p>Behavioural baselines and a 0–100 risk score that catch what rules miss.</p><div class="tour-tags"><span class="tour-tag">Entity risk</span><span class="tour-tag">Baselines</span><span class="tour-tag">Anomalies</span></div></div>
+          <span class="tour-num">03</span>
+          <div><h2>Cases & ITSM</h2><p>Native ticketing with SLA tracking and auto-escalation.</p><div class="tour-tags"><span class="tour-tag">Case lifecycle</span><span class="tour-tag">SLA tracking</span><span class="tour-tag">Auto-escalation</span></div></div>
         </div>
         <div class="tour-frame">
           <div class="tour-bar"><i></i><i></i><i></i><span>VultSight Console · SOC</span></div>
@@ -531,73 +441,61 @@
     <div class="nav"><span class="ic">⌕</span> Investigation</div>
     <div class="nav"><span class="ic">⊹</span> Threat Hunting</div>
     <div class="nav-sec">Analyze</div>
-    <div class="nav on"><span class="ic">▤</span> UEBA</div>
+    <div class="nav"><span class="ic">▤</span> UEBA</div>
     <div class="nav"><span class="ic">⊕</span> Threat Intel</div>
     <div class="nav"><span class="ic">◇</span> MITRE ATT&amp;CK</div>
     <div class="nav-sec">Respond</div>
     <div class="nav"><span class="ic">⚙</span> Playbooks</div>
-    <div class="nav"><span class="ic">▣</span> Cases</div>
+    <div class="nav on"><span class="ic">▣</span> Cases</div>
     <div class="side-foot"><span class="av">JO</span><div><div class="nm">J. Okafor</div><div class="rl">SOC Analyst · L3</div></div></div>
   </aside>
   <div class="main">
-    <div class="topbar"><div><div class="scrh1">User &amp; Entity Behavior Analytics</div><div class="sub">Behavioral baselines · anomaly detection</div></div>
-      <div class="live" style="margin-left:auto;color:var(--muted)"><span class="dot" style="background:var(--primary-l);box-shadow:0 0 8px var(--primary-l)"></span>Baselines updated 4m ago</div>
+    <div class="topbar"><div><div class="scrh1">Cases &amp; ITSM</div><div class="sub">Native ticketing · SLA tracking · auto-escalation</div></div>
+      <span class="b crit" style="margin-left:auto">2 SLA breach</span><span class="b high">5 due soon</span>
+      <div class="search" style="width:150px">⌕ Filter cases…</div>
     </div>
-    <div class="content">
-      <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
-        <div class="kpi"><div class="lab">Entities Monitored</div><div class="n">1,284</div><div class="tr">users · hosts · ip · svc</div></div>
-        <div class="kpi crit"><div class="lab">Critical Risk (≥80)</div><div class="n">7</div><div class="tr up">▲ 2 · 24h</div></div>
-        <div class="kpi high"><div class="lab">High Risk (≥60)</div><div class="n">23</div><div class="tr up">▲ 5</div></div>
-        <div class="kpi"><div class="lab">Anomalies · 24h</div><div class="n">48</div><div class="tr dn">▼ 9</div></div>
+    <div class="content row">
+      <div class="card" style="flex:1.4;display:flex;flex-direction:column">
+        <div class="ct">Open Cases &amp; Tickets <span class="more">SLA-tracked</span></div>
+        <table>
+          <thead><tr><th>ID</th><th>Title</th><th>Sev</th><th>Status</th><th>Owner</th><th>SLA</th></tr></thead>
+          <tbody>
+            <tr><td class="s mono">CASE-…014</td><td class="s">Multi-stage intrusion · WS-042</td><td><span class="b crit">Crit</span></td><td>Investigating</td><td>J.Okafor</td><td style="color:#fda4b4">−12m</td></tr>
+            <tr><td class="s mono">CASE-…013</td><td class="s">Phishing wave · finance</td><td><span class="b high">High</span></td><td>Containing</td><td>A.Mensah</td><td style="color:#fcd34d">38m</td></tr>
+            <tr><td class="s mono">CASE-…011</td><td class="s">Impossible travel · j.okafor</td><td><span class="b high">High</span></td><td>Triaging</td><td>Unassigned</td><td style="color:#fda4b4">−4m</td></tr>
+            <tr><td class="s mono">CASE-…009</td><td class="s">Brute force · VPN gateway</td><td><span class="b med">Med</span></td><td>Open</td><td>R.Silva</td><td>2h</td></tr>
+            <tr><td class="s mono">CASE-…007</td><td class="s">S3 policy change · logs</td><td><span class="b low">Low</span></td><td>Verified</td><td>A.Mensah</td><td style="color:#6ee7b7">Met</td></tr>
+            <tr><td class="s mono">CASE-…006</td><td class="s">DNS tunneling · 10.0.2.7</td><td><span class="b med">Med</span></td><td>Investigating</td><td>J.Okafor</td><td>1h 20m</td></tr>
+            <tr><td class="s mono">CASE-…004</td><td class="s">Service account anomaly</td><td><span class="b low">Low</span></td><td>Resolved</td><td>R.Silva</td><td style="color:#6ee7b7">Met</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:auto;display:flex;gap:10px;font-size:10px;color:var(--faint);padding-top:8px"><span class="b ghost">18 open</span><span class="b crit">2 breached</span><span style="margin-left:auto">Auto-escalation L1 → L2 → L3</span></div>
       </div>
-      <div class="row" style="flex:1;min-height:0">
-        <div class="card" style="flex:1.4;display:flex;flex-direction:column">
-          <div class="ct">Top Risk Entities <span class="more">composite risk · 0–100</span></div>
-          <table>
-            <thead><tr><th>Entity</th><th>Type</th><th style="width:150px">Risk</th><th>Trend</th><th>Top driver</th></tr></thead>
-            <tbody>
-              <tr><td class="s mono">WS-042</td><td>Host</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:94%;background:var(--crit)"></i></div><b style="color:#fda4b4">94</b></div></td><td class="up">▲</td><td>Cred. dumping</td></tr>
-              <tr><td class="s mono">j.okafor</td><td>User</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:88%;background:var(--crit)"></i></div><b style="color:#fda4b4">88</b></div></td><td class="up">▲</td><td>Impossible travel</td></tr>
-              <tr><td class="s mono">10.0.1.42</td><td>IP</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:82%;background:var(--high)"></i></div><b style="color:#fcd34d">82</b></div></td><td class="up">▲</td><td>C2 traffic</td></tr>
-              <tr><td class="s mono">svc-backup</td><td>Service</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:67%;background:var(--high)"></i></div><b style="color:#fcd34d">67</b></div></td><td>▬</td><td>Off-hours access</td></tr>
-              <tr><td class="s mono">a.mensah</td><td>User</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:58%;background:var(--med)"></i></div><b style="color:#fde68a">58</b></div></td><td class="dn">▼</td><td>Data volume</td></tr>
-              <tr><td class="s mono">SRV-09</td><td>Host</td><td><div style="display:flex;align-items:center;gap:7px"><div class="hbar" style="flex:1"><i style="width:44%;background:var(--low)"></i></div><b style="color:#6ee7b7">44</b></div></td><td>▬</td><td>New process</td></tr>
-            </tbody>
-          </table>
+      <div class="card" style="flex:1;display:flex;flex-direction:column">
+        <div class="ct">CASE-20260617-014 <span class="more">Critical</span></div>
+        <div style="display:flex;gap:7px;margin-bottom:12px"><span class="b crit">● Investigating</span><span class="b ghost">L3 · J. Okafor</span></div>
+        <div class="ct">SLA · resolution</div>
+        <div class="hbar" style="margin-bottom:4px"><i style="width:100%;background:var(--crit)"></i></div>
+        <div style="font-size:10.5px;color:#fda4b4;margin-bottom:12px">Breached by 12m · escalated to L3</div>
+        <div class="ct">Tasks</div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-size:11.5px">
+          <div class="feed"><span class="ck" style="color:#34d399;font-weight:800">✓</span>Isolate WS-042<span class="t">done</span></div>
+          <div class="feed"><span class="ck" style="color:#34d399;font-weight:800">✓</span>Block C2 · 185.x<span class="t">done</span></div>
+          <div class="feed"><span class="sevdot sd-high"></span>Revoke j.okafor tokens<span class="t">in progress</span></div>
+          <div class="feed" style="opacity:.6"><span class="sevdot sd-info"></span>Forensic image<span class="t">queued</span></div>
         </div>
-        <div class="card" style="flex:.8;display:flex;flex-direction:column;align-items:center">
-          <div class="ct" style="align-self:flex-start">Risk Distribution</div>
-          <div class="donut-wrap" style="margin:6px 0 10px"><div class="donut"></div><div class="donut-c"><b>1,284</b><span>entities</span></div></div>
-          <div style="display:flex;flex-direction:column;gap:5px;width:100%;font-size:10.5px">
-            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-crit"></span>Critical<span style="margin-left:auto;color:var(--ink)">7</span></div>
-            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-high"></span>High<span style="margin-left:auto;color:var(--ink)">23</span></div>
-            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-med"></span>Medium<span style="margin-left:auto;color:var(--ink)">156</span></div>
-            <div style="display:flex;align-items:center;gap:7px"><span class="sevdot sd-low"></span>Low<span style="margin-left:auto;color:var(--ink)">1,098</span></div>
-          </div>
-        </div>
-        <div class="card" style="flex:1;display:flex;flex-direction:column">
-          <div class="ct">Anomaly Trend · 7d</div>
-          <div style="flex:1;min-height:0"><div class="bars">
-            <div class="col"><span style="height:40px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
-            <div class="col"><span style="height:56px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
-            <div class="col"><span style="height:34px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
-            <div class="col"><span style="height:72px;background:linear-gradient(180deg,var(--high),rgba(251,191,36,.2))"></span></div>
-            <div class="col"><span style="height:50px;background:linear-gradient(180deg,var(--primary-l),rgba(99,102,241,.2))"></span></div>
-            <div class="col"><span style="height:90px;background:linear-gradient(180deg,var(--crit),rgba(246,81,107,.2))"></span></div>
-            <div class="col"><span style="height:62px;background:linear-gradient(180deg,var(--high),rgba(251,191,36,.2))"></span></div>
-          </div></div>
-          <div style="font-size:9.5px;color:var(--faint);margin-top:6px">Peer-group baselines · sigma deviation</div>
-        </div>
+        <div class="ct">Timeline</div>
+        <div class="feed" style="margin-top:auto"><span class="sevdot sd-crit"></span>Linked from INC-…0007<span class="t">31m</span></div>
       </div>
     </div>
   </div>
-  <div class="pg">04 · UEBA &amp; Risk Scoring</div>
+  <div class="pg">Cases &amp; ITSM</div>
 </section></div>
         </div>
       </div>
       <div class="tour-item">
         <div class="tour-cap">
-          <span class="tour-num">05</span>
+          <span class="tour-num">04</span>
           <div><h2>SOAR Playbooks</h2><p>Drag-and-drop response orchestration with approval gates.</p><div class="tour-tags"><span class="tour-tag">Visual flows</span><span class="tour-tag">Approval gates</span><span class="tour-tag">Execution log</span></div></div>
         </div>
         <div class="tour-frame">
@@ -689,11 +587,11 @@
 </main>
 
 <footer class="tourfoot">
-  <h2>See it live on your environment</h2>
-  <p>We'll connect your sources and show detection, investigation and response on your own data — or run it for you.</p>
+  <h2>Stand up your SOC on one platform</h2>
+  <p>Detection, alerting, cases and response — owned by you, or run by our team.</p>
   <div class="row">
     <a href="contact.html" class="btn p">Talk to us</a>
-    <a href="product-tour-noc.html" class="btn o">NOC console tour →</a>
+    <a href="soc.html" class="btn o">Explore VultSight SOC</a>
   </div>
 </footer>
 
