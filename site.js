@@ -50,12 +50,20 @@ const HEADER_HTML = `
                 <p>Monitor every device and service — topology, SLA and a live wallboard.</p>
                 <span class="mprod__link">Explore NOC →</span>
               </a>
+              <a href="scope.html" class="mprod scope">
+                <span class="mprod__top"></span>
+                <div class="mprod__row"><span class="chip">SCOPE</span><span class="mprod__badge">Vulnerability</span></div>
+                <strong>VultSight Scope</strong>
+                <p>Scan, unify and risk-rank every exposure — tracked through to retest.</p>
+                <span class="mprod__link">Explore Scope →</span>
+              </a>
             </div>
             <div class="mega-links">
               <span class="mega-links__label">Explore</span>
               <a href="platform.html#ingest">Data ingestion</a>
               <a href="platform.html#detect">Detection engine</a>
               <a href="zero-day.html">Zero-day defence</a>
+              <a href="scope.html#risk">Vulnerability scanning</a>
               <a href="platform.html#correlate">XDR correlation</a>
               <a href="platform.html#ueba">UEBA</a>
               <a href="platform.html#soar">SOAR &amp; ITSM</a>
@@ -85,6 +93,7 @@ const HEADER_HTML = `
   <a href="soc.html">VultSight SOC</a>
   <a href="platform.html">VultSight XDR</a>
   <a href="noc.html">VultSight NOC</a>
+  <a href="scope.html">VultSight Scope</a>
   <a href="zero-day.html">Zero-Day Defence</a>
   <a href="services.html">Managed Services</a>
   <a href="solutions.html">Solutions</a>
@@ -107,6 +116,7 @@ const FOOTER_HTML = `
       <h5>Security</h5>
       <a href="soc.html">VultSight SOC</a>
       <a href="platform.html">VultSight XDR</a>
+      <a href="scope.html">VultSight Scope</a>
       <a href="zero-day.html">Zero-day defence</a>
       <a href="platform.html#detect">Detection engine</a>
       <a href="platform.html#soar">SOAR &amp; cases</a>
