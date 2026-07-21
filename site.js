@@ -24,7 +24,7 @@ const HEADER_HTML = `
 
     <nav class="nav" aria-label="Primary">
       <div class="nav__item has-mega">
-        <a class="nav__link" href="index.html#products" data-nav="products">Products <svg class="caret" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a class="nav__link" href="products.html" data-nav="products">Products <svg class="caret" viewBox="0 0 12 12"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         <div class="mega">
           <div class="mega__inner container">
             <p class="mega__head">Products</p>
@@ -60,6 +60,7 @@ const HEADER_HTML = `
             </div>
             <div class="mega-links">
               <span class="mega-links__label">Explore</span>
+              <a href="products.html">Compare all products</a>
               <a href="platform.html#ingest">Data ingestion</a>
               <a href="platform.html#detect">Detection engine</a>
               <a href="zero-day.html">Zero-day defence</a>
@@ -90,6 +91,7 @@ const HEADER_HTML = `
 </header>
 
 <div class="mobile" id="mobile">
+  <a href="products.html">All Products</a>
   <a href="soc.html">VultSight SOC</a>
   <a href="platform.html">VultSight XDR</a>
   <a href="noc.html">VultSight NOC</a>
@@ -114,6 +116,7 @@ const FOOTER_HTML = `
     </div>
     <div class="footer__col">
       <h5>Security</h5>
+      <a href="products.html">All products</a>
       <a href="soc.html">VultSight SOC</a>
       <a href="platform.html">VultSight XDR</a>
       <a href="scope.html">VultSight Scope</a>
