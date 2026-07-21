@@ -21,7 +21,7 @@
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"SoftwareApplication","name":"VultSight XDR","applicationCategory":"SecurityApplication","operatingSystem":"Cloud, On-premises, Hybrid","description":"Unified SIEM, SOAR, threat intelligence, UEBA and XDR with AI-powered investigation and automated response.","offers":{"@type":"Offer","availability":"https://schema.org/InStock"} }
 </script>
@@ -33,17 +33,66 @@
 <main>
 
 <!-- page hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="kicker">VultSight XDR · Premium security</span>
-    <h1>SIEM, SOAR, XDR, UEBA and threat intel —<br/>one event-driven platform</h1>
-    <p>From a security event hitting the wire to an automated, audited response — every stage runs on a single data model with sub-second real-time processing.</p>
-    <p style="font-size:14px;color:var(--muted);margin-top:14px">XDR includes everything in <a href="soc.html" class="link">VultSight SOC</a>, and adds cross-domain correlation, entity graph, UEBA and threat hunting.</p>
+<section class="hero band--dark">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="dot"></span>VultSight XDR · Premium security</span>
+      <h1 class="hero__title">Five tools' worth of signal.<br/><span class="grad">One incident.</span></h1>
+      <p class="hero__sub">SIEM, SOAR, XDR, UEBA and threat intel on one event-driven platform — from an event hitting the wire to an automated, audited response, on a single data model.</p>
+      <ul class="hero__checks">
+        <li><strong>Stop chasing alerts</strong> — related signals correlate into one incident with an attack story</li>
+        <li><strong>See the whole entity</strong> — user, host, identity and asset joined in one graph</li>
+        <li><strong>Catch the unsignatured</strong> — UEBA flags behaviour no rule was written for</li>
+      </ul>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary btn--lg">Talk to us</a>
+        <a href="products.html" class="btn btn--outline btn--lg">Compare products</a>
+      </div>
+      <p style="font-size:13.5px;color:#8f9cb8;margin-top:20px">XDR includes everything in <a href="soc.html" style="color:var(--primary-l);font-weight:600">VultSight SOC</a>.</p>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="console">
+        <div class="console__bar">
+          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
+          <span class="console__title">XDR Command Center</span>
+          <span class="console__live"><span class="pulse"></span>Operational</span>
+        </div>
+        <div class="console__kpis">
+          <div class="kpi kpi--crit"><span class="kpi__n" data-count="14">0</span><span class="kpi__l">Critical</span></div>
+          <div class="kpi kpi--high"><span class="kpi__n" data-count="63">0</span><span class="kpi__l">High</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="9">0</span><span class="kpi__l">Incidents</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="22">0</span><span class="kpi__l">Rules</span></div>
+        </div>
+        <div class="console__chart">
+          <div class="bars">
+            <i style="--h:32%"></i><i style="--h:58%"></i><i style="--h:41%"></i><i style="--h:74%"></i>
+            <i style="--h:52%"></i><i style="--h:88%"></i><i style="--h:63%"></i><i style="--h:46%"></i>
+            <i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:92%"></i><i style="--h:60%"></i>
+            <i style="--h:38%"></i><i style="--h:67%"></i><i style="--h:49%"></i><i style="--h:78%"></i>
+          </div>
+        </div>
+        <div class="console__feed">
+          <div class="feed"><span class="sev sev--crit"></span>C2 Beaconing detected · 10.0.1.42<span class="feed__t">12s</span></div>
+          <div class="feed"><span class="sev sev--high"></span>Impossible Travel · j.okafor<span class="feed__t">1m</span></div>
+          <div class="feed"><span class="sev sev--med"></span>Credential dumping · WS-042<span class="feed__t">3m</span></div>
+        </div>
+      </div>
+      <div class="float-card float-card--1">
+        <span class="fc__icon">🧠</span>
+        <div><strong>6 alerts → 1 incident</strong><span>correlated across domains</span></div>
+      </div>
+      <div class="float-card float-card--2">
+        <span class="fc__icon">🕵</span>
+        <div><strong>Attack story built</strong><span>initial access → exfil</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- pipeline band (dark) -->
-<section class="section band--dark">
+<section class="section section--alt">
   <div class="container">
     <div class="sec-head">
       <span class="kicker">How it works</span>

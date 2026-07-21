@@ -21,7 +21,7 @@
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"SoftwareApplication","name":"VultSight NOC","applicationCategory":"SecurityApplication","operatingSystem":"Cloud, On-premises, Hybrid","description":"Network operations monitoring: device and service health via SNMP, ICMP and HTTP, live topology, SLA tracking and a command-center wallboard.","offers":{"@type":"Offer","availability":"https://schema.org/InStock"} }
 </script>
@@ -33,16 +33,65 @@
 <main>
 
 <!-- page hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="kicker">VultSight NOC</span>
-    <h1>Network operations,<br/>in the same console as security</h1>
-    <p>Monitor every device and service in real time — availability, performance and SLAs — with live topology, auto-discovery and a command-center wallboard. One on-call team, one pane of glass.</p>
+<section class="hero band--dark">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="dot"></span>VultSight NOC · Network operations</span>
+      <h1 class="hero__title">Network operations,<br/><span class="grad">beside your security.</span></h1>
+      <p class="hero__sub">Monitor every device and service in real time — availability, performance and SLAs — with live topology, auto-discovery and a command-center wallboard. One on-call team, one pane of glass.</p>
+      <ul class="hero__checks">
+        <li><strong>Know before users call</strong> — threshold alerting on the metrics that predict an outage</li>
+        <li><strong>See how it connects</strong> — live topology shows where a fault propagates next</li>
+        <li><strong>Defend the SLA</strong> — uptime and MTTR tracked with maintenance windows honoured</li>
+      </ul>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary btn--lg">Talk to us</a>
+        <a href="#wall" class="btn btn--outline btn--lg">See the wallboard</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="console">
+        <div class="console__bar">
+          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
+          <span class="console__title">NOC Command Center</span>
+          <span class="console__live"><span class="pulse"></span>Live</span>
+        </div>
+        <div class="console__kpis">
+          <div class="kpi"><span class="kpi__n" data-count="342">0</span><span class="kpi__l">Devices up</span></div>
+          <div class="kpi kpi--high"><span class="kpi__n" data-count="6">0</span><span class="kpi__l">Degraded</span></div>
+          <div class="kpi kpi--crit"><span class="kpi__n" data-count="2">0</span><span class="kpi__l">Down</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="99">0</span><span class="kpi__l">% Uptime</span></div>
+        </div>
+        <div class="console__chart">
+          <div class="bars">
+            <i style="--h:88%"></i><i style="--h:92%"></i><i style="--h:79%"></i><i style="--h:95%"></i>
+            <i style="--h:84%"></i><i style="--h:90%"></i><i style="--h:73%"></i><i style="--h:96%"></i>
+            <i style="--h:81%"></i><i style="--h:94%"></i><i style="--h:60%"></i><i style="--h:89%"></i>
+            <i style="--h:85%"></i><i style="--h:91%"></i><i style="--h:77%"></i><i style="--h:93%"></i>
+          </div>
+        </div>
+        <div class="console__feed">
+          <div class="feed"><span class="sev sev--crit"></span>core-rtr-02 unreachable · ICMP timeout<span class="feed__t">8s</span></div>
+          <div class="feed"><span class="sev sev--high"></span>edge-sw-11 · CPU 94% over threshold<span class="feed__t">40s</span></div>
+          <div class="feed"><span class="sev sev--med"></span>api-gw service · latency SLA at 90%<span class="feed__t">2m</span></div>
+        </div>
+      </div>
+      <div class="float-card float-card--1">
+        <span class="fc__icon">📶</span>
+        <div><strong>342 devices</strong><span>polled continuously</span></div>
+      </div>
+      <div class="float-card float-card--2">
+        <span class="fc__icon">🎯</span>
+        <div><strong>SLA 99.9%</strong><span>tracked per service</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- monitoring pipeline (dark) -->
-<section class="section band--dark">
+<section class="section section--alt">
   <div class="container">
     <div class="sec-head">
       <span class="kicker">How it works</span>
@@ -104,45 +153,17 @@
 
 <!-- wall view (dark) -->
 <section class="section band--dark" id="wall">
-  <div class="container split split--rev">
-    <div class="split__copy">
+  <div class="container">
+    <div class="sec-head">
       <span class="kicker">NOC Command Center</span>
       <h2>Built for the wallboard</h2>
-      <p>The NOC wall view turns live device, service and SLA state into a big-screen command-center display — designed to run 24/7 on the operations-center wall.</p>
-      <div class="ai-cards">
-        <div class="ai-card"><strong>Device status grid</strong><span>Up / down / degraded at a glance.</span></div>
-        <div class="ai-card"><strong>Service health</strong><span>Grouped services with live disruptions.</span></div>
-        <div class="ai-card"><strong>SLA compliance</strong><span>Targets vs. actuals, color-coded.</span></div>
-        <div class="ai-card"><strong>Active incidents</strong><span>Open NOC incidents with MTTR.</span></div>
-      </div>
+      <p>The wall view turns live device, service and SLA state into a big-screen command-center display — designed to run 24/7 on the operations-centre wall.</p>
     </div>
-    <div class="split__panel">
-      <div class="console">
-        <div class="console__bar">
-          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
-          <span class="console__title">NOC Command Center · Wall View</span>
-          <span class="console__live"><span class="pulse"></span>Live</span>
-        </div>
-        <div class="console__kpis">
-          <div class="kpi"><span class="kpi__n" data-count="342">0</span><span class="kpi__l">Devices Up</span></div>
-          <div class="kpi kpi--high"><span class="kpi__n" data-count="6">0</span><span class="kpi__l">Degraded</span></div>
-          <div class="kpi kpi--crit"><span class="kpi__n" data-count="2">0</span><span class="kpi__l">Down</span></div>
-          <div class="kpi"><span class="kpi__n" data-count="99">0</span><span class="kpi__l">% Uptime</span></div>
-        </div>
-        <div class="console__chart">
-          <div class="bars">
-            <i style="--h:88%"></i><i style="--h:92%"></i><i style="--h:79%"></i><i style="--h:95%"></i>
-            <i style="--h:84%"></i><i style="--h:90%"></i><i style="--h:73%"></i><i style="--h:96%"></i>
-            <i style="--h:81%"></i><i style="--h:94%"></i><i style="--h:60%"></i><i style="--h:89%"></i>
-            <i style="--h:85%"></i><i style="--h:91%"></i><i style="--h:77%"></i><i style="--h:93%"></i>
-          </div>
-        </div>
-        <div class="console__feed">
-          <div class="feed"><span class="sev sev--crit"></span>core-rtr-02 unreachable · ICMP timeout<span class="feed__t">8s</span></div>
-          <div class="feed"><span class="sev sev--high"></span>edge-sw-11 · CPU 94% over threshold<span class="feed__t">40s</span></div>
-          <div class="feed"><span class="sev sev--med"></span>api-gw service · latency SLA at 90%<span class="feed__t">2m</span></div>
-        </div>
-      </div>
+    <div class="ai-cards">
+      <div class="ai-card"><strong>Device status grid</strong><span>Up / down / degraded at a glance.</span></div>
+      <div class="ai-card"><strong>Service health</strong><span>Grouped services with live disruptions.</span></div>
+      <div class="ai-card"><strong>SLA compliance</strong><span>Targets vs. actuals, color-coded.</span></div>
+      <div class="ai-card"><strong>Active incidents</strong><span>Open NOC incidents with MTTR.</span></div>
     </div>
   </div>
 </section>

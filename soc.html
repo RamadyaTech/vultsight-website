@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <script type="application/ld+json">
 {
@@ -42,12 +42,60 @@
 <main>
 
 <!-- page hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="kicker">VultSight SOC · Security</span>
-    <h1>Security operations,<br/>out of the box</h1>
-    <p>The essentials to run a security operations centre — SIEM detection, alerting, case management with native ITSM, SOAR playbooks and threat intelligence — on one platform, with nothing to bolt together.</p>
-    <p style="font-size:14px;color:var(--muted);margin-top:14px">Need cross-domain correlation, UEBA and hunting? That's <a href="platform.html" class="link">VultSight XDR</a> — which includes everything here.</p>
+<section class="hero band--dark">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="dot"></span>VultSight SOC · Entry security</span>
+      <h1 class="hero__title">Security operations,<br/><span class="grad">out of the box.</span></h1>
+      <p class="hero__sub">The essentials to run a security operations centre — detection, alerting, case management with native ITSM, automation and threat intelligence — on one platform, with nothing to bolt together.</p>
+      <ul class="hero__checks">
+        <li><strong>Detect from day one</strong> — curated rules and MITRE ATT&amp;CK mapping out of the box</li>
+        <li><strong>Never lose a case</strong> — alerts become tickets in native ITSM, not another inbox</li>
+        <li><strong>Automate the repetitive</strong> — playbooks handle containment while analysts think</li>
+      </ul>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary btn--lg">Talk to us</a>
+        <a href="platform.html" class="btn btn--outline btn--lg">Compare with XDR</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="console">
+        <div class="console__bar">
+          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
+          <span class="console__title">SOC Command Center</span>
+          <span class="console__live"><span class="pulse"></span>Operational</span>
+        </div>
+        <div class="console__kpis">
+          <div class="kpi kpi--crit"><span class="kpi__n" data-count="9">0</span><span class="kpi__l">Critical</span></div>
+          <div class="kpi kpi--high"><span class="kpi__n" data-count="41">0</span><span class="kpi__l">High</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="17">0</span><span class="kpi__l">Open cases</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="28">0</span><span class="kpi__l">Rules</span></div>
+        </div>
+        <div class="console__chart">
+          <div class="bars">
+            <i style="--h:42%"></i><i style="--h:63%"></i><i style="--h:51%"></i><i style="--h:78%"></i>
+            <i style="--h:57%"></i><i style="--h:84%"></i><i style="--h:66%"></i><i style="--h:49%"></i>
+            <i style="--h:73%"></i><i style="--h:58%"></i><i style="--h:89%"></i><i style="--h:62%"></i>
+            <i style="--h:45%"></i><i style="--h:70%"></i><i style="--h:53%"></i><i style="--h:81%"></i>
+          </div>
+        </div>
+        <div class="console__feed">
+          <div class="feed"><span class="sev sev--crit"></span>Brute force succeeded · svc-backup<span class="feed__t">18s</span></div>
+          <div class="feed"><span class="sev sev--high"></span>Suspicious PowerShell · WS-114<span class="feed__t">2m</span></div>
+          <div class="feed"><span class="sev sev--med"></span>New admin account created · DC-01<span class="feed__t">6m</span></div>
+        </div>
+      </div>
+      <div class="float-card float-card--1">
+        <span class="fc__icon">🎫</span>
+        <div><strong>Case #4192 opened</strong><span>auto-assigned · SLA 30m</span></div>
+      </div>
+      <div class="float-card float-card--2">
+        <span class="fc__icon">⚡</span>
+        <div><strong>Playbook ran</strong><span>host isolated · 8s</span></div>
+      </div>
+    </div>
   </div>
 </section>
 

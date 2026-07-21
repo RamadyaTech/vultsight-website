@@ -33,17 +33,66 @@
 
 <main>
 
-<!-- page hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="kicker">VultSight Scope</span>
-    <h1>Know what's exposed —<br/>before someone else finds it</h1>
-    <p>Continuous vulnerability assessment across your network, web applications and external attack surface. Scope runs multiple scanning engines, merges everything into one set of findings, and ranks them by what an attacker would actually reach for.</p>
+<!-- hero -->
+<section class="hero band--dark">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="dot"></span>VultSight Scope · Vulnerability assessment</span>
+      <h1 class="hero__title">Know what's exposed.<br/><span class="grad">Fix what actually matters.</span></h1>
+      <p class="hero__sub">Continuous assessment across your network, web applications and external attack surface — multiple scanning engines, merged into one set of findings, ranked by what an attacker would really reach for.</p>
+      <ul class="hero__checks">
+        <li><strong>Cut duplicate triage</strong> — one finding per flaw, not one per engine</li>
+        <li><strong>Rank by real risk</strong> — exploit probability and active exploitation, not severity alone</li>
+        <li><strong>Prove the fix landed</strong> — nothing closes without a passing retest</li>
+      </ul>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary btn--lg">Talk to us</a>
+        <a href="#risk" class="btn btn--outline btn--lg">How prioritisation works</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="console">
+        <div class="console__bar">
+          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
+          <span class="console__title">Scope · Assessment Console</span>
+          <span class="console__live"><span class="pulse"></span>Scanning</span>
+        </div>
+        <div class="console__kpis">
+          <div class="kpi kpi--crit"><span class="kpi__n" data-count="7">0</span><span class="kpi__l">Critical</span></div>
+          <div class="kpi kpi--high"><span class="kpi__n" data-count="34">0</span><span class="kpi__l">High</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="1284">0</span><span class="kpi__l">Assets</span></div>
+          <div class="kpi"><span class="kpi__n" data-count="92">0</span><span class="kpi__l">% Verified</span></div>
+        </div>
+        <div class="console__chart">
+          <div class="bars">
+            <i style="--h:64%"></i><i style="--h:78%"></i><i style="--h:55%"></i><i style="--h:83%"></i>
+            <i style="--h:71%"></i><i style="--h:60%"></i><i style="--h:88%"></i><i style="--h:52%"></i>
+            <i style="--h:76%"></i><i style="--h:66%"></i><i style="--h:91%"></i><i style="--h:58%"></i>
+            <i style="--h:80%"></i><i style="--h:69%"></i><i style="--h:47%"></i><i style="--h:74%"></i>
+          </div>
+        </div>
+        <div class="console__feed">
+          <div class="feed"><span class="sev sev--crit"></span>CVE-2024-3094 · edge-web-03<span class="feed__t">Critical</span></div>
+          <div class="feed"><span class="sev sev--high"></span>Unauthenticated admin path · api-gw<span class="feed__t">High</span></div>
+          <div class="feed"><span class="sev sev--med"></span>TLS 1.0 still enabled · legacy-lb-01<span class="feed__t">Medium</span></div>
+        </div>
+      </div>
+      <div class="float-card float-card--1">
+        <span class="fc__icon">🚨</span>
+        <div><strong>CVE-2024-3094</strong><span>edge-web-03 · internet-facing</span><span class="fc__tag">Known exploited</span></div>
+      </div>
+      <div class="float-card float-card--2">
+        <span class="fc__icon">🧩</span>
+        <div><strong>3 engines → 1 finding</strong><span>merged, evidence kept</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- pipeline (dark) -->
-<section class="section band--dark">
+<!-- pipeline -->
+<section class="section section--alt">
   <div class="container">
     <div class="sec-head">
       <span class="kicker">How it works</span>
@@ -100,51 +149,6 @@
       <article class="cap" id="authscan"><div class="cap__ic">🔐</div><h3>Authenticated scanning</h3><p>Credentialed scans see installed packages and true patch state, cutting the false positives that unauthenticated scans invent.</p></article>
       <article class="cap" id="continuous"><div class="cap__ic">🔄</div><h3>Scheduled &amp; continuous</h3><p>Assessment as a routine, not an annual event. Recurring scans surface drift and newly disclosed CVEs against assets you already own.</p></article>
       <article class="cap" id="evidence"><div class="cap__ic">📑</div><h3>Evidence &amp; audit trail</h3><p>Every scan, finding, change and retest is recorded — the paper trail auditors and clients ask for, without reconstructing it later.</p></article>
-    </div>
-  </div>
-</section>
-
-<!-- console (dark) -->
-<section class="section band--dark" id="console">
-  <div class="container split split--rev">
-    <div class="split__copy">
-      <span class="kicker">Assessment console</span>
-      <h2>The whole estate,<br/>ranked by what matters</h2>
-      <p>One view across every engagement and every engine — what's critical, what's actively exploited, what's been fixed, and what's still waiting on an owner.</p>
-      <div class="ai-cards">
-        <div class="ai-card"><strong>Risk-ranked queue</strong><span>Top of the list is the real top.</span></div>
-        <div class="ai-card"><strong>Known-exploited flags</strong><span>KEV findings surfaced first.</span></div>
-        <div class="ai-card"><strong>Remediation velocity</strong><span>Fix rate and ageing per owner.</span></div>
-        <div class="ai-card"><strong>Retest status</strong><span>Verified closed, not assumed.</span></div>
-      </div>
-    </div>
-    <div class="split__panel">
-      <div class="console">
-        <div class="console__bar">
-          <span class="d d--r"></span><span class="d d--y"></span><span class="d d--g"></span>
-          <span class="console__title">Scope · Assessment Console</span>
-          <span class="console__live"><span class="pulse"></span>Scanning</span>
-        </div>
-        <div class="console__kpis">
-          <div class="kpi kpi--crit"><span class="kpi__n" data-count="7">0</span><span class="kpi__l">Critical</span></div>
-          <div class="kpi kpi--high"><span class="kpi__n" data-count="34">0</span><span class="kpi__l">High</span></div>
-          <div class="kpi"><span class="kpi__n" data-count="1284">0</span><span class="kpi__l">Assets</span></div>
-          <div class="kpi"><span class="kpi__n" data-count="92">0</span><span class="kpi__l">% Verified fixed</span></div>
-        </div>
-        <div class="console__chart">
-          <div class="bars">
-            <i style="--h:64%"></i><i style="--h:78%"></i><i style="--h:55%"></i><i style="--h:83%"></i>
-            <i style="--h:71%"></i><i style="--h:60%"></i><i style="--h:88%"></i><i style="--h:52%"></i>
-            <i style="--h:76%"></i><i style="--h:66%"></i><i style="--h:91%"></i><i style="--h:58%"></i>
-            <i style="--h:80%"></i><i style="--h:69%"></i><i style="--h:47%"></i><i style="--h:74%"></i>
-          </div>
-        </div>
-        <div class="console__feed">
-          <div class="feed"><span class="sev sev--crit"></span>CVE-2024-3094 · KEV · edge-web-03<span class="feed__t">Critical</span></div>
-          <div class="feed"><span class="sev sev--high"></span>Unauthenticated admin path · api-gw<span class="feed__t">High</span></div>
-          <div class="feed"><span class="sev sev--med"></span>TLS 1.0 still enabled · legacy-lb-01<span class="feed__t">Medium</span></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
