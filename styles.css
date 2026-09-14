@@ -601,6 +601,11 @@ img{display:block;max-width:100%}
 .form-success .fs-ic{font-size:20px}
 .form-success strong{color:#065f46;display:block;font-size:15px}
 .form-success span{color:#047857;font-size:13.5px}
+.form-error{display:flex;gap:14px;align-items:flex-start;background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:18px 20px;margin-bottom:20px}
+.form-error[hidden]{display:none}
+.form-error .fs-ic{font-size:20px}
+.form-error strong{color:#991b1b;display:block;font-size:15px}
+.form-error span{color:#b91c1c;font-size:13.5px}
 
 /* ─── Company ─── */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}

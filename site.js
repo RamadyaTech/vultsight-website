@@ -255,7 +255,14 @@ function initReveal() {
   });
 }
 
-/* ── Contact / demo form ── */
+/* ── Contact / demo form ──
+ * Delivery: Web3Forms (https://web3forms.com) — free, no backend, emails
+ * submissions straight to the inbox tied to the access key below.
+ * Get a key: visit web3forms.com, enter the destination inbox, an access
+ * key is emailed back immediately (no account/password needed). Paste it
+ * in place of the placeholder before this goes live. */
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
+
 function initForm() {
   const form = document.getElementById('demo-form');
   if (!form) return;
@@ -295,17 +302,43 @@ function initForm() {
     });
     if (!ok) return;
 
-    // NOTE: wire this to your backend (e.g. POST /v1/leads or a form service).
     const btn = form.querySelector('button[type="submit"]');
+    const successEl = document.getElementById('form-success');
+    const errorEl = document.getElementById('form-error');
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    setTimeout(() => {
-      form.classList.add('is-sent');
-      document.getElementById('form-success').hidden = false;
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = 'Send message';
-    }, 700);
+    if (errorEl) errorEl.hidden = true;
+
+    const payload = new FormData(form);
+    payload.append('access_key', WEB3FORMS_ACCESS_KEY);
+    payload.append(
+      'subject',
+      `New "Talk to us" request — ${payload.get('company') || 'unknown company'}`
+    );
+    payload.append('from_name', 'VultSight website');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: payload,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        if (result.success) {
+          form.classList.add('is-sent');
+          successEl.hidden = false;
+          form.reset();
+        } else if (errorEl) {
+          errorEl.hidden = false;
+        }
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        if (errorEl) errorEl.hidden = false;
+      });
   });
 }
 
