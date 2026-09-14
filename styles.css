@@ -583,29 +583,11 @@ img{display:block;max-width:100%}
 .contact-list span{font-size:14px;color:var(--muted)}
 
 .form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:32px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{margin-bottom:18px;display:flex;flex-direction:column}
-.field label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
-.field input,.field select,.field textarea{
-  font-family:inherit;font-size:14.5px;color:var(--ink);padding:12px 14px;border-radius:10px;
-  border:1px solid var(--border-h);background:#fff;transition:border-color .2s,box-shadow .2s;width:100%;
-}
-.field textarea{resize:vertical;min-height:110px}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.12)}
-.field__err{font-size:12px;color:var(--crit);margin-top:6px;min-height:0}
-.field--err input,.field--err select,.field--err textarea{border-color:var(--crit)}
-.field--err .field__err{min-height:16px}
-.form-note{font-size:12.5px;color:var(--faint);margin-top:6px}
-.form-success{display:flex;gap:14px;align-items:flex-start;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:18px 20px;margin-bottom:20px}
-.form-success[hidden]{display:none}
-.form-success .fs-ic{font-size:20px}
-.form-success strong{color:#065f46;display:block;font-size:15px}
-.form-success span{color:#047857;font-size:13.5px}
-.form-error{display:flex;gap:14px;align-items:flex-start;background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:18px 20px;margin-bottom:20px}
-.form-error[hidden]{display:none}
-.form-error .fs-ic{font-size:20px}
-.form-error strong{color:#991b1b;display:block;font-size:15px}
-.form-error span{color:#b91c1c;font-size:13.5px}
+.email-card{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.email-card__icon{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:rgba(79,70,229,.1)}
+.email-card__heading{font-family:var(--display);font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.email-card__sub{color:var(--muted);font-size:15px;line-height:1.55;margin:-4px 0 4px}
+.email-card__cta{width:100%;text-align:center;font-size:16px}
 
 /* ─── Company ─── */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -671,7 +653,6 @@ img{display:block;max-width:100%}
   .split{grid-template-columns:1fr;gap:36px}
   .split--rev .split__copy{order:0}
   .stats__grid{grid-template-columns:repeat(2,1fr)}
-  .form-row{grid-template-columns:1fr}
   .float-card{display:none}
   .utilbar__links a:not(.utilbar__signin){display:none}
   .hero{padding:54px 0 66px}

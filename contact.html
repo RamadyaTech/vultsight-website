@@ -56,73 +56,15 @@
           <span class="ci">🚀</span>
           <div><strong>Deployment options</strong><span>Cloud, on-prem or hybrid — and what onboarding looks like.</span></div>
         </li>
-        <li>
-          <span class="ci">✉️</span>
-          <div><strong>Prefer email?</strong><span><a href="mailto:sales@vultsight.com" class="link">sales@vultsight.com</a></span></div>
-        </li>
       </ul>
     </div>
 
-    <!-- form -->
-    <div class="form-card">
-      <div class="form-success" id="form-success" hidden>
-        <span class="fs-ic">✅</span>
-        <div>
-          <strong>Thanks — we've got your request.</strong>
-          <span>A member of our team will reach out within one business day.</span>
-        </div>
-      </div>
-
-      <div class="form-error" id="form-error" hidden>
-        <span class="fs-ic">⚠️</span>
-        <div>
-          <strong>Something went wrong sending that.</strong>
-          <span>Please email us directly at <a href="mailto:sales@vultsight.com" class="link">sales@vultsight.com</a> instead.</span>
-        </div>
-      </div>
-
-      <form id="demo-form" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Okafor" />
-            <span class="field__err"></span>
-          </div>
-          <div class="field">
-            <label for="email">Work email</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@company.com" />
-            <span class="field__err"></span>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Security" />
-            <span class="field__err"></span>
-          </div>
-          <div class="field">
-            <label for="org_type">Organization type</label>
-            <select id="org_type" name="org_type">
-              <option value="enterprise">Enterprise SOC</option>
-              <option value="mssp">MSSP / MDR</option>
-              <option value="midmarket">Mid-market</option>
-              <option value="gov">Government / public sector</option>
-              <option value="other">Other</option>
-            </select>
-            <span class="field__err"></span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="message">What are you hoping to solve? <span style="color:var(--faint);font-weight:400">(optional)</span></label>
-          <textarea id="message" name="message" placeholder="e.g. consolidating SIEM + SOAR, faster triage, MSSP multi-tenancy…"></textarea>
-          <span class="field__err"></span>
-        </div>
-
-        <button type="submit" class="btn btn--primary btn--lg" style="width:100%">Send message</button>
-        <p class="form-note">By submitting, you agree to be contacted about VultSight. We never share your details.</p>
-      </form>
+    <!-- direct email -->
+    <div class="form-card email-card">
+      <span class="ci email-card__icon">✉️</span>
+      <h2 class="email-card__heading">Email us directly</h2>
+      <p class="email-card__sub">Tell us a bit about your environment and what you're looking to solve — a real person reads every message and typically replies within one business day.</p>
+      <a href="mailto:sales@vultsight.com" class="btn btn--primary btn--lg email-card__cta">sales@vultsight.com</a>
     </div>
   </div>
 </section>

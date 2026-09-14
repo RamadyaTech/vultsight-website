@@ -255,93 +255,6 @@ function initReveal() {
   });
 }
 
-/* ── Contact / demo form ──
- * Delivery: Web3Forms (https://web3forms.com) — free, no backend, emails
- * submissions straight to the inbox tied to the access key below.
- * Get a key: visit web3forms.com, enter the destination inbox, an access
- * key is emailed back immediately (no account/password needed). Paste it
- * in place of the placeholder before this goes live. */
-const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
-
-function initForm() {
-  const form = document.getElementById('demo-form');
-  if (!form) return;
-
-  const setError = (field, msg) => {
-    const wrap = field.closest('.field');
-    wrap.classList.toggle('field--err', !!msg);
-    const err = wrap.querySelector('.field__err');
-    if (err) err.textContent = msg || '';
-  };
-
-  const validators = {
-    name: (v) => (v.trim().length < 2 ? 'Please enter your name' : ''),
-    email: (v) =>
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())
-        ? 'Enter a valid work email'
-        : '',
-    company: (v) => (v.trim().length < 2 ? 'Please enter your company' : ''),
-    message: () => '',
-  };
-
-  form.querySelectorAll('input, textarea, select').forEach((f) => {
-    f.addEventListener('blur', () => {
-      if (validators[f.name]) setError(f, validators[f.name](f.value));
-    });
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let ok = true;
-    form.querySelectorAll('input, textarea, select').forEach((f) => {
-      if (validators[f.name]) {
-        const msg = validators[f.name](f.value);
-        setError(f, msg);
-        if (msg) ok = false;
-      }
-    });
-    if (!ok) return;
-
-    const btn = form.querySelector('button[type="submit"]');
-    const successEl = document.getElementById('form-success');
-    const errorEl = document.getElementById('form-error');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    if (errorEl) errorEl.hidden = true;
-
-    const payload = new FormData(form);
-    payload.append('access_key', WEB3FORMS_ACCESS_KEY);
-    payload.append(
-      'subject',
-      `New "Talk to us" request — ${payload.get('company') || 'unknown company'}`
-    );
-    payload.append('from_name', 'VultSight website');
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: payload,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        btn.disabled = false;
-        btn.textContent = 'Send message';
-        if (result.success) {
-          form.classList.add('is-sent');
-          successEl.hidden = false;
-          form.reset();
-        } else if (errorEl) {
-          errorEl.hidden = false;
-        }
-      })
-      .catch(() => {
-        btn.disabled = false;
-        btn.textContent = 'Send message';
-        if (errorEl) errorEl.hidden = false;
-      });
-  });
-}
-
 /* ── Branded line icons (replace emoji) ── */
 const ICONS = {
   '🔎': '<circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/>',
@@ -405,4 +318,3 @@ injectPartials();
 initChrome();
 initReveal();
 renderIcons();
-initForm();
