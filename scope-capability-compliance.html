@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,11 @@
 <meta name="twitter:description" content="The authoritative technical reference for VultSight Scope: coverage, risk scoring, data security, deployment and integrations.">
 <meta name="twitter:image" content="https://www.vultsight.com/assets/vultsight-lockup.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- site chrome (header/footer) styles; page-specific styles below override for this doc's own classes -->
+<link rel="stylesheet" href="styles.css">
 <style>
   :root{
     --bg:#ffffff; --panel:#f5f8fc; --panel2:#eef3f8; --ink:#16202b; --muted:#53627a;
@@ -38,7 +43,9 @@
     --navy:#9cc2ff; --teal:#4fd1bd; --teal-ink:#7fe0d1; --line:#22314a; --amber:#e6b35a;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  /* keep this doc's body font/background even with site styles.css loaded */
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif !important}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     line-height:1.62;font-size:16.5px;-webkit-font-smoothing:antialiased}
@@ -60,7 +67,7 @@
   .mast .meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
     border-radius:999px;padding:5px 13px;font-size:13px;font-weight:600}
   .shell{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:260px 1fr;gap:40px}
-  nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:28px 8px 40px}
+  nav.toc{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 78px);overflow:auto;padding:28px 8px 40px}
   nav.toc h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
   nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:s}
   nav.toc li{counter-increment:s;margin:1px 0}
@@ -124,6 +131,8 @@
 </style>
 </head>
 <body>
+<div data-include="header"></div>
+
 <header class="mast">
   <div class="wrap">
     <div class="brand">
@@ -388,9 +397,12 @@ risk = base(CVSS×10 or severity weight)
 
 <footer>
   <p><b>VultSight Scope — Capability &amp; Compliance Reference.</b> Technical product documentation, revision 2026-10-08. This page is the evidence source cited by the VultSight Scope Capability &amp; Compliance Matrix. Capability descriptions reflect product behaviour; deployment-dependent and feed/licence-dependent items are noted inline.</p>
-  <p style="margin-top:12px"><a href="assets/VultSight-Scope-Capability-Compliance-Datasheet.pdf" download>Download as PDF ↓</a> &nbsp;·&nbsp; <a href="resources.html">← VultSight resources</a> &nbsp;·&nbsp; <a href="scope.html">VultSight Scope overview</a></p>
+  <p style="margin-top:12px"><a href="assets/VultSight-Scope-Capability-Compliance-Datasheet.pdf" download>Download as PDF ↓</a> &nbsp;·&nbsp; <a href="scope.html">VultSight Scope overview</a></p>
 </footer>
 </main>
 </div>
+
+<div data-include="footer"></div>
+<script src="site.js"></script>
 </body>
 </html>
