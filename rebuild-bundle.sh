@@ -31,11 +31,13 @@ rsync -a \
 printf 'https://vultsight.com/* https://www.vultsight.com/:splat 301\n' > "$OUT/_redirects"
 
 # Safety checks: nothing confidential must ship.
+# (Public PDFs under assets/ are allowed — e.g. the Scope datasheet.
+#  The confidential sales PDF lives in _pdf/ and must never appear.)
 for bad in _pdf scripts; do
   [ -e "$OUT/$bad" ] && { echo "ABORT: $bad leaked into bundle" >&2; exit 1; }
 done
-if find "$OUT" -name '*.pdf' | grep -q .; then
-  echo "ABORT: a PDF is in the bundle" >&2; exit 1
+if find "$OUT" -iname '*product-tour*.pdf' -o -iname '*product-tour*.html' -path '*_pdf*' | grep -q .; then
+  echo "ABORT: confidential product-tour asset in bundle" >&2; exit 1
 fi
 
 ( cd "$OUT" && zip -rq ../vultsight-site.zip . -x '.DS_Store' )
